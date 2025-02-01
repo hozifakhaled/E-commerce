@@ -1,5 +1,5 @@
 import 'package:ecommercefirebase/featrue/auth/otp/presention/manger/cubit/otp_cubit.dart';
-import 'package:ecommercefirebase/featrue/auth/otp/presention/view/wedgits/body_in_otp.dart';
+import 'package:ecommercefirebase/featrue/auth/otp/presention/view/wedgits/body_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
