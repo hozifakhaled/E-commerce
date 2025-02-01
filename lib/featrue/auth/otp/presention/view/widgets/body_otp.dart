@@ -4,7 +4,7 @@ import 'package:ecommercefirebase/core/helper/helpers.dart';
 import 'package:ecommercefirebase/core/styles/extention.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/featrue/auth/otp/presention/manger/cubit/otp_cubit.dart';
-import 'package:ecommercefirebase/featrue/auth/otp/presention/view/wedgits/section_text_and_image_in_otp.dart';
+import 'package:ecommercefirebase/featrue/auth/otp/presention/view/widgets/section_text_and_image_in_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

@@ -2,7 +2,7 @@ import 'package:ecommercefirebase/featrue/auth/otp/presention/manger/cubit/otp_c
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'wedgits/body_verification_code.dart';
+import 'widgets/body_verification_code.dart';
 
 class VerificationCodeView extends StatelessWidget {
   const VerificationCodeView({super.key, required this.verificationId});

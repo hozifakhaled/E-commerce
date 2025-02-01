@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 abstract class AppRouting {
   static var router = GoRouter(routes: <RouteBase>[
     GoRoute(
-      path: '/',
+      path: '/home',
       builder: (context,  state) {
         return const OtpView();
       },
@@ -23,7 +23,7 @@ abstract class AppRouting {
       },
     ),
     GoRoute(
-      path: '/home',
+      path: '/',
       
       builder: (context,  state, ) {
         return const  HomeView();
