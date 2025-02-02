@@ -45,6 +45,7 @@ class _HomeViewState extends State<HomeView> {
     ];
     return SafeArea(
       child: Scaffold(
+        backgroundColor: TextFieldColor,
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           items: item,

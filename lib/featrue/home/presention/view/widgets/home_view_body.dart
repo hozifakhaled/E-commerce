@@ -1,6 +1,11 @@
 import 'package:ecommercefirebase/constants/images.dart';
+import 'package:ecommercefirebase/core/styles/colors.dart';
 import 'package:ecommercefirebase/core/styles/extention.dart';
-import 'package:ecommercefirebase/featrue/home/presention/view/widgets/item_day.dart';
+import 'package:ecommercefirebase/core/styles/textstyles.dart';
+import 'package:ecommercefirebase/featrue/home/presention/view/widgets/category_item.dart';
+import 'package:ecommercefirebase/featrue/home/presention/view/widgets/frist_section_in_home.dart';
+import 'package:ecommercefirebase/featrue/home/presention/view/widgets/item_in_home.dart';
+import 'package:ecommercefirebase/featrue/home/presention/view/widgets/list_categories_items.dart';
 import 'package:ecommercefirebase/featrue/home/presention/view/widgets/search_textfiled_in_home.dart';
 import 'package:ecommercefirebase/featrue/home/presention/view/widgets/swiper_in_home.dart';
 import 'package:flutter/material.dart';
@@ -11,31 +16,37 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return SingleChildScrollView(
       child: Column(
         spacing: 20.h,
         children: [
-          searchTextFiledInHome(),
-          SizedBox(
-            height: context.height * .20,
-            child: SwiperInHome(),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: List.generate(2, (index) => ItemDay()),
-          ),
-          SizedBox(
-            height: context.height * .3,
-            child: ListView.builder(
-              itemCount: 4,
-              itemBuilder: (BuildContext context, int index) {
-                return  Image.asset(Assets.imagesOffer, fit: BoxFit.fill,width: double.infinity,);
-              },
+          FristSectionInHome(),
+         /*Container(
+          height: context.height*.25,
+          width: double.infinity,
+    
+          color: maincolor,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                  Align(
+            alignment: Alignment.topLeft,
+            child: Text('Featrue product ',style:Textstyles.textfeatruecategory.copyWith(color: Colors.white))),
+    
+                AspectRatio(aspectRatio: 100/250,
+                child: Container(color: Colors.white,),
+                
+                ),
+              ],
             ),
-          ),
+          )
+           
+          ,
+         )*/
         ],
       ),
     );
   }
 }
+

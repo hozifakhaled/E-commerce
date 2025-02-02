@@ -17,7 +17,7 @@ class searchTextFiledInHome extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: Colors.white)),
       filled: true,
-      fillColor: TextFieldColor,
+      fillColor: Colors.white,
       disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: Colors.white)),
