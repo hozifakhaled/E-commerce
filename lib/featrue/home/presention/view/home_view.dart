@@ -1,6 +1,8 @@
 import 'package:ecommercefirebase/core/styles/colors.dart';
+import 'package:ecommercefirebase/featrue/categories/presention/view/product_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'widgets/home_view_body.dart';
 
@@ -31,20 +33,24 @@ class _HomeViewState extends State<HomeView> {
       BottomNavigationBarItem(
         icon: Icon(Icons.person),
         label: 'Profile',
-
       ),
     ];
     var screens = [
-     HomeViewBody(),
-      Container(
-        color: Colors.blue,
-      ),
+      HomeViewBody(),
+      ProductView(),
       Container(
         color: Colors.yellow,
       )
     ];
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Click & Go Store',
+            style: TextStyle(color: maincolor, fontSize: 22.sp,fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: TextFieldColor,
+        ),
         backgroundColor: TextFieldColor,
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
@@ -52,7 +58,6 @@ class _HomeViewState extends State<HomeView> {
           type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,
           selectedItemColor: maincolor,
-      
           onTap: (index) {
             setState(() {
               currentIndex = index;

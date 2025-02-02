@@ -1,4 +1,3 @@
-import 'package:ecommercefirebase/constants/images.dart';
 import 'package:ecommercefirebase/core/styles/colors.dart';
 import 'package:ecommercefirebase/core/styles/extention.dart';
 import 'package:ecommercefirebase/core/styles/textstyles.dart';
@@ -19,12 +18,12 @@ class FristSectionInHome extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
-        spacing: 20.h,
+        spacing: 10.h,
         children: [
           searchTextFiledInHome(),
           SizedBox(
             height: context.height * .20,
-            child: SwiperInHome(),
+            child:const SwiperInHome(),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +50,7 @@ class FristSectionInHome extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Text('Featrue Category ',
                   style: Textstyles.textfeatruecategory)),
-          ListCategoriesItems(),
+         const ListCategoriesItems(),
         ],
       ),
     );

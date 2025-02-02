@@ -11,7 +11,7 @@ class SwiperInHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Swiper.list(
-      list: [Assets.imagesOffer, Assets.imagesOffer, Assets.imagesOffer],
+      list: [Assets.imagesUnsplash, Assets.imagesUnsplash, Assets.imagesUnsplash],
       builder: (context, data, index) {
         return Image.asset(data, fit: BoxFit.fill);
       },

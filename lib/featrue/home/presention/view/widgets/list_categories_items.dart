@@ -1,4 +1,3 @@
-import 'package:ecommercefirebase/constants/images.dart';
 import 'package:ecommercefirebase/featrue/home/data/models/categeries_model.dart';
 import 'package:ecommercefirebase/featrue/home/presention/view/widgets/category_item.dart';
 import 'package:flutter/material.dart';
@@ -12,17 +11,7 @@ class ListCategoriesItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<CategeriesModel> data = [
-  CategeriesModel(name: 'Hoodie', image: Assets.imagesHoodies),
-  CategeriesModel(name: 'T-shirt', image:Assets.imagesTeshartpng ),
-  CategeriesModel(name: 'Shoes', image: Assets.imagesShoes),
-  CategeriesModel(name: 'Accessories', image: Assets.imagesAccessorise),
-  CategeriesModel(name: 'Tracksuit', image: Assets.imagesTrangs),
-  CategeriesModel(name: 'Shorts', image: Assets.imagesShortspng),
-  CategeriesModel(name: 'Pants', image: Assets.imagesPantalon),
-  CategeriesModel(name: 'Shirt', image: Assets.imagesShmes),
-  CategeriesModel(name: 'Bags', image: Assets.imagesBag),
-];
+    
     return SizedBox(
       height: 140.h,
       child: Padding(
