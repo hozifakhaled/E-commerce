@@ -1,7 +1,8 @@
 //import 'package:bookly/Features/home/data/models/book_model/book_model.dart';
 
-import 'package:ecommercefirebase/featrue/auth/otp/presention/view/otp_view.dart';
+import 'package:ecommercefirebase/featrue/auth/login/presention/view/login_view.dart';
 import 'package:ecommercefirebase/featrue/auth/otp/presention/view/verification_code_view.dart';
+import 'package:ecommercefirebase/featrue/auth/sinup/presention/view/sinup_view.dart';
 import 'package:ecommercefirebase/featrue/splash/presention/view/splah_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,7 +31,13 @@ abstract class AppRouting {
     ),GoRoute(
       path: '/home',
       builder: (context, state) {
-        return const OtpView();
+        return const LoginView();
+      },
+    ),
+    GoRoute(
+      path: '/sinup',
+      builder: (context, state) {
+        return const SinupView();
       },
     ),
   ]);

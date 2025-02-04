@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommercefirebase/core/helper/helpers.dart';
+import 'package:ecommercefirebase/core/styles/colors.dart';
 import 'package:ecommercefirebase/core/styles/extention.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/featrue/auth/otp/presention/manger/cubit/otp_cubit.dart';
@@ -51,7 +52,8 @@ class BodyInOtp extends StatelessWidget {
                   },
                 ), // حقل إدخال رقم الهاتف
                 const SizedBox(height: 40), // إضافة مساحة فارغة
-                buttonApp(
+                buttonApp(color: maincolor,
+                    colortext: Colors.white,
                   onPressed: () {
                     // GoRouter.of(context).go('/code');
                     if (context

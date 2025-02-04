@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommercefirebase/core/helper/helpers.dart';
+import 'package:ecommercefirebase/core/styles/colors.dart';
 import 'package:ecommercefirebase/featrue/auth/otp/presention/manger/cubit/otp_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,6 +56,8 @@ class BodyVerifcationCode extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   buttonApp(
+                    color: maincolor,
+                    colortext: Colors.white,
                     text: 'Continue',
                     onPressed: () {
                       if (context

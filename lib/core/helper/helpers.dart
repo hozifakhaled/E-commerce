@@ -7,7 +7,7 @@ class Helpers {
     return AwesomeDialog(
       context: context,
       dialogType:
-          DialogType.success, // أنواع مختلفة مثل warning، success، error
+          dialogType, // أنواع مختلفة مثل warning، success، error
       animType: AnimType.scale, // نوع الحركة
       title: title,
       desc: desc,
