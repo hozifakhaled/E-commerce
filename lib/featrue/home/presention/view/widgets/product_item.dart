@@ -7,9 +7,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
-    super.key,
+    super.key, required this.price, required this.desc,
   });
-
+final String price;
+final String desc;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -34,10 +35,10 @@ class ProductItem extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
                 Text(
-                  'Regular Fit Slogan',
+                  desc,
                   style: Textstyles.textfeatruecategory
                       .copyWith(color: Colors.black, fontSize: 16.sp),
-                ),Text('\$20',style: Textstyles.textfeatruecategory.copyWith(color: textcoloroto2, fontSize: 14.sp),),
+                ),Text(price,style: Textstyles.textfeatruecategory.copyWith(color: textcoloroto2, fontSize: 14.sp),),
               ],
             ),
           )),

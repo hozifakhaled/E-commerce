@@ -1,10 +1,12 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:bloc/bloc.dart';
 import 'package:ecommercefirebase/core/database/firebase/firebase_consumer.dart';
 import 'package:ecommercefirebase/featrue/auth/login/data/repository/login_repository_impl.dart';
 import 'package:ecommercefirebase/featrue/auth/login/domin/entities/login_entites.dart';
 import 'package:ecommercefirebase/featrue/auth/login/domin/usecase/login.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import, 
 import 'package:meta/meta.dart';
 
 part 'login_state.dart';

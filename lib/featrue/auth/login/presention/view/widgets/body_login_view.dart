@@ -5,7 +5,6 @@ import 'package:ecommercefirebase/core/styles/textstyles.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/core/widgets/custom_text_from_filed.dart';
 import 'package:ecommercefirebase/core/widgets/row_login_or_sinup.dart';
-import 'package:ecommercefirebase/featrue/auth/login/domin/usecase/login.dart';
 import 'package:ecommercefirebase/featrue/auth/login/presention/manger/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,7 +47,7 @@ class BodyLoginView extends StatelessWidget {
               ),
               RowSinupOrLogin(
                 onTap: () {
-                  GoRouter.of(context).go('/sinup');
+                  GoRouter.of(context).push('/sinup');
                 },
                 text: 'Don\'t have an account? ',
                 button: 'Sign up',

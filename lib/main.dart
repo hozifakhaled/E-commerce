@@ -1,21 +1,28 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
 import 'package:ecommercefirebase/core/routeing/app_routing.dart';
 import 'package:ecommercefirebase/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
+  WidgetsFlutterBinding.ensureInitialized();
+    await dotenv.load(fileName: ".env");
+  await Supabase.initialize(
+    url: 'https://khpuekxzwzmtudzejesy.supabase.co',
+    anonKey: dotenv.env['SOPABASE_API_KEY'] ?? '',
+       );
+  CacheHelper().init();
+
 //WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(DevicePreview(
-enabled: false,
- builder: (context) => const MyApp()));
+  runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

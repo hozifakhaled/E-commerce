@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/domin/entities/sinup_entites.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/domin/repository/sinup_repository.dart';
 

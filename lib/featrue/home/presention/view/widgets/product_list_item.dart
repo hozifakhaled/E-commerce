@@ -34,7 +34,10 @@ class ProductListItem extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 5, // عدد العناصر
                 itemBuilder: (context, index) {
-                  return const ProductItem();
+                  return const ProductItem(
+                    desc: 'mmmm',
+                    price: '120',
+                  );
                 },
               ),
             ),

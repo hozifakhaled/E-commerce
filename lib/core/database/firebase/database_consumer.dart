@@ -4,4 +4,5 @@ import 'package:ecommercefirebase/featrue/auth/sinup/domin/entities/sinup_entite
 abstract class DatabaseConsumer {
   Future<void> createUserWithEmailAndPassword(SinupEntites email,SinupEntites password );
     Future<void> signInWithEmailAndPassword(LoginEntites email,LoginEntites password );
+    Future<dynamic> getdata();
 }

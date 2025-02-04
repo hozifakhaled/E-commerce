@@ -1,9 +1,9 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:ecommercefirebase/core/database/firebase/firebase_consumer.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/data/repository/sinup_repository_impl.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/domin/entities/sinup_entites.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/domin/usecase/sinup.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 part 'sinup_state.dart';
