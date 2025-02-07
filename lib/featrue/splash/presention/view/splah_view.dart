@@ -1,13 +1,13 @@
-import 'package:ecommercefirebase/core/styles/colors.dart';
-import 'package:ecommercefirebase/featrue/splash/presention/manger/cubit/splash_cubit.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ecommercefirebase/core/styles/colors.dart';
+import 'package:ecommercefirebase/featrue/splash/presention/manger/cubit/splash_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _SplashScreenState createState() => _SplashScreenState();
 }
 
@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    // حركة Click و Go
+    // حركة "Click" و "Go"
     _clickController = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,
@@ -35,14 +35,14 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
     );
 
-    // دوران علامة &
+    // دوران علامة "&"
     _rotateController = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,
     );
 
     _clickAnimation = Tween<Offset>(
-      begin: const Offset(-1.5, 0), // بداية Click خارج الشاشة
+      begin: const Offset(-1.5, 0), // بداية "Click" خارج الشاشة
       end: const Offset(0.0, 0),
     ).animate(CurvedAnimation(
       parent: _clickController,
@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen>
     ));
 
     _goAnimation = Tween<Offset>(
-      begin: const Offset(1.5, 0), // بداية Go خارج الشاشة
+      begin: const Offset(1.5, 0), // بداية "Go" خارج الشاشة
       end: const Offset(0.0, 0),
     ).animate(CurvedAnimation(
       parent: _goController,
@@ -61,11 +61,10 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void _startAnimations() async {
-  await _clickController.forward();
-  await _goController.forward();
-  await _rotateController.forward(); // دوران مرة واحدة
-}
-
+    await _clickController.forward();
+    await _goController.forward();
+    await _rotateController.forward(); // دوران مرة واحدة
+  }
 
   @override
   void dispose() {
@@ -82,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen>
       child: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
           if (state is SplashSecuess) {
-          //  GoRouter.of(context).go('/home');
+            //  GoRouter.of(context).go('/home');
           }
         },
         child: Scaffold(
@@ -99,12 +98,28 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
                 const SizedBox(width: 8),
-                RotationTransition(
-                  turns: _rotateController,
-                  child: Text(
-                    '&',
-                    style: TextStyle(fontSize: 32, color: maincolor),
-                  ),
+                // استخدام Stack لدمج علامة "&" مع أنيميشن النقاط
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    RotationTransition(
+                      turns: _rotateController,
+                      child: Text(
+                        '&',
+                        style: TextStyle(fontSize: 32, color: maincolor),
+                      ),
+                    ),
+                    // أنيميشن النقاط
+                    AnimatedBuilder(
+                      animation: _rotateController,
+                      builder: (context, child) {
+                        return DotsAnimation(
+                          progress: _rotateController.value,
+                          color: maincolor,
+                        );
+                      },
+                    ),
+                  ],
                 ),
                 const SizedBox(width: 8),
                 SlideTransition(
@@ -120,5 +135,55 @@ class _SplashScreenState extends State<SplashScreen>
         ),
       ),
     );
+  }
+}
+
+// Widget يقوم بعرض النقاط باستخدام CustomPainter
+class DotsAnimation extends StatelessWidget {
+  final double progress; // قيمة الأنيميشن من 0 إلى 1
+  final Color color;
+  const DotsAnimation({Key? key, required this.progress, required this.color})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // يمكن تعديل الحجم حسب الحاجة
+    return CustomPaint(
+      painter: DotPainter(progress, color),
+      size: const Size(50, 50),
+    );
+  }
+}
+
+// CustomPainter لرسم النقاط
+class DotPainter extends CustomPainter {
+  final double progress;
+  final Color color;
+
+  DotPainter(this.progress, this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()..color = color;
+    final center = Offset(size.width / 2, size.height / 2);
+    // تحديد المسافة القصوى التي يمكن للنقاط الوصول إليها
+    final maxRadius = size.width / 2;
+    final currentRadius = progress * maxRadius;
+    // رسم 8 نقاط موزعة بزاوية دائرية حول المركز
+    const int numberOfDots = 8;
+    for (int i = 0; i < numberOfDots; i++) {
+      final angle = (2 * pi * i / numberOfDots);
+      final dotCenter = Offset(
+        center.dx + currentRadius * cos(angle),
+        center.dy + currentRadius * sin(angle),
+      );
+      // يمكن تغيير حجم النقطة هنا (radius = 3)
+      canvas.drawCircle(dotCenter, 3, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant DotPainter oldDelegate) {
+    return oldDelegate.progress != progress;
   }
 }

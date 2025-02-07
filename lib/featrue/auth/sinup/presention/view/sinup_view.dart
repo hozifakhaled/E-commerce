@@ -16,6 +16,7 @@ class SinupView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: TextFieldColor,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: TextFieldColor,
           toolbarHeight: 40.h,
           title: CustomTitleLogo(),

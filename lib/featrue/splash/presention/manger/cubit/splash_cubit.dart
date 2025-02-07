@@ -9,7 +9,7 @@ part 'splash_state.dart';
 class SplashCubit extends Cubit<SplashState> {
   SplashCubit() : super(SplashInitial());
   Future<void> startSplash(context) async {
-    await Future.delayed(const Duration(seconds: 6),() => GoRouter.of(context).go('/home'),);
+    await Future.delayed(const Duration(seconds: 6),() => GoRouter.of(context).go('/login'),);
 
      // فترة الانتظار
     emit(SplashSecuess()); // الانتقال إلى الشاشة الرئيسية بعد 3 ثواني

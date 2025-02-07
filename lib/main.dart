@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
+import 'package:ecommercefirebase/core/helper/service_lecator.dart';
 import 'package:ecommercefirebase/core/routeing/app_routing.dart';
 import 'package:ecommercefirebase/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,6 +23,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  setup();
   runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
 }
 

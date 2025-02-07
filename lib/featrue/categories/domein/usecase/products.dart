@@ -3,7 +3,7 @@ import 'package:ecommercefirebase/featrue/categories/domein/repository/product_r
 
 class Products {
   final ProductRepository productRepository;
-  Products({required this.productRepository});
+  Products( {required this.productRepository});
 
   Future<List<ProductEntitiy>> getdata() {
     return productRepository.getdata();

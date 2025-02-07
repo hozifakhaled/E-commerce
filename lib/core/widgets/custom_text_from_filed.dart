@@ -9,21 +9,27 @@ class CustomTextFromFiled extends StatelessWidget {
     this.validator,
     this.suffixIcon,
     this.onChanged,
+    this.obscureText = false,
   });
   final TextEditingController? controller;
   final String hinttext;
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
   final Widget? suffixIcon;
+  final bool obscureText ;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
       validator: validator,
       onChanged: onChanged,
       controller: controller,
+      obscureText:obscureText,
       decoration: InputDecoration(
+
           suffixIcon: suffixIcon,
           hintText: hinttext,
+          
 
           disabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
