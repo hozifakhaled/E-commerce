@@ -49,9 +49,9 @@ class _HomeViewState extends State<HomeView> {
             'Click & Go Store',
             style: TextStyle(color: maincolor, fontSize: 22.sp,fontWeight: FontWeight.bold),
           ),
-          backgroundColor: TextFieldColor,
+          backgroundColor: maincolor2,
         ),
-        backgroundColor: TextFieldColor,
+        backgroundColor: maincolor2,
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           items: item,

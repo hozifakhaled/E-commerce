@@ -26,9 +26,37 @@ class Assets {
   /// assets/images/offer.jpg
   static const String imagesOffer = "assets/images/offer.jpg";
 
+  /// Assets for imagesOffer2
+  /// assets/images/offer2.png
+  static const String imagesOffer2 = "assets/images/offer2.png";
+
+  /// Assets for imagesOnboarding1
+  /// assets/images/onboarding1.png
+  static const String imagesOnboarding1 = "assets/images/onboarding1.png";
+
+  /// Assets for imagesOnboarding2
+  /// assets/images/onboarding2.png
+  static const String imagesOnboarding2 = "assets/images/onboarding2.png";
+
+  /// Assets for imagesOnboarding3png
+  /// assets/images/onboarding3png.png
+  static const String imagesOnboarding3png = "assets/images/onboarding3png.png";
+
   /// Assets for imagesPantalon
   /// assets/images/pantalon.png
   static const String imagesPantalon = "assets/images/pantalon.png";
+
+  /// Assets for imagesShape1
+  /// assets/images/Shape1.png
+  static const String imagesShape1 = "assets/images/Shape1.png";
+
+  /// Assets for imagesShape2
+  /// assets/images/Shape2.png
+  static const String imagesShape2 = "assets/images/Shape2.png";
+
+  /// Assets for imagesShape3
+  /// assets/images/Shape3.png
+  static const String imagesShape3 = "assets/images/Shape3.png";
 
   /// Assets for imagesShmes
   /// assets/images/shmes.png

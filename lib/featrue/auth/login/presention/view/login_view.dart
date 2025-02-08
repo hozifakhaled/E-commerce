@@ -14,9 +14,9 @@ class LoginView extends StatelessWidget {
     return BlocProvider(
       create: (context) =>  LoginCubit(),
       child: Scaffold(
-        backgroundColor: TextFieldColor,
+        backgroundColor: maincolor2,
         appBar: AppBar(
-                  backgroundColor: TextFieldColor,
+                  backgroundColor: maincolor2,
 
           toolbarHeight: 40.h,
           title: CustomTitleLogo(),

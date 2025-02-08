@@ -3,6 +3,7 @@
 import 'package:ecommercefirebase/featrue/auth/login/presention/view/login_view.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/presention/view/sinup_view.dart';
 import 'package:ecommercefirebase/featrue/home/presention/view/home_view.dart';
+import 'package:ecommercefirebase/featrue/splash/presention/view/onboarding_view.dart';
 import 'package:ecommercefirebase/featrue/splash/presention/view/splah_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,7 +15,16 @@ abstract class AppRouting {
         context,
         state,
       ) {
-        return SplashScreen();
+        return  SplashScreen();
+      },
+    ),
+    GoRoute(
+      path: '/onb',
+      builder: (
+        context,
+        state,
+      ) {
+        return  OnboardingPage();
       },
     ),
     GoRoute(

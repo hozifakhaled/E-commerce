@@ -14,10 +14,10 @@ class SinupView extends StatelessWidget {
     return BlocProvider(
       create: (context) => SinupCubit(),
       child: Scaffold(
-        backgroundColor: TextFieldColor,
+        backgroundColor: maincolor2,
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: TextFieldColor,
+          backgroundColor: maincolor2,
           toolbarHeight: 40.h,
           title: CustomTitleLogo(),
         ),
