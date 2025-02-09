@@ -1,6 +1,7 @@
 import 'package:ecommercefirebase/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Textstyles {
   static final text1otp = TextStyle(
@@ -16,5 +17,5 @@ class Textstyles {
     color: Colors.white,
   );
 
-  static final textfeatruecategory = TextStyle(color: Colors.black, fontSize: 20.sp);
+  static final textfeatruecategory = GoogleFonts.poppins(textStyle: TextStyle(color: Colors.black, fontSize: 20.sp));
 }

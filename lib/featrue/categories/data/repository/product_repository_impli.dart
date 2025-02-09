@@ -1,4 +1,5 @@
 import 'package:ecommercefirebase/core/connection/network_info.dart';
+import 'package:ecommercefirebase/core/parms/parms.dart';
 import 'package:ecommercefirebase/featrue/categories/data/datasourse/product_data_source_remote.dart';
 import 'package:ecommercefirebase/featrue/categories/data/datasourse/product_data_sourse_local.dart';
 import 'package:ecommercefirebase/featrue/categories/data/models/product_model.dart';
@@ -12,10 +13,10 @@ class ProductRepositoryImpli implements ProductRepository {
   ProductRepositoryImpli(
       {required this.remote, required this.networkInfo, required this.local});
   @override
-  Future<List<ProductModel>> getdata() async {
+  Future<List<ProductModel>> getdata(CategoryParams category) async {
     if (await networkInfo.isConnected!) {
       try {
-        final remoteUser = await remote.getdata();
+        final remoteUser = await remote.getdata(category  );
 
         local.cacheUser(remoteUser);
         return remoteUser;

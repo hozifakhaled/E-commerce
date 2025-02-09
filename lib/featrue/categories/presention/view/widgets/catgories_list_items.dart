@@ -1,11 +1,14 @@
 import 'package:ecommercefirebase/core/styles/colors.dart';
-import 'package:ecommercefirebase/featrue/categories/presention/widgets/category_item.dart';
+import 'package:ecommercefirebase/featrue/categories/presention/manger/cubit/product_cubit.dart';
+import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/category_item.dart';
 import 'package:ecommercefirebase/featrue/home/data/models/categeries_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CatgoriesListItems extends StatefulWidget {
-  const CatgoriesListItems({super.key});
+  const CatgoriesListItems({super.key, required this.controller});
+  final TextEditingController controller;
 
   @override
   State<CatgoriesListItems> createState() => _CatgoriesListItemsState();
@@ -23,6 +26,8 @@ class _CatgoriesListItemsState extends State<CatgoriesListItems> {
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
             onTap: () {
+              widget.controller.clear();
+              context.read<ProductCubit>().getdata(data[index].id!);
               setState(() {
                 currentindex = index;
               });
@@ -32,7 +37,7 @@ class _CatgoriesListItemsState extends State<CatgoriesListItems> {
               child: CategoriesItems(
                 image: data[index].image!,
                 text: data[index].name!,
-                color:currentindex == index ? maincolor :Colors.white,
+                color: currentindex == index ? maincolor : Colors.white,
               ),
             ),
           );

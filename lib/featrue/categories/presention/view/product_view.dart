@@ -1,6 +1,6 @@
 import 'package:ecommercefirebase/core/styles/colors.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/manger/cubit/product_cubit.dart';
-import 'package:ecommercefirebase/featrue/categories/presention/widgets/product_body_view.dart';
+import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/product_body_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,7 +10,7 @@ class ProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductCubit()..getdata(),
+      create: (context) => ProductCubit()..getdata('hoodie'),
       child: Scaffold(
         backgroundColor: maincolor2,
         body: ProductBodyView(),

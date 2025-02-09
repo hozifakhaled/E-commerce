@@ -37,10 +37,7 @@ class BodySinupView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const TextAndImage(),
-                  BlocProvider(
-                    create: (context) => SinupCubit(),
-                    child: const SectionTextfiledAndButton(),
-                  ),
+                  const SectionTextfiledAndButton(),
                 ]),
           ),
         ),

@@ -1,44 +1,77 @@
-import 'package:ecommercefirebase/constants/images.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommercefirebase/core/styles/colors.dart';
 import 'package:ecommercefirebase/core/styles/extention.dart';
 import 'package:ecommercefirebase/core/styles/textstyles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
-    super.key, required this.price, required this.desc,
+    super.key,
+    required this.price,
+    required this.name,
+    required this.image,
   });
-final String price;
-final String desc;
+  final String price;
+  final String name;
+  final String image;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 300 / 400,
+      aspectRatio:250 / 400,
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.r),
-       color: Colors.white,
-        ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.r),
+            color: Colors.white,
+          ),
           margin: const EdgeInsets.only(right: 8),
-          
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
-              spacing: context.height * 0.01,
+              spacing: context.height * 0.004,
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  Assets.imagesHoodies,
-                  width: 150.w,
-                  height: 130.h,
-                  fit: BoxFit.fill,
+                Align(
+                  alignment: Alignment.center,
+                  child: CachedNetworkImage(
+                    height: context.height * 0.18,
+                    fit: BoxFit.cover,
+                    imageUrl: image,
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ),
                 ),
+              SizedBox(height: 2.h,),
                 Text(
-                  desc,
-                  style: Textstyles.textfeatruecategory
-                      .copyWith(color: Colors.black, fontSize: 16.sp),
-                ),Text(price,style: Textstyles.textfeatruecategory.copyWith(color: textcoloroto2, fontSize: 14.sp),),
+                  name,
+                  style: Textstyles.textfeatruecategory.copyWith(
+                      color: Colors.black,
+                      fontSize: 14.sp,
+                      overflow: TextOverflow.ellipsis),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      // ignore: prefer_interpolation_to_compose_strings
+                      '\$' + price,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.montserrat(
+                          color: Colors.black, fontSize: 15.sp),
+                    ),
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          CupertinoIcons.cart_fill,
+                          color: maincolor,
+                          size: 22.sp,
+                        ))
+                  ],
+                ),
               ],
             ),
           )),

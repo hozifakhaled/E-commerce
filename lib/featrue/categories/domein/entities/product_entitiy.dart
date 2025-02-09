@@ -1,5 +1,7 @@
 class ProductEntitiy {
-  final String dosc;
+  final String name;
   final String price;
+  final String image;
+  final String description;
 
-  ProductEntitiy({required this.dosc, required this.price});}
+  ProductEntitiy({required this.name, required this.image, required this.description, required this.price});}

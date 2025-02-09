@@ -12,7 +12,7 @@ class ProductListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.height * 0.37,
+      height: context.height * 0.39,
       width: double.infinity,
       color: maincolor,
       child: Padding(
@@ -35,8 +35,8 @@ class ProductListItem extends StatelessWidget {
                 itemCount: 5, // عدد العناصر
                 itemBuilder: (context, index) {
                   return const ProductItem(
-                    desc: 'mmmm',
-                    price: '120',
+                    name: 'mmmm',
+                    price: '120', image: 'https://qymunmwtahpiautlqlaw.supabase.co/storage/v1/object/public/mainimage//photo_2025-02-08_09-23-24-removebg-preview.png',
                   );
                 },
               ),

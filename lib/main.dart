@@ -7,16 +7,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
     await dotenv.load(fileName: ".env");
-  await Supabase.initialize(
-    url: 'https://khpuekxzwzmtudzejesy.supabase.co',
-    anonKey: dotenv.env['SOPABASE_API_KEY'] ?? '',
-       );
+ 
   CacheHelper().init();
 
 //WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +20,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setup();
-  runApp(DevicePreview(enabled:true, builder: (context) => const MyApp()));
+  runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
