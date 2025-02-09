@@ -2,7 +2,6 @@ import 'package:ecommercefirebase/core/styles/textstyles.dart';
 import 'package:ecommercefirebase/core/widgets/custom_text_from_filed.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/catgories_list_items.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/product_gridview_item.dart';
-import 'package:ecommercefirebase/featrue/home/presention/view/widgets/search_textfiled_in_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

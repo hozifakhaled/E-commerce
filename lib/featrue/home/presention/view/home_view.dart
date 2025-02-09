@@ -1,8 +1,9 @@
 import 'package:ecommercefirebase/core/styles/colors.dart';
+import 'package:ecommercefirebase/core/widgets/custom_title_logo.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/view/product_view.dart';
+import 'package:ecommercefirebase/featrue/cart/presentation/view/cart_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'widgets/home_view_body.dart';
 
@@ -24,11 +25,11 @@ class _HomeViewState extends State<HomeView> {
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.category),
-        label: 'Search',
+        label: 'Category',
       ),
       BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.cart_fill),
-        label: 'category',
+        label: 'Cart',
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.person),
@@ -38,6 +39,7 @@ class _HomeViewState extends State<HomeView> {
     var screens = [
       HomeViewBody(),
       ProductView(),
+      CartView(),
       Container(
         color: Colors.yellow,
       )
@@ -45,10 +47,7 @@ class _HomeViewState extends State<HomeView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Click & Go Store',
-            style: TextStyle(color: maincolor, fontSize: 22.sp,fontWeight: FontWeight.bold),
-          ),
+          title:CustomTitleLogo(),
           backgroundColor: maincolor2,
         ),
         backgroundColor: maincolor2,

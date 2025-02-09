@@ -2,6 +2,8 @@
 
 import 'package:ecommercefirebase/featrue/auth/login/presention/view/login_view.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/presention/view/sinup_view.dart';
+import 'package:ecommercefirebase/featrue/categories/domein/entities/product_entitiy.dart';
+import 'package:ecommercefirebase/featrue/categories/presention/view/product_detales.dart';
 import 'package:ecommercefirebase/featrue/home/presention/view/home_view.dart';
 import 'package:ecommercefirebase/featrue/splash/presention/view/onboarding_view.dart';
 import 'package:ecommercefirebase/featrue/splash/presention/view/splah_view.dart';
@@ -46,6 +48,17 @@ abstract class AppRouting {
         state,
       ) {
         return const HomeView();
+      },
+    ),
+
+      GoRoute(
+      path: '/details',
+      builder: (
+        context,
+        state,
+      ) {
+        return  ProductDetales(
+          productEntitiy: state.extra as ProductEntitiy,);
       },
     ),
   ]);

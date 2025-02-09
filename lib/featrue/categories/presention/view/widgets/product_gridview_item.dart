@@ -3,6 +3,7 @@ import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/pro
 import 'package:ecommercefirebase/featrue/home/presention/view/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductGridviewItems extends StatelessWidget {
   const ProductGridviewItems({
@@ -28,6 +29,9 @@ class ProductGridviewItems extends StatelessWidget {
               itemCount: state.data.length,
               itemBuilder: (BuildContext context, int index) {
                 return ProductItem(
+                   onTap: () {
+        GoRouter.of(context).push('/details',extra:state.data[index] );
+      },
                   name: state.data[index].name,
                   price: state.data[index].price.toString(),
                   image: state.data[index].image,
@@ -47,6 +51,9 @@ class ProductGridviewItems extends StatelessWidget {
               itemCount: searchdata.length,
               itemBuilder: (BuildContext context, int index) {
                 return ProductItem(
+                  onTap: () {
+        GoRouter.of(context).push('/details',extra:searchdata[index] );
+      },
                   name: searchdata[index].name,
                   price: searchdata[index].price.toString(),
                   image: searchdata[index].image,

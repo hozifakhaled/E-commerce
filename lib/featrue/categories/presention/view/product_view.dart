@@ -12,8 +12,9 @@ class ProductView extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProductCubit()..getdata('hoodie'),
       child: Scaffold(
+        
         backgroundColor: maincolor2,
-        body: ProductBodyView(),
+        body:const ProductBodyView(),
       ),
     );
   }
