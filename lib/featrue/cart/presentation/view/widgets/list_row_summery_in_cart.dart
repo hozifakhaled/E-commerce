@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ListRowSummeryInCart extends StatelessWidget {
   const ListRowSummeryInCart({
-    super.key,
+    super.key, required this.Subtotal,
   });
-
+final double Subtotal;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,12 +24,12 @@ class ListRowSummeryInCart extends StatelessWidget {
           spacing: 10.h,
           children: [
             SammaryRowInCart(
-                label: "Subtotal:", value: "\$${150}", bold: true),
+                label: "Subtotal:", value: "\$$Subtotal", bold: true),
             SammaryRowInCart(
-                label: "Shipping:", value: "\$170", bold: true),
+                label: "Shipping:", value: "\$17", bold: true),
             const Divider(),
             SammaryRowInCart(
-                label: "Total:", value: "\$${320}", bold: true),
+                label: "Total:", value: "\$${Subtotal + 17}", bold: true),
           ],
         ),
       ),

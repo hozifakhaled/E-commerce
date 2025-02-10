@@ -8,6 +8,7 @@ class RepositoryCart {
 
   Future<void> adddata(EntiteyCart cart) async {
     await databaseConsumer.adddata(cart.id, {
+      'id': cart.id,
       'name': cart.name,
       'price': cart.price,
       'image': cart.image,
