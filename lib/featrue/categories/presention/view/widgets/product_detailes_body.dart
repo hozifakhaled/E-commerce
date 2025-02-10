@@ -30,7 +30,7 @@ final String category;
             ),
           ),
         ),
-        SectionContinerInHome(name: name, price: price, description: description, category: category,)
+        SectionContinerInHome(name: name, price: price, description: description, category: category,image: image,)
       ]),
     );
   }

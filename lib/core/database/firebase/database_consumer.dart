@@ -6,4 +6,5 @@ abstract class DatabaseConsumer {
   Future<void> createUserWithEmailAndPassword(SinupEntites email,SinupEntites password );
     Future<void> signInWithEmailAndPassword(LoginEntites email,LoginEntites password );
     Future<dynamic> getdata(CategoryParams category);
+    Future<void> adddata(String category, Map <String, dynamic> json);
 }

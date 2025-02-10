@@ -1,11 +1,12 @@
-import 'package:ecommercefirebase/core/styles/colors.dart';
 import 'package:ecommercefirebase/core/styles/extention.dart';
 import 'package:ecommercefirebase/core/styles/textstyles.dart';
-import 'package:ecommercefirebase/core/widgets/button_app.dart';
+import 'package:ecommercefirebase/featrue/cart/presentation/cubit/cart_cubit.dart';
+import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/button_add_to_cart.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/list_size.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/row_name_and_quantity.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/row_rating.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,31 +17,29 @@ class SectionContinerInHome extends StatefulWidget {
     required this.description,
     required this.price,
     required this.category,
+    required this.image,
   });
   final String name;
   final String description;
   final String price;
   final String category;
+  final String image;
 
   @override
-  
+
   //  super.initState();
-   
-  
- 
+
   @override
   State<SectionContinerInHome> createState() => _SectionContinerInHomeState();
 }
 
 class _SectionContinerInHomeState extends State<SectionContinerInHome> {
- 
-  
   int quantitynumber = 0;
   String? formattedPrice;
   double totalprice = 0;
+  String size = '';
   @override
   Widget build(BuildContext context) {
-  //  double totalprice = double.parse(widget.price) ;
     return Container(
         width: double.infinity,
         height: context.height * 0.53,
@@ -62,9 +61,9 @@ class _SectionContinerInHomeState extends State<SectionContinerInHome> {
                 onPresseddecrement: () {
                   setState(() {
                     if (quantitynumber > 0) {
-                      quantitynumber -=1;
+                      quantitynumber -= 1;
 
-                      totalprice =  totalprice -double.parse(widget.price);
+                      totalprice = totalprice - double.parse(widget.price);
                       formattedPrice = totalprice.toStringAsFixed(2);
                     }
                   });
@@ -72,9 +71,8 @@ class _SectionContinerInHomeState extends State<SectionContinerInHome> {
                 onPressedincrement: () {
                   setState(() {
                     quantitynumber += 1;
-                    totalprice =   totalprice+ double.parse(widget.price);
-                    formattedPrice=
-                    totalprice.toStringAsFixed(2);
+                    totalprice = totalprice + double.parse(widget.price);
+                    formattedPrice = totalprice.toStringAsFixed(2);
                   });
                 },
               ),
@@ -82,10 +80,16 @@ class _SectionContinerInHomeState extends State<SectionContinerInHome> {
               widget.category == 'shoes'
                   ? ListSize(
                       isshoes: true,
+                      onSizeSelected: (p0) {
+                        size = p0;
+                      },
                     )
                   : widget.category == 'clothes'
                       ? ListSize(
                           isshoes: false,
+                          onSizeSelected: (p0) {
+                            size = p0;
+                          },
                         )
                       : SizedBox(),
               Text(
@@ -104,7 +108,7 @@ class _SectionContinerInHomeState extends State<SectionContinerInHome> {
                 SizedBox(
                   width: context.width * .3,
                   child: Text(
-                    '\$${ totalprice.toStringAsFixed(2)} ',
+                    '\$${totalprice.toStringAsFixed(2)} ',
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.montserrat(
                         color: Colors.black,
@@ -112,45 +116,17 @@ class _SectionContinerInHomeState extends State<SectionContinerInHome> {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(
-                    width: context.width * .6,
-                    child: buttonApp(
-                        text: 'Add to cart',
-                        color: maincolor,
-                        colortext: maincolor2))
+                BlocProvider(
+                  create: (context) => CartCubit(),
+                  child: ButtonAddToCart(
+                    size: size,
+                      widget: widget,
+                      totalprice: totalprice,
+                      quantitynumber: quantitynumber),
+                )
               ])
             ],
           ),
         ));
-  }
-}
-
-class DecriptionIDetailes extends StatelessWidget {
-  const DecriptionIDetailes({
-    super.key,
-    required this.widget,
-  });
-
-  final SectionContinerInHome widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Description ',
-          style: Textstyles.textfeatruecategory
-              .copyWith(fontSize: 18.sp, fontWeight: FontWeight.bold),
-        ),
-        Text(
-          widget.description,
-          maxLines: 4,
-          overflow: TextOverflow.ellipsis,
-          style: Textstyles.text2otp.copyWith(fontSize: 13.sp),
-        ),
-        Spacer(),
-      ],
-    );
   }
 }
