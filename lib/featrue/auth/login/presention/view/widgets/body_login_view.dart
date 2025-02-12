@@ -18,7 +18,7 @@ class BodyLoginView extends StatelessWidget {
         if (state is LoginLoaded) {
           Helpers()
               .alertDone(context, 'Done', 'Login successfully', null,
-                  () => GoRouter.of(context).go('/home'), DialogType.success)
+                  () => GoRouter.of(context).go('/home',extra: context.read<LoginCubit>().email), DialogType.success)
               .show();
         }
         if (state is LoginError) {

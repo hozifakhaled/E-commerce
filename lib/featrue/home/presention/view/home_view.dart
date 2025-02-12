@@ -10,8 +10,8 @@ import 'package:go_router/go_router.dart';
 import 'widgets/home_view_body.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
-
+  const HomeView({super.key, required this.id});
+final String id;
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -55,7 +55,7 @@ class _HomeViewState extends State<HomeView> {
               color: Colors.blueGrey,
               child: IconButton(
                 onPressed: () {
-                  GoRouter.of(context).push('/profile');
+                  GoRouter.of(context).push('/profile',extra: widget.id);
                 },
                 icon: const Icon(
                   Icons.person,

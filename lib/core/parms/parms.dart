@@ -12,3 +12,11 @@ class CategoryParams {
     required this.id,
   });
 }
+
+class ProfileParams {
+  final String id;
+
+  ProfileParams({
+    required this.id,
+  });
+}

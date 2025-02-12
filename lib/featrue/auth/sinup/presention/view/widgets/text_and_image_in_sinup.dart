@@ -1,6 +1,4 @@
 
-import 'package:ecommercefirebase/constants/images.dart';
-import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/core/widgets/row_login_or_sinup.dart';
 import 'package:flutter/material.dart';

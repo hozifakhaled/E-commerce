@@ -1,5 +1,7 @@
 //import 'package:bookly/Features/home/data/models/book_model/book_model.dart';
 
+import 'dart:math';
+
 import 'package:ecommercefirebase/featrue/auth/login/presention/view/login_view.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/presention/view/sinup_view.dart';
 import 'package:ecommercefirebase/featrue/categories/domein/entities/product_entitiy.dart';
@@ -48,7 +50,7 @@ abstract class AppRouting {
         context,
         state,
       ) {
-        return const HomeView();
+        return  HomeView(id:state.extra as String ,);
       },
     ),
     GoRoute(
@@ -68,7 +70,8 @@ abstract class AppRouting {
         context,
         state,
       ) {
-        return const ProfileView();
+        return  ProfileView(
+          id: state.extra as String,);
       },
     ),
   ]);

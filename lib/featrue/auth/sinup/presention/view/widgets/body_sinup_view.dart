@@ -22,7 +22,7 @@ class BodySinupView extends StatelessWidget {
               age: context.read<SinupCubit>().age!);
           Helpers()
               .alertDone(context, 'Done', 'Sign up successfully', null,
-                  () => GoRouter.of(context).go('/home'), DialogType.success)
+                  () => GoRouter.of(context).go('/home',extra: context.read<SinupCubit>().email), DialogType.success)
               .show();
         }
         if (state is SinupError) {

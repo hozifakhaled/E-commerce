@@ -9,7 +9,7 @@ class ProductDataSourceRemote {
   Future<List<ProductModel>> getdata(CategoryParams category) async {
     try {
   List<ProductModel> list = [];
-  QuerySnapshot snapshot = await firebaseConsumer.getdata(category);
+  QuerySnapshot snapshot = await firebaseConsumer.getdata(category.id);
   for (var doc in snapshot.docs) {
   
    list.add(ProductModel.fromJson(doc.data() as Map<String, dynamic>));  //; طباعة بيانات كل مستند

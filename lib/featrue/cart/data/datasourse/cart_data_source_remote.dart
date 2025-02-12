@@ -9,7 +9,7 @@ class CartDataSourceRemote {
   Future<List<CartModel>> getdata(CategoryParams category) async {
     try {
   List<CartModel> list = [];
-  QuerySnapshot snapshot = await firebaseConsumer.getdata(category);
+  QuerySnapshot snapshot = await firebaseConsumer.getdata(category.id);
   for (var doc in snapshot.docs) {
   
    list.add(CartModel.fromJson(doc.data() as Map<String, dynamic>));  //; طباعة بيانات كل مستند
