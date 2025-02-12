@@ -1,13 +1,13 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommercefirebase/core/helper/helpers.dart';
-import 'package:ecommercefirebase/core/styles/colors.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/featrue/auth/otp/presention/manger/cubit/otp_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../../core/widgets/button_app.dart';
-import '../../../../../../core/styles/textstyles.dart';
+import '../../../../../../core/utlis/textstyles.dart';
 import 'pin_code.dart';
 
 class BodyVerifcationCode extends StatelessWidget {

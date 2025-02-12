@@ -1,4 +1,4 @@
-import 'package:ecommercefirebase/core/styles/colors.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/widgets/custom_title_logo.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/presention/manger/cubit/sinup_cubit.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/presention/view/widgets/body_sinup_view.dart';

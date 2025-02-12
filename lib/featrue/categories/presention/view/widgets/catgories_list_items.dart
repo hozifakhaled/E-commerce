@@ -1,4 +1,4 @@
-import 'package:ecommercefirebase/core/styles/colors.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/manger/cubit/product_cubit.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/category_item.dart';
 import 'package:ecommercefirebase/featrue/home/data/models/categeries_model.dart';

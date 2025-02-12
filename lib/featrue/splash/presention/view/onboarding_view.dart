@@ -1,4 +1,4 @@
-import 'package:ecommercefirebase/core/styles/colors.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/widgets/custom_title_logo.dart';
 import 'package:ecommercefirebase/featrue/splash/presention/view/widgets/body_onboarding.dart';
 import 'package:flutter/material.dart';

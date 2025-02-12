@@ -1,7 +1,7 @@
 // ignore: file_names
 // ignore: file_names
-import 'package:ecommercefirebase/core/styles/colors.dart';
-import 'package:ecommercefirebase/core/styles/extention.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
+import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';

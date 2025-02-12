@@ -1,5 +1,5 @@
-import 'package:ecommercefirebase/core/styles/colors.dart';
-import 'package:ecommercefirebase/core/styles/extention.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
+import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/featrue/cart/presentation/cubit/cart_cubit.dart';
 import 'package:ecommercefirebase/featrue/cart/presentation/view/widgets/list_row_summery_in_cart.dart';
@@ -45,7 +45,7 @@ class CartView extends StatelessWidget {
                       ),
                     ),
                     ListRowSummeryInCart(
-                      Subtotal: totalPrice,
+                      subtotal: totalPrice,
                     ),
                     buttonApp(
                         text: 'Checkout',

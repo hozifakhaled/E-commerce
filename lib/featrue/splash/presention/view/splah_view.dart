@@ -1,7 +1,8 @@
+import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/featrue/splash/presention/view/widgets/dots_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ecommercefirebase/core/styles/colors.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/featrue/splash/presention/manger/cubit/splash_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -95,7 +96,7 @@ class _SplashScreenState extends State<SplashScreen>
                   position: _clickAnimation,
                   child: Text(
                     'Click',
-                    style: TextStyle(fontSize: 32, color: Colors.black),
+                    style: Textstyles.textlogo,
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -107,7 +108,7 @@ class _SplashScreenState extends State<SplashScreen>
                       turns: _rotateController,
                       child: Text(
                         '&',
-                        style: TextStyle(fontSize: 32, color: maincolor),
+                        style: TextStyle(fontSize: 32, color: maincolor,fontWeight: FontWeight.bold),
                       ),
                     ),
                     // أنيميشن النقاط
@@ -127,7 +128,7 @@ class _SplashScreenState extends State<SplashScreen>
                   position: _goAnimation,
                   child: Text(
                     'Go',
-                    style: TextStyle(fontSize: 32, color: Colors.black),
+                    style: Textstyles.textlogo,
                   ),
                 ),
               ],

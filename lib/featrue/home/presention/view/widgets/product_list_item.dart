@@ -1,6 +1,6 @@
-import 'package:ecommercefirebase/core/styles/colors.dart';
-import 'package:ecommercefirebase/core/styles/extention.dart';
-import 'package:ecommercefirebase/core/styles/textstyles.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
+import 'package:ecommercefirebase/core/utlis/extention.dart';
+import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/featrue/home/presention/view/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 

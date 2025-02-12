@@ -1,5 +1,5 @@
 import 'package:ecommercefirebase/constants/images.dart';
-import 'package:ecommercefirebase/core/styles/colors.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/featrue/splash/presention/view/widgets/build_page.dart';
 import 'package:flutter/material.dart';

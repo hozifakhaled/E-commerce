@@ -1,5 +1,5 @@
-import 'package:ecommercefirebase/core/styles/extention.dart';
-import 'package:ecommercefirebase/core/styles/textstyles.dart';
+import 'package:ecommercefirebase/core/utlis/extention.dart';
+import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
@@ -25,7 +25,7 @@ class buttonApp extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text ,
-          style: Textstyles.text2button.copyWith(color: colortext),
+          style: Textstyles.text20.copyWith(color: colortext),
         ),
       ),
     );

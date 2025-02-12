@@ -1,8 +1,8 @@
 // ignore: file_names
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommercefirebase/core/helper/helpers.dart';
-import 'package:ecommercefirebase/core/styles/colors.dart';
-import 'package:ecommercefirebase/core/styles/extention.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
+import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/featrue/auth/otp/presention/manger/cubit/otp_cubit.dart';
 import 'package:ecommercefirebase/featrue/auth/otp/presention/view/widgets/section_text_and_image_in_otp.dart';

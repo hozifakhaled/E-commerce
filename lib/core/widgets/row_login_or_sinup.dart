@@ -1,8 +1,7 @@
-import 'package:ecommercefirebase/core/styles/textstyles.dart';
+import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../styles/colors.dart';
+import '../utlis/colors.dart';
 
 class RowSinupOrLogin extends StatelessWidget {
   const RowSinupOrLogin({
@@ -18,15 +17,15 @@ class RowSinupOrLogin extends StatelessWidget {
       children: [
         Text(
           text,
-          style: Textstyles.text1otp
-              .copyWith(fontSize: 18.sp, fontWeight: FontWeight.w400),
+          style: Textstyles.text18
+              .copyWith( fontWeight: FontWeight.w400),
         ),
         InkWell(
           onTap: onTap,
           child: Text(
             button,
-            style: Textstyles.text1otp.copyWith(
-                fontSize: 18.sp, color: maincolor, fontWeight: FontWeight.w400),
+            style: Textstyles.text18.copyWith(
+                 color: maincolor, fontWeight: FontWeight.w400),
           ),
         ),
       ],

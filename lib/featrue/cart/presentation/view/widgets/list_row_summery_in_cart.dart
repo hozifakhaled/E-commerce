@@ -1,13 +1,13 @@
-import 'package:ecommercefirebase/core/styles/extention.dart';
+import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/featrue/cart/presentation/view/widgets/sammary_row_in_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ListRowSummeryInCart extends StatelessWidget {
   const ListRowSummeryInCart({
-    super.key, required this.Subtotal,
+    super.key, required this.subtotal,
   });
-final double Subtotal;
+final double subtotal;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,12 +24,12 @@ final double Subtotal;
           spacing: 10.h,
           children: [
             SammaryRowInCart(
-                label: "Subtotal:", value: "\$$Subtotal", bold: true),
+                label: "Subtotal:", value: "\$$subtotal", bold: true),
             SammaryRowInCart(
                 label: "Shipping:", value: "\$17", bold: true),
             const Divider(),
             SammaryRowInCart(
-                label: "Total:", value: "\$${Subtotal + 17}", bold: true),
+                label: "Total:", value: "\$${subtotal + 17}", bold: true),
           ],
         ),
       ),

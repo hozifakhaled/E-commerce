@@ -1,6 +1,6 @@
 import 'package:ecommercefirebase/constants/images.dart';
-import 'package:ecommercefirebase/core/styles/extention.dart';
-import 'package:ecommercefirebase/core/styles/textstyles.dart';
+import 'package:ecommercefirebase/core/utlis/extention.dart';
+import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types

@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommercefirebase/core/helper/helpers.dart';
-import 'package:ecommercefirebase/core/styles/colors.dart';
-import 'package:ecommercefirebase/core/styles/extention.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
+import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/featrue/cart/presentation/cubit/cart_cubit.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/scetion_container_in_detailes.dart';

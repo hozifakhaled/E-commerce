@@ -1,4 +1,5 @@
-import 'package:ecommercefirebase/core/styles/colors.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
+import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,17 +13,18 @@ class CustomTitleLogo extends StatelessWidget {
     return Row(
       children: [
         Text(
-              'Click ',
-              style: TextStyle(color: Colors.black, fontSize: 26.sp,fontWeight: FontWeight.bold),
-            ),
-             Text(
-              '&',
-              style: TextStyle(color: maincolor, fontSize: 30.sp,fontWeight: FontWeight.bold),
-            ),
-             Text(
-              ' Go ',
-              style: TextStyle(color: Colors.black, fontSize: 26.sp,fontWeight: FontWeight.bold),
-            ),
+          'Click ',
+          style: Textstyles.textlogo,
+        ),
+        Text(
+          '&',
+          style: TextStyle(
+              color: maincolor, fontSize: 30.sp, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          ' Go ',
+          style: Textstyles.textlogo,
+        ),
       ],
     );
   }

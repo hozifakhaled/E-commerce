@@ -1,5 +1,5 @@
-import 'package:ecommercefirebase/core/styles/colors.dart';
-import 'package:ecommercefirebase/core/styles/textstyles.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
+import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/core/widgets/custom_text_from_filed.dart';
 import 'package:ecommercefirebase/featrue/auth/login/presention/manger/cubit/login_cubit.dart';

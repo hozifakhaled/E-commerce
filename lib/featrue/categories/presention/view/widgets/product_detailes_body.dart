@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommercefirebase/core/styles/extention.dart';
+import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/view/widgets/scetion_container_in_detailes.dart';
 import 'package:flutter/material.dart';
 

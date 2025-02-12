@@ -1,4 +1,4 @@
-import 'package:ecommercefirebase/core/styles/textstyles.dart';
+import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,13 +32,13 @@ class BuildPage extends StatelessWidget {
             ),
             Text(
               title,
-              style: Textstyles.text1otp,
+              style: Textstyles.text28,
             ),
             const SizedBox(height: 16),
             Text(
               description,
               // textAlign: TextAlign.center,
-              style: Textstyles.text2button.copyWith(color: const Color.fromARGB(255, 95, 94, 94)),
+              style: Textstyles.text20.copyWith(color: const Color.fromARGB(255, 95, 94, 94)),
             ),
             // const SizedBox(height: 80),
           ],
