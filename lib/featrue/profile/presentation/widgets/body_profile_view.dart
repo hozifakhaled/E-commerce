@@ -1,14 +1,10 @@
-import 'dart:math';
-
 import 'package:ecommercefirebase/core/utlis/colors.dart';
-import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/featrue/profile/presentation/widgets/image_profile_in_profile.dart';
 import 'package:ecommercefirebase/featrue/profile/presentation/widgets/profile_row.dart';
 import 'package:ecommercefirebase/featrue/profile/presentation/widgets/setting_column_in_profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BodyProfileView extends StatelessWidget {
   const BodyProfileView({super.key});
@@ -26,8 +22,8 @@ class BodyProfileView extends StatelessWidget {
             ImageProfileInProfile(),
               const SizedBox(height: 30),
             ProfileRow(
-              title: 'Gender',
-              value: 'male',
+              title: 'Name',
+              value: 'hozifa',
             ),
               const SizedBox(height: 25),
             ProfileRow(

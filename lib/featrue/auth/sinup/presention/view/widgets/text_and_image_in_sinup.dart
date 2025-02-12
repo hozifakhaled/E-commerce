@@ -17,16 +17,7 @@ class TextAndImage extends StatelessWidget {
        crossAxisAlignment: CrossAxisAlignment.start,
                
       children: [
-        Align(
-                  alignment: Alignment.center, // محاذاة الصورة في المنتصف
-                  child: Image.asset(
-                    Assets.imagesImageotp,
-                    width: context.width * .6,
-                    height: context.height * .25,
-                  ),),
-                   const SizedBox(
-          height: 20,
-        ),
+      
         Text(
           'Signup',
           style: Textstyles.text1otp,

@@ -15,6 +15,11 @@ class BodySinupView extends StatelessWidget {
     return BlocListener<SinupCubit, SinupState>(
       listener: (context, state) {
         if (state is SinupLoaded) {
+          context.read<SinupCubit>().adduser(
+              email: context.read<SinupCubit>().email!,
+              name: context.read<SinupCubit>().name!,
+              phone: context.read<SinupCubit>().phone!,
+              age: context.read<SinupCubit>().age!);
           Helpers()
               .alertDone(context, 'Done', 'Sign up successfully', null,
                   () => GoRouter.of(context).go('/home'), DialogType.success)

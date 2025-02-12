@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RowTextAndIconInSetting extends StatelessWidget {
   const RowTextAndIconInSetting({
-    super.key, required this.Icon1, required this.text, required this.icon2,
+    super.key, required this.icon1, required this.text, required this.icon2,
   });
-final Widget Icon1;
+final Widget icon1;
 final String text;
 final Widget icon2;
   @override
@@ -19,7 +19,7 @@ final Widget icon2;
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
                 color: Colors.grey.shade300),
-            child: Icon1),
+            child: icon1),
             SizedBox(width: 8.w,),
         Text(
           text,

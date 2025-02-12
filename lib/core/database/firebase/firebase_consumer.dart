@@ -31,6 +31,12 @@ class FirebaseConsumer implements DatabaseConsumer {
   Future<void> adddata(String category, Map <String, dynamic> json) async {
    final store = data.collection(category).add(json);
   }
+  
+  @override
+  Future<void> adddatadoc(String category, String id,Map<String, dynamic> json) async {
+   final store = data.collection(category).doc(id).set(json);
+  
+  }
  
 }
 

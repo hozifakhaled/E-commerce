@@ -16,23 +16,32 @@ class SectionTextfiledAndButton extends StatefulWidget {
 
 class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
   bool isheddin = true;
-   String email = '';
-  String password = '';
-  TextEditingController emailcontroller = TextEditingController();
-  TextEditingController psswordcontroller = TextEditingController();  @override
+  @override
   Widget build(BuildContext context) {
-  
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'email',
-          style: Textstyles.text2otp
-              .copyWith(color: Colors.black, fontWeight: FontWeight.w400),
+        TextInSinup(
+          text: 'Name',
+        ),
+        CustomTextFromFiled(
+          hinttext: 'example',
+          controller: context.read<SinupCubit>().nameController,
+          validator: (value) =>
+              context.read<SinupCubit>().validatornameandageand(value),
+          onChanged: (p0) {
+            context.read<SinupCubit>().name = p0;
+          },
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        TextInSinup(
+          text: 'email',
         ),
         CustomTextFromFiled(
           hinttext: 'example@gmail.com',
-          controller: emailcontroller,
+          controller: context.read<SinupCubit>().emailController,
           validator: (value) =>
               context.read<SinupCubit>().validatoremail(value),
           onChanged: (p0) {
@@ -40,12 +49,40 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
           },
         ),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
-        Text(
-          'password',
-          style: Textstyles.text2otp
-              .copyWith(color: Colors.black, fontWeight: FontWeight.w400),
+        TextInSinup(
+          text: 'Age',
+        ),
+        CustomTextFromFiled(
+          hinttext: 'yaers old',
+          controller: context.read<SinupCubit>().ageController,
+          validator: (value) =>
+              context.read<SinupCubit>().validatornameandageand(value),
+          onChanged: (p0) {
+            context.read<SinupCubit>().age = p0;
+          },
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        TextInSinup(
+          text: 'phone',
+        ),
+        CustomTextFromFiled(
+          hinttext: '+02 01123456789',
+          controller: context.read<SinupCubit>().phoneController,
+          validator: (value) =>
+              context.read<SinupCubit>().validatorphone(value),
+          onChanged: (p0) {
+            context.read<SinupCubit>().phone = p0;
+          },
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        TextInSinup(
+          text: 'password',
         ),
         CustomTextFromFiled(
           obscureText: isheddin,
@@ -61,7 +98,7 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
                 });
               },
               icon: Icon(Icons.remove_red_eye_outlined)),
-          controller: psswordcontroller,
+          controller: context.read<SinupCubit>().passwordController,
           onChanged: (p0) {
             context.read<SinupCubit>().password = p0;
           },
@@ -74,11 +111,10 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
           text: 'Signup',
           onPressed: () {
             if (context.read<SinupCubit>().formKey.currentState!.validate()) {
-              context
-                  .read<SinupCubit>()
-                  .createUserWithEmailAndPassword(email, password);
-              psswordcontroller.clear();
-              emailcontroller.clear();
+              context.read<SinupCubit>().createUserWithEmailAndPassword(
+                  context.read<SinupCubit>().email!,
+                  context.read<SinupCubit>().password!);
+              context.read<SinupCubit>().clear();
             }
           },
           colortext: Colors.white,
@@ -88,6 +124,22 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
           height: 20,
         ),
       ],
+    );
+  }
+}
+
+class TextInSinup extends StatelessWidget {
+  const TextInSinup({
+    super.key,
+    required this.text,
+  });
+  final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: Textstyles.text2otp
+          .copyWith(color: Colors.black, fontWeight: FontWeight.w400),
     );
   }
 }

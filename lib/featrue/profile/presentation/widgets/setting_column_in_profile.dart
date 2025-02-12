@@ -1,5 +1,4 @@
 import 'package:ecommercefirebase/core/utlis/extention.dart';
-import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/featrue/profile/presentation/widgets/row_icon_and_text_in_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,17 +23,17 @@ class SettingColumnInProfile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             RowTextAndIconInSetting(
-              Icon1: Icon(Icons.light_mode_outlined),
+              icon1: Icon(Icons.light_mode_outlined),
               text: 'Dark Mode',
               icon2: Icon(Icons.dark_mode_outlined),
             ),
             RowTextAndIconInSetting(
-              Icon1: Icon(Icons.add_comment_outlined),
+              icon1: Icon(Icons.add_comment_outlined),
               text: 'Add Comment',
               icon2: Icon(Icons.arrow_forward_ios),
             ),
             RowTextAndIconInSetting(
-              Icon1: Icon(Icons.comment_outlined),
+              icon1: Icon(Icons.comment_outlined),
               text: 'All Comments',
               icon2: Icon(Icons.arrow_forward_ios),
             ),
