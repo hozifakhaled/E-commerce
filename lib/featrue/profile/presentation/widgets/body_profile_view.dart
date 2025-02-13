@@ -30,7 +30,9 @@ class BodyProfileView extends StatelessWidget {
             const SizedBox(height: 10),
             SettingColumnInProfile(),
             const SizedBox(height: 30),
-            buttonApp(text: 'Log Out', color: maincolor, colortext: maincolor2)
+            buttonApp(  onPressed: (){
+              context.read<ProfileCubit>().logout(context);
+            }, text: 'Log Out', color: maincolor, colortext: maincolor2)
           ],
         ),
       ),
@@ -49,7 +51,7 @@ class ColumnProfile extends StatelessWidget {
       if (state is ProfileLoaded) {
         return Column(
           children: [
-            ImageProfileInProfile(),
+            ImageProfileInProfile(profileEntitiey: state.profileEntitiey,),
             const SizedBox(height: 30),
             ProfileRow(
               title: 'Name',

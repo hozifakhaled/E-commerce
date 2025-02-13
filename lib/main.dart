@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,8 +16,10 @@ void main() async {
  
   CacheHelper().init();
 
-//WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
+await Supabase.initialize(
+    url: 'https://qymunmwtahpiautlqlaw.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5bXVubXd0YWhwaWF1dGxxbGF3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczODc2MTc0NywiZXhwIjoyMDU0MzM3NzQ3fQ.rIPHvAKGCsnQGk2noJglUID6gQ2l2E834Ni4CFWLXqw',
+        ); await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setup();

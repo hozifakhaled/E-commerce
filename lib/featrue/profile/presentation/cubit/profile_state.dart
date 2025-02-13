@@ -5,6 +5,11 @@ abstract class ProfileState {}
 class ProfileInitial extends ProfileState {}
 
 class ProfileLoading extends ProfileState {}
+class UploadImage extends ProfileState {
+final ProfileEntitiey profileEntitiey;
+
+  UploadImage({required this.profileEntitiey});
+}
 class ProfileLoaded extends ProfileState {
   final ProfileEntitiey profileEntitiey;
   ProfileLoaded(this.profileEntitiey);

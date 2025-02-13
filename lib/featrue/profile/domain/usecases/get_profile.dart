@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:ecommercefirebase/core/parms/parms.dart';
 import 'package:ecommercefirebase/featrue/profile/domain/entities/profile_entitiey.dart';
 import 'package:ecommercefirebase/featrue/profile/domain/repositories/profile_repositry.dart';
@@ -8,5 +10,11 @@ class GetProfile {
   GetProfile({required this.profileRepositry}); 
   Future<ProfileEntitiey> call(ProfileParams profile) async {
     return await profileRepositry.getProfile(profile);
+
   }
+
+  Future<String> callimage(File file) async => profileRepositry.adddimage(file);
+
+  Future<void> callupdateimage(ProfileEntitiey profile) async => profileRepositry.updateimage(profile);
+
 }

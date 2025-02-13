@@ -1,3 +1,4 @@
+import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
 import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/widgets/custom_title_logo.dart';
 import 'package:ecommercefirebase/featrue/categories/presention/view/product_view.dart';
@@ -10,8 +11,8 @@ import 'package:go_router/go_router.dart';
 import 'widgets/home_view_body.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key, required this.id});
-final String id;
+  const HomeView({super.key});
+
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -55,7 +56,7 @@ class _HomeViewState extends State<HomeView> {
               color: Colors.blueGrey,
               child: IconButton(
                 onPressed: () {
-                  GoRouter.of(context).push('/profile',extra: widget.id);
+                  GoRouter.of(context).push('/profile',extra: CacheHelper().getData(key: 'id'));
                 },
                 icon: const Icon(
                   Icons.person,

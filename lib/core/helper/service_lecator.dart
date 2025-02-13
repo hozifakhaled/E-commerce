@@ -22,7 +22,7 @@ void setup() {
   getIt.registerSingleton<CartDataSourceRemote>(CartDataSourceRemote(FirebaseConsumer()));
   getIt.registerSingleton<ProfileDataSourseLocal>(ProfileDataSourseLocal(cache: CacheHelper()));
   getIt.registerSingleton<ProFileDataSourceRemote>(ProFileDataSourceRemote(FirebaseConsumer()));
-    getIt.registerSingleton<ProfileRepositoryImpli>(ProfileRepositoryImpli(remote: getIt.get<ProFileDataSourceRemote>(), local: getIt.get<ProfileDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
+    getIt.registerSingleton<ProfileRepositoryImpli>(ProfileRepositoryImpli(FirebaseConsumer(),remote: getIt.get<ProFileDataSourceRemote>(), local: getIt.get<ProfileDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
  
   getIt.registerSingleton<ProductRepositoryImpli>(ProductRepositoryImpli(remote: getIt.get<ProductDataSourceRemote>(), local: getIt.get<ProductDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
  getIt.registerSingleton<RepositoryGetCartImpli>(RepositoryGetCartImpli( remote : getIt.get<CartDataSourceRemote>(), local: getIt.get<CartDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));

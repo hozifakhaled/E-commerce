@@ -114,6 +114,8 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
               context.read<SinupCubit>().createUserWithEmailAndPassword(
                   context.read<SinupCubit>().email!,
                   context.read<SinupCubit>().password!);
+              context.read<SinupCubit>().saveData('id', context.read<SinupCubit>().email!,);
+             // context.read<SinupCubit>().saveData('id', context.read<SinupCubit>().!,);
               context.read<SinupCubit>().clear();
             }
           },

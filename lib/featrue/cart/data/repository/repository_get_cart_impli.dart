@@ -13,10 +13,10 @@ class RepositoryGetCartImpli implements RepositroyGetCart {
   RepositoryGetCartImpli(
       {required this.remote, required this.networkInfo, required this.local});
   @override
-  Future<List<CartModel>> getdata(CategoryParams category) async {
+  Future<List<CartModel>> getdata(CategoryParams category, String id) async {
     if (await networkInfo.isConnected!) {
       try {
-        final remoteUser = await remote.getdata(category  );
+        final remoteUser = await remote.getdata(category,id  );
 
         local.cacheUser(remoteUser);
         return remoteUser;

@@ -6,7 +6,7 @@ class AddToCart {
 
   AddToCart({required this.repositoryCart});
 
-  Future<void> call(EntiteyCart cart) async {
-    return await repositoryCart.adddata(cart);
+  Future<void> call(EntiteyCart cart, String id) async {
+    return await repositoryCart.adddata(cart, id);
   }
 }

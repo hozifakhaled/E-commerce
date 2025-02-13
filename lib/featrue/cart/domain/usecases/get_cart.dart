@@ -7,5 +7,5 @@ class GetCart {
 
   GetCart({required this.repositroyGetCart});
 
-  Future<List<EntiteyCart>> call(CategoryParams category) async => await repositroyGetCart.getdata(category);
+  Future<List<EntiteyCart>> call(CategoryParams category,String id) async => await repositroyGetCart.getdata(category,id);
 }

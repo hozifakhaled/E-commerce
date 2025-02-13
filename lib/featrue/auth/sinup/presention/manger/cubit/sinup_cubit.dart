@@ -1,5 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
+import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
 import 'package:ecommercefirebase/core/database/firebase/firebase_consumer.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/data/repository/sinup_repository_impl.dart';
 import 'package:ecommercefirebase/featrue/auth/sinup/domin/entities/add_user_entitiey.dart';
@@ -95,5 +96,10 @@ clear(){nameController.clear();
     } catch (error) {
       emit(SinupError(error.toString()));
     }
+  }
+
+
+   saveData(key,String value) {
+    CacheHelper().saveData(key: key,value:value );
   }
 }

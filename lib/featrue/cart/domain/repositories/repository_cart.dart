@@ -6,8 +6,8 @@ class RepositoryCart {
 
   RepositoryCart({required this.databaseConsumer});
 
-  Future<void> adddata(EntiteyCart cart) async {
-    await databaseConsumer.adddata(cart.id, {
+  Future<void> adddata(EntiteyCart cart, String id) async {
+    await databaseConsumer.adddatadoccollection(cart.id,id ,{
       'id': cart.id,
       'name': cart.name,
       'price': cart.price,

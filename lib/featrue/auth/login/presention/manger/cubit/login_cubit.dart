@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:bloc/bloc.dart';
+import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
 import 'package:ecommercefirebase/core/database/firebase/firebase_consumer.dart';
 import 'package:ecommercefirebase/featrue/auth/login/data/repository/login_repository_impl.dart';
 import 'package:ecommercefirebase/featrue/auth/login/domin/entities/login_entites.dart';
@@ -53,5 +54,11 @@ login(String email, String password) async {
     } catch (error) {
       emit(LoginError(massge:  error.toString()));
     }
+
+
+  }
+
+   cacheid(String value) {
+    CacheHelper().saveData(key: 'id',value:value );
   }
 }
