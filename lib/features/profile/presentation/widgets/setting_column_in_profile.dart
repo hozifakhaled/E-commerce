@@ -6,9 +6,10 @@ import 'package:go_router/go_router.dart';
 
 class SettingColumnInProfile extends StatelessWidget {
   const SettingColumnInProfile({
-    super.key,
+    super.key, required this.name, required this.image,
   });
-
+  final String name;
+  final String image;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,13 +31,16 @@ class SettingColumnInProfile extends StatelessWidget {
             ),
             RowTextAndIconInSetting(
               onPressed: () {
-                GoRouter.of(context).push('/addcomment');
+                GoRouter.of(context).push('/addcomment', extra: name);
               },
               icon1: Icon(Icons.add_comment_outlined),
               text: 'Add Comment',
               icon2: Icon(Icons.arrow_forward_ios),
             ),
             RowTextAndIconInSetting(
+              onPressed: () {
+                 GoRouter.of(context).push('/allcomment');
+              },
               icon1: Icon(Icons.comment_outlined),
               text: 'All Comments',
               icon2: Icon(Icons.arrow_forward_ios),

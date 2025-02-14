@@ -5,6 +5,7 @@ import 'package:ecommercefirebase/features/auth/sinup/presention/view/sinup_view
 import 'package:ecommercefirebase/features/categories/domein/entities/product_entitiy.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/product_detales.dart';
 import 'package:ecommercefirebase/features/comments/presentation/pages/add_comment_view.dart';
+import 'package:ecommercefirebase/features/comments/presentation/pages/all_comment_view.dart';
 import 'package:ecommercefirebase/features/home/presention/view/home_view.dart';
 import 'package:ecommercefirebase/features/profile/presentation/pages/profile_view.dart';
 import 'package:ecommercefirebase/features/splash/presention/view/onboarding_view.dart';
@@ -80,7 +81,17 @@ abstract class AppRouting {
         context,
         state,
       ) {
-        return const AddCommentView();
+        return  AddCommentView(
+          name: state.extra as String,);
+      },
+    ),
+     GoRoute(
+      path: '/allcomment',
+      builder: (
+        context,
+        state,
+      ) {
+        return const AllCommentView();
       },
     ),
   ]);
