@@ -3,8 +3,8 @@ import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class buttonApp extends StatelessWidget {
-  const buttonApp({
+class ButtonApp extends StatelessWidget {
+  const ButtonApp({
     super.key, this.onPressed, required this.text, required this.color, required this.colortext,
   });
   final String text ;

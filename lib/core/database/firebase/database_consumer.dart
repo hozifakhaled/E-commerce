@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:ecommercefirebase/featrue/auth/login/domin/entities/login_entites.dart';
-import 'package:ecommercefirebase/featrue/auth/sinup/domin/entities/sinup_entites.dart';
+import 'package:ecommercefirebase/features/auth/login/domin/entities/login_entites.dart';
+import 'package:ecommercefirebase/features/auth/sinup/domin/entities/sinup_entites.dart';
 
 abstract class DatabaseConsumer {
   Future<void> createUserWithEmailAndPassword(

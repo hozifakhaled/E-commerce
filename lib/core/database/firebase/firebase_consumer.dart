@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommercefirebase/core/database/firebase/database_consumer.dart';
-import 'package:ecommercefirebase/featrue/auth/login/domin/entities/login_entites.dart';
-import 'package:ecommercefirebase/featrue/auth/sinup/domin/entities/sinup_entites.dart';
+import 'package:ecommercefirebase/features/auth/login/domin/entities/login_entites.dart';
+import 'package:ecommercefirebase/features/auth/sinup/domin/entities/sinup_entites.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -36,12 +36,12 @@ class FirebaseConsumer implements DatabaseConsumer {
   
   @override
   Future<void> adddata(String category, Map <String, dynamic> json) async {
-   final store = data.collection(category).add(json);
+   await data.collection(category).add(json);
   }
   
   @override
   Future<void> adddatadoc(String category, String id,Map<String, dynamic> json) async {
-   final store = data.collection(category).doc(id).set(json);
+   await  data.collection(category).doc(id).set(json);
   
   }
 
@@ -49,7 +49,7 @@ class FirebaseConsumer implements DatabaseConsumer {
      Future<String> adddimage(File file) async {
     try {
       final fileName = file.path.split('/').last;
-      final storages = await storage.upload(fileName, file,
+        await storage.upload(fileName, file,
           fileOptions: FileOptions(
             cacheControl: '3600',
             upsert: false,
@@ -67,13 +67,13 @@ class FirebaseConsumer implements DatabaseConsumer {
   
   @override
   Future<void> updatedata(String category, String id,Map<String, dynamic> json)async {
-     final store = data.collection(category).doc(id).update(json);
+     await data.collection(category).doc(id).update(json);
   
   }
   
   @override
   Future<void> adddatadoccollection(String category, String id, Map<String, dynamic> json)async {
-   final store = data.collection(category).doc(id).collection(category).add(json); 
+   await data.collection(category).doc(id).collection(category).add(json); 
   
   }
 
