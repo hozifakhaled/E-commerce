@@ -1,3 +1,4 @@
+import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/widgets/custom_title_logo.dart';
 import 'package:ecommercefirebase/features/comments/presentation/cubit/comments_cubit.dart';
 import 'package:ecommercefirebase/features/comments/presentation/widgets/body_add_comment.dart';
@@ -12,7 +13,9 @@ class AddCommentView extends StatelessWidget {
     return BlocProvider(
       create: (context) => CommentsCubit(),
       child: Scaffold(
+        backgroundColor: maincolor2,
         appBar: AppBar(
+          backgroundColor: maincolor2,
           title: CustomTitleLogo(),
         ),
         body: BodyAddComment(
