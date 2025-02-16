@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddCommentView extends StatelessWidget {
-  const AddCommentView({super.key, required this.name});
-  final String name;
+  const AddCommentView({super.key, required this.data, });
+  final Map<String, dynamic> data; 
+  
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -19,7 +20,7 @@ class AddCommentView extends StatelessWidget {
           title: CustomTitleLogo(),
         ),
         body: BodyAddComment(
-          name: name,
+          name: data['name'], image: data['image'],
         ),
       ),
     );

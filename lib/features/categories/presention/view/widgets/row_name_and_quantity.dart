@@ -1,31 +1,25 @@
 import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
+import 'package:ecommercefirebase/features/categories/presention/manger/cubit/detaile_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RowNameAndQuantity extends StatelessWidget {
   const RowNameAndQuantity({
     super.key,
     required this.name,
     required this.price,
-    required this.quantitynumber,
-    this.onPressedincrement,
-    this.onPresseddecrement,
   });
   final String name;
   final double price;
-  final int quantitynumber;
-  final void Function()? onPressedincrement;
-  final void Function()? onPresseddecrement;
 
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Text(
         name,
-        style: Textstyles.textfeatruecategory
-            .copyWith(fontSize: 18.sp, fontWeight: FontWeight.bold),
+        style: Textstyles.text18.copyWith(fontWeight: FontWeight.bold),
       ),
       Container(
         decoration: BoxDecoration(
@@ -33,24 +27,21 @@ class RowNameAndQuantity extends StatelessWidget {
         height: 40.h,
         width: 110.w,
         child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-            
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             IconButton(
-              onPressed: onPresseddecrement,
+              onPressed: () =>
+                  context.read<DetaileCubit>().decrementQuantity(price),
               icon: Icon(
                 Icons.remove,
                 color: Colors.black,
               ),
             ),
-            Text(
-              quantitynumber.toString(),
-              style: GoogleFonts.poppins(
-                  color: Colors.black, fontWeight: FontWeight.bold, fontSize: 12.sp),
-            ),
+            Text(context.read<DetaileCubit>().quantity.toString(),
+                style: Textstyles.text12),
             IconButton(
-              onPressed: onPressedincrement,
+              onPressed: () =>
+                  context.read<DetaileCubit>().incrementQuantity(price),
               icon: Icon(
                 Icons.add,
                 color: Colors.black,

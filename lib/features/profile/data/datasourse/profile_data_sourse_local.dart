@@ -5,7 +5,7 @@ import 'package:ecommercefirebase/features/profile/data/models/profile_model.dar
 
 class ProfileDataSourseLocal {
   final CacheHelper cache;
-  final String key = "CachedUse";
+  final String key = "Cachedprofile";
   ProfileDataSourseLocal({required this.cache});
 
   cacheUser(ProfileModel? profileToCache) {

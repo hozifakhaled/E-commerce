@@ -11,8 +11,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BodyAddComment extends StatelessWidget {
-  const BodyAddComment({super.key, required this.name});
+  const BodyAddComment({super.key, required this.name, required this.image});
   final String name;
+  final String image;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -37,21 +38,26 @@ class BodyAddComment extends StatelessWidget {
           Spacer(),
           BlocListener<CommentsCubit, CommentsState>(
             listener: (context, state) {
-             if (state is CommentsLoaded) {
-              Helpers().alertDone(context, 'done', 'comment successfully', null, null, DialogType.success).show();
-            }
-            if (state is CommentsError) {
-              Helpers().alertDone(context, 'Error', state.error.toString(), null, null, DialogType.error).show();
-            }
+              if (state is CommentsLoaded) {
+                Helpers()
+                    .alertDone(context, 'done', 'comment successfully', null,
+                        null, DialogType.success)
+                    .show();
+              }
+              if (state is CommentsError) {
+                Helpers()
+                    .alertDone(context, 'Error', state.error.toString(), null,
+                        null, DialogType.error)
+                    .show();
+              }
             },
             child: ButtonApp(
                 text: 'Submit',
                 color: maincolor,
                 colortext: maincolor2,
                 onPressed: () {
-                  context
-                      .read<CommentsCubit>()
-                      .addcomment(name, context.read<CommentsCubit>().comment!);
+                  context.read<CommentsCubit>().addcomment(
+                      name, context.read<CommentsCubit>().comment!, image);
                   context.read<CommentsCubit>().textEditingController.clear();
                 }),
           ),

@@ -18,11 +18,11 @@ class ProfileCubit extends Cubit<ProfileState> {
   getProfile(String id) async {
     emit(ProfileLoading());
     try {
-      GetProfile(profileRepositry: getIt.get<ProfileRepositoryImpli>())
-          .call(ProfileParams(id: id))
-          .then((value) => emit(ProfileLoaded(value)));
-    } catch (e) {
-      emit(ProfileError(e.toString()));
+     final data = await GetProfile(profileRepositry: getIt.get<ProfileRepositoryImpli>())
+          .call(ProfileParams(id: id));
+      emit(ProfileLoaded(data));
+    } catch (error) {
+      emit(ProfileError(error.toString()));
     }
   }
 

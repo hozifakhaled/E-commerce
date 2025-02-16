@@ -8,6 +8,9 @@ import 'package:ecommercefirebase/features/cart/data/repository/repository_get_c
 import 'package:ecommercefirebase/features/categories/data/datasourse/product_data_source_remote.dart';
 import 'package:ecommercefirebase/features/categories/data/datasourse/product_data_sourse_local.dart';
 import 'package:ecommercefirebase/features/categories/data/repository/product_repository_impli.dart';
+import 'package:ecommercefirebase/features/comments/data/datasources/comment_data_source_remote.dart';
+import 'package:ecommercefirebase/features/comments/data/datasources/comment_data_sourse_local.dart';
+import 'package:ecommercefirebase/features/comments/data/repositories/comment_reopsitory_impli.dart';
 import 'package:ecommercefirebase/features/profile/data/datasourse/profile_data_source_remote.dart';
 import 'package:ecommercefirebase/features/profile/data/datasourse/profile_data_sourse_local.dart';
 import 'package:ecommercefirebase/features/profile/data/repository/profile_repository_impli.dart';
@@ -22,6 +25,10 @@ void setup() {
   getIt.registerSingleton<CartDataSourceRemote>(CartDataSourceRemote(FirebaseConsumer()));
   getIt.registerSingleton<ProfileDataSourseLocal>(ProfileDataSourseLocal(cache: CacheHelper()));
   getIt.registerSingleton<ProFileDataSourceRemote>(ProFileDataSourceRemote(FirebaseConsumer()));
+    getIt.registerSingleton<CommentDataSourseLocal>(CommentDataSourseLocal(cache: CacheHelper()));
+  getIt.registerSingleton<CommentsDataSourceRemote>(CommentsDataSourceRemote(FirebaseConsumer()));
+   getIt.registerSingleton<CommentReopsitoryImpli>(CommentReopsitoryImpli(firebaseConsumer: FirebaseConsumer(),remote: getIt.get<CommentsDataSourceRemote>(), local: getIt.get<CommentDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
+ 
     getIt.registerSingleton<ProfileRepositoryImpli>(ProfileRepositoryImpli(FirebaseConsumer(),remote: getIt.get<ProFileDataSourceRemote>(), local: getIt.get<ProfileDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
  
   getIt.registerSingleton<ProductRepositoryImpli>(ProductRepositoryImpli(remote: getIt.get<ProductDataSourceRemote>(), local: getIt.get<ProductDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));

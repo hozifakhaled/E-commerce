@@ -9,36 +9,18 @@ class RowRating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      Icon(
-        Icons.star,
-        color: Colors.amber,
-        size: 17.sp,
-      ),
-      Icon(
-        Icons.star,
-        color: Colors.amber,
-        size: 17.sp,
-      ),
-      Icon(
-        Icons.star,
-        color: Colors.amber,
-        size: 17.sp,
-      ),
-      Icon(
-        Icons.star,
-        color: Colors.amber,
-        size: 17.sp,
-      ),
-      Icon(
-        Icons.star,
-        color: Colors.amber,
-        size: 17.sp,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+        'Sold: 5 items ',
+        style: Textstyles.text16.copyWith(color: Colors.black, fontSize: 14.sp),
       ),
       Text(
-        ' ( 320 Reviews )',
-        style: Textstyles.text2otp.copyWith(color: Colors.black,fontSize: 14.sp),
+        '(Reamaining : 5 )',
+        style: Textstyles.text16.copyWith(color: Colors.black, fontSize: 14.sp),
       ),
+    
     ]);
   }
 }

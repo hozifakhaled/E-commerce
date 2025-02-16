@@ -39,12 +39,15 @@ class ProductItem extends StatelessWidget {
                 children: [
                   Align(
                     alignment: Alignment.center,
-                    child: CachedNetworkImage(
-                      height: context.height * 0.18,
-                      fit: BoxFit.cover,
-                      imageUrl: image,
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                    child: Hero(
+                      tag: image,
+                      child: CachedNetworkImage(
+                        height: context.height * 0.18,
+                        fit: BoxFit.cover,
+                        imageUrl: image,
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                      ),
                     ),
                   ),
                   SizedBox(

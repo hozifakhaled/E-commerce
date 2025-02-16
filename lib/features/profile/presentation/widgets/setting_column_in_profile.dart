@@ -31,7 +31,7 @@ class SettingColumnInProfile extends StatelessWidget {
             ),
             RowTextAndIconInSetting(
               onPressed: () {
-                GoRouter.of(context).push('/addcomment', extra: name);
+                GoRouter.of(context).push('/addcomment', extra:{'image':image,'name':name});
               },
               icon1: Icon(Icons.add_comment_outlined),
               text: 'Add Comment',

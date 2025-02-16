@@ -2,19 +2,19 @@ import 'dart:convert';
 
 import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
 import 'package:ecommercefirebase/core/error/expentions.dart';
-import 'package:ecommercefirebase/features/cart/data/models/cart_model.dart';
+import 'package:ecommercefirebase/features/comments/data/models/comments_model.dart';
 
-class CartDataSourseLocal {
+class CommentDataSourseLocal {
   final CacheHelper cache;
-  final String key = "CachedCart";
-  CartDataSourseLocal({required this.cache});
+  final String key = "Cachedcomments";
+  CommentDataSourseLocal({required this.cache});
 
-  cacheUser(List<CartModel>? userToCache) {
+  cacheComments(List<CommentsModel>? userToCache) {
     if (userToCache != null) {
       cache.saveData(
         key: key,
         value: json.encode(
-          userToCache.map((product) => product.toJson()).toList(),
+          userToCache.map((comment) => comment.toJson()).toList(),
         ),
       );
     } else {
@@ -22,12 +22,12 @@ class CartDataSourseLocal {
     }
   }
 
-  Future<List<CartModel>> getLastproduct() {
+  Future<List<CommentsModel>> getLastCommment() {
     final jsonString = cache.getDataString(key: key);
 
     if (jsonString != null) {
       final List<dynamic> decodedJson = json.decode(jsonString);
-      final List<CartModel> productList = decodedJson.map((jsonItem) => CartModel.fromJson(jsonItem)).toList();
+      final List<CommentsModel> productList = decodedJson.map((jsonItem) => CommentsModel.fromJson(jsonItem)).toList();
       return Future.value(productList);
     } else {
       throw CacheExeption(errorMessage: "No Internet Connection");

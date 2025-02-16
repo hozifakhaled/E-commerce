@@ -6,7 +6,7 @@ import 'package:ecommercefirebase/features/categories/data/models/product_model.
 
 class ProductDataSourseLocal {
   final CacheHelper cache;
-  final String key = "CachedUse";
+  final String key = "Cachedproduct";
   ProductDataSourseLocal({required this.cache});
 
   cacheUser(List<ProductModel>? userToCache) {

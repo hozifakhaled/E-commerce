@@ -10,12 +10,7 @@ final ProductEntitiy productEntitiy;
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: maincolor2,
-body:ProductDetailesBody(
-  image: productEntitiy.image,
-  name: productEntitiy.name,
-  price: productEntitiy.price,
-  description: productEntitiy.description,
-  category: productEntitiy.category
+body:ProductDetailesBody(productEntitiy: productEntitiy,
 ) ,
 
     )

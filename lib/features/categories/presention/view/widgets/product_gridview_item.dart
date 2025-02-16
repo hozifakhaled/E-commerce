@@ -30,8 +30,8 @@ class ProductGridviewItems extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return ProductItem(
                    onTap: () {
-        GoRouter.of(context).push('/details',extra:state.data[index] );
-      },
+                        GoRouter.of(context).push('/details',extra:state.data[index] );
+                      },
                   name: state.data[index].name,
                   price: state.data[index].price.toString(),
                   image: state.data[index].image,

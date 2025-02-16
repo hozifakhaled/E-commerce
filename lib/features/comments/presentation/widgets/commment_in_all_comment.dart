@@ -1,24 +1,25 @@
-import 'package:ecommercefirebase/constants/images.dart';
-import 'package:ecommercefirebase/core/utlis/extention.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommercefirebase/features/comments/domain/entities/comment_entity.dart';
 import 'package:ecommercefirebase/features/comments/presentation/widgets/column_username_and_comment_in_comment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommmentInAllComment extends StatelessWidget {
   const CommmentInAllComment({
-    super.key,
+    super.key, required this.commentEntity,
   });
-
+ final CommentEntity commentEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.height * .34,
+     // height: context.height * .34,
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: Colors.grey.shade400)),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 5),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 10.h,
           children: [
             Align(
@@ -28,14 +29,11 @@ class CommmentInAllComment extends StatelessWidget {
                 width: 50.h,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
-                  child: Image.asset(
-                    Assets.imagesTrangs,
-                    fit: BoxFit.fill,
-                  ),
+                  child:CachedNetworkImage(imageUrl: commentEntity.image,fit: BoxFit.fill,),
                 ),
               ),
             ),
-            ColumnUsernameAndCommentInComment(),
+            ColumnUsernameAndCommentInComment(comment: commentEntity.comment, name: commentEntity.email,like: commentEntity.like, islike: commentEntity.islike,),
         
             
           ],

@@ -82,7 +82,7 @@ abstract class AppRouting {
         state,
       ) {
         return  AddCommentView(
-          name: state.extra as String,);
+          data: state.extra as Map<String, String>,);
       },
     ),
      GoRoute(

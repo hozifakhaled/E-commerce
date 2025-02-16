@@ -4,20 +4,19 @@ import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.dart';
-import 'package:ecommercefirebase/features/categories/presention/view/widgets/scetion_container_in_detailes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ButtonAddToCart extends StatelessWidget {
   const ButtonAddToCart({
     super.key,
-    required this.widget,
     required this.totalprice,
     required this.quantitynumber,
-    required this.size,
+    required this.size, required this.name, required this.image,
   });
   final String size;
-  final SectionContinerInHome widget;
+  final String name;
+  final String image;
   final double totalprice;
   final int quantitynumber;
 
@@ -30,7 +29,7 @@ class ButtonAddToCart extends StatelessWidget {
               .alertDone(context, 'Done', 'Added to cart', null, null,
                   DialogType.success)
               .show();
-        //  GoRouter.of(context).pop();
+          //  GoRouter.of(context).pop();
         }
       },
       child: SizedBox(
@@ -39,10 +38,10 @@ class ButtonAddToCart extends StatelessWidget {
               onPressed: () {
                 if (totalprice > 0) {
                   context.read<CartCubit>().addtocart(
-                        name: widget.name,
+                        name: name,
                         price: totalprice.toStringAsFixed(2),
                         quantity: quantitynumber.toString(),
-                        image: widget.image,
+                        image: image,
                         size: size,
                       );
                 }
