@@ -27,7 +27,10 @@ class _CatgoriesListItemsState extends State<CatgoriesListItems> {
           return InkWell(
             onTap: () {
               widget.controller.clear();
-              context.read<ProductCubit>().getdata(data[index].id!);
+              if (index == 0) {
+                context.read<ProductCubit>().getdata('product');
+              }
+              context.read<ProductCubit>().getCategory(data[index].id!);
               setState(() {
                 currentindex = index;
               });

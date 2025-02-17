@@ -8,6 +8,7 @@ class CategeriesModel {
   CategeriesModel({this.name, this.image, this.id});}
 
   List<CategeriesModel> data = [
+   CategeriesModel(name: 'All', image: Assets.imagesTrangs,id :'All'),
   CategeriesModel(name: 'Hoodie', image: Assets.imagesHoodies,id :'hoodie'),
   CategeriesModel(name: 'T-shirt', image:Assets.imagesTeshartpng ,id: 'shirt'),
   CategeriesModel(name: 'Shoes', image: Assets.imagesShoes,id: 'shoes'),

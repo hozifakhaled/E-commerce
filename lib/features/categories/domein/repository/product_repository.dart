@@ -3,4 +3,6 @@ import 'package:ecommercefirebase/features/categories/domein/entities/product_en
 
 abstract class ProductRepository {
   Future<List<ProductEntitiy>> getdata(CategoryParams categoryParams);
+  Future<List<ProductEntitiy>> getCategories(CategoryParams categoryParams);
+    Future<void> updateReminingandSold(SoldParams soldParams);
 }

@@ -7,9 +7,19 @@ class Sinupparams {
 
 class CategoryParams {
   final String id;
+  final String category;
 
-  CategoryParams({
+  CategoryParams( {required this.category,
     required this.id,
+  });
+}
+
+class SoldParams {
+  final String id;
+  final int remaining;
+  final int sold;
+  SoldParams( {
+    required this.id, required this. remaining, required this. sold,
   });
 }
 

@@ -29,27 +29,29 @@ class FirebaseConsumer implements DatabaseConsumer {
   @override
   Future<dynamic> getdata(String idcollection) async {
     return data.collection(idcollection).get();
-  } @override
-  Future<dynamic> getdatadoc(String idcollection,String iddoc ) async {
-    return data.collection(idcollection).doc(iddoc).get();
-  }
-  
-  @override
-  Future<void> adddata(String category, Map <String, dynamic> json) async {
-   await data.collection(category).add(json);
-  }
-  
-  @override
-  Future<void> adddatadoc(String category, String id,Map<String, dynamic> json) async {
-   await  data.collection(category).doc(id).set(json);
-  
   }
 
   @override
-     Future<String> adddimage(File file) async {
+  Future<dynamic> getdatadoc(String idcollection, String iddoc) async {
+    return data.collection(idcollection).doc(iddoc).get();
+  }
+
+  @override
+  Future<void> adddata(String category, Map<String, dynamic> json) async {
+    await data.collection(category).add(json);
+  }
+
+  @override
+  Future<void> adddatadoc(
+      String category, String id, Map<String, dynamic> json) async {
+    await data.collection(category).doc(id).set(json);
+  }
+
+  @override
+  Future<String> adddimage(File file) async {
     try {
       final fileName = file.path.split('/').last;
-        await storage.upload(fileName, file,
+      await storage.upload(fileName, file,
           fileOptions: FileOptions(
             cacheControl: '3600',
             upsert: false,
@@ -57,31 +59,41 @@ class FirebaseConsumer implements DatabaseConsumer {
       //print(response);
 
       final storagee = storage.getPublicUrl(fileName);
-    
+
       return storagee;
     } catch (e) {
       // print("Exception: $e");
       return "Exception: $e";
     }
   }
-  
+
   @override
-  Future<void> updatedata(String category, String id,Map<String, dynamic> json)async {
-     await data.collection(category).doc(id).update(json);
-  
-  }
-  
-  @override
-  Future<void> adddatadoccollection(String category, String id, Map<String, dynamic> json)async {
-   await data.collection(category).doc(id).collection(category).add(json); 
-  
+  Future<void> updatedata(
+      String category, String id, Map<String, dynamic> json) async {
+    await data.collection(category).doc(id).update(json);
   }
 
   @override
-  Future<dynamic> getdatadoccollection(String idcollection,String iddoc ) async {
-    return data.collection(idcollection).doc(iddoc).collection(idcollection).get();
+  Future<void> adddatadoccollection(
+      String category, String id, Map<String, dynamic> json) async {
+    await data.collection(category).doc(id).collection(category).add(json);
   }
+
+  @override
+  Future<dynamic> getdatadoccollection(
+      String idcollection, String iddoc) async {
+    return data
+        .collection(idcollection)
+        .doc(iddoc)
+        .collection(idcollection)
+        .get();
   }
- 
 
-
+  @override
+  Future<dynamic> getdatafilter(String idcollection,String filter , String value) async {
+    return data
+        .collection(idcollection)
+        .where(filter, isEqualTo: value)
+        .get();
+  }
+}

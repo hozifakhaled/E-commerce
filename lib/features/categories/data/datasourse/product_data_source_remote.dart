@@ -12,7 +12,7 @@ class ProductDataSourceRemote {
   QuerySnapshot snapshot = await firebaseConsumer.getdata(category.id);
   for (var doc in snapshot.docs) {
   
-   list.add(ProductModel.fromJson(doc.data() as Map<String, dynamic>));  //; طباعة بيانات كل مستند
+   list.add(ProductModel.fromFirestore(doc));  //; طباعة بيانات كل مستند
   }
   return list;
 } on Exception catch (e) {

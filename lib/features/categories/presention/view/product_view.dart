@@ -10,7 +10,7 @@ class ProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductCubit()..getdata('hoodie'),
+      create: (context) => ProductCubit()..getdata('product'),
       child: Scaffold(
         
         backgroundColor: maincolor2,

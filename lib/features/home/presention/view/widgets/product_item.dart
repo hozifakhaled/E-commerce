@@ -12,12 +12,13 @@ class ProductItem extends StatelessWidget {
     super.key,
     required this.price,
     required this.name,
-    required this.image, this.onTap,
+    required this.image, this.onTap, required this.index,
   });
   final String price;
   final String name;
   final String image;
   final Function()? onTap;
+  final int index ;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -40,7 +41,8 @@ class ProductItem extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Hero(
-                      tag: image,
+                      
+                      tag: image+index.toString(),
                       child: CachedNetworkImage(
                         height: context.height * 0.18,
                         fit: BoxFit.cover,

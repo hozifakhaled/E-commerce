@@ -60,7 +60,7 @@ abstract class AppRouting {
         state,
       ) {
         return ProductDetales(
-          productEntitiy: state.extra as ProductEntitiy,
+          data: state.extra as Map<String,dynamic>,
         );
       },
     ),

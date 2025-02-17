@@ -36,32 +36,40 @@ class _ProductBodyViewState extends State<ProductBodyView> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        spacing: 10.h,
-        children: [
-          CustomTextFromFiled(
-            hinttext: 'Search',
-            suffixIcon: Icon(Icons.search),
-            controller: _searchController,
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              ' Categories',
-              style: Textstyles.textfeatruecategory
-                  .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
+      child: CustomScrollView(
+        
+        slivers:
+        [
+          SliverToBoxAdapter(
+
+            child: CustomTextFromFiled(
+              hinttext: 'Search',
+              suffixIcon: Icon(Icons.search),
+              controller: _searchController,
             ),
           ),
-          CatgoriesListItems(controller: _searchController),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              ' Products',
-              style: Textstyles.textfeatruecategory
-                  .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
+          SliverToBoxAdapter(
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                ' Categories',
+                style: Textstyles.textfeatruecategory
+                    .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
-          ProductGridviewItems(searchText: searchText),
+          SliverToBoxAdapter(child: CatgoriesListItems(controller: _searchController)),
+          SliverToBoxAdapter(
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                ' Products',
+                style: Textstyles.textfeatruecategory
+                    .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+           ProductGridviewItems(searchText: searchText)
         ],
       ),
     );

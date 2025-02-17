@@ -1,6 +1,6 @@
 import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
-import 'package:ecommercefirebase/features/categories/presention/manger/cubit/detaile_cubit.dart';
+import 'package:ecommercefirebase/features/categories/presention/manger/detailes_cubit/detaile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,10 +9,12 @@ class RowNameAndQuantity extends StatelessWidget {
   const RowNameAndQuantity({
     super.key,
     required this.name,
-    required this.price,
+    required this.price, required this.remaining, required this.sold,
   });
   final String name;
   final double price;
+  final int remaining;
+  final int sold;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class RowNameAndQuantity extends StatelessWidget {
                 style: Textstyles.text12),
             IconButton(
               onPressed: () =>
-                  context.read<DetaileCubit>().incrementQuantity(price),
+                  context.read<DetaileCubit>().incrementQuantity(price,remaining),
               icon: Icon(
                 Icons.add,
                 color: Colors.black,

@@ -9,6 +9,7 @@ abstract class DatabaseConsumer {
   Future<void> signInWithEmailAndPassword(
       LoginEntites email, LoginEntites password);
   Future<dynamic> getdata(String idcollection);
+   Future<dynamic> getdatafilter(String idcollection,String filter , String value);
   Future<dynamic> getdatadoc(String idcollection, String iddoc);
     Future<dynamic> getdatadoccollection(String idcollection, String iddoc);
   Future<void> adddata(String category, Map<String, dynamic> json);

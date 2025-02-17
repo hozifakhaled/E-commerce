@@ -4,6 +4,7 @@ import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:ecommercefirebase/features/categories/presention/manger/detailes_cubit/detaile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,14 +13,20 @@ class ButtonAddToCart extends StatelessWidget {
     super.key,
     required this.totalprice,
     required this.quantitynumber,
-    required this.size, required this.name, required this.image,
+    required this.size,
+    required this.name,
+    required this.image,
+    required this.reamaining,
+    required this.sold, required this.id,
   });
   final String size;
   final String name;
   final String image;
   final double totalprice;
   final int quantitynumber;
-
+  final int reamaining;
+  final int sold;
+  final String id;
   @override
   Widget build(BuildContext context) {
     return BlocListener<CartCubit, CartState>(
@@ -29,6 +36,10 @@ class ButtonAddToCart extends StatelessWidget {
               .alertDone(context, 'Done', 'Added to cart', null, null,
                   DialogType.success)
               .show();
+
+          context.read<DetaileCubit>().update(id,
+              sold: sold+ quantitynumber,
+              reamaining: reamaining - quantitynumber);
           //  GoRouter.of(context).pop();
         }
       },

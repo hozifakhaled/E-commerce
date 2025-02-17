@@ -34,7 +34,8 @@ class ProductListItem extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 5, // عدد العناصر
                 itemBuilder: (context, index) {
-                  return const ProductItem(
+                  return  ProductItem(
+                    index: index,
                     name: 'mmmm',
                     price: '120', image: 'https://qymunmwtahpiautlqlaw.supabase.co/storage/v1/object/public/mainimage//photo_2025-02-08_09-23-24-removebg-preview.png',
                   );

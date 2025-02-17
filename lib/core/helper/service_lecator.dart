@@ -31,7 +31,7 @@ void setup() {
  
     getIt.registerSingleton<ProfileRepositoryImpli>(ProfileRepositoryImpli(FirebaseConsumer(),remote: getIt.get<ProFileDataSourceRemote>(), local: getIt.get<ProfileDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
  
-  getIt.registerSingleton<ProductRepositoryImpli>(ProductRepositoryImpli(remote: getIt.get<ProductDataSourceRemote>(), local: getIt.get<ProductDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
+  getIt.registerSingleton<ProductRepositoryImpli>(ProductRepositoryImpli(FirebaseConsumer(),remote: getIt.get<ProductDataSourceRemote>(), local: getIt.get<ProductDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
  getIt.registerSingleton<RepositoryGetCartImpli>(RepositoryGetCartImpli( remote : getIt.get<CartDataSourceRemote>(), local: getIt.get<CartDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
 
 

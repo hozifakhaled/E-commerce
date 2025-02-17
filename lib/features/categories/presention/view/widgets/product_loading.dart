@@ -48,32 +48,33 @@ final ScrollController _scrollController = ScrollController();
   }
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SlideTransition(
-          position: _slideAnimation,
-          child: GridView.builder(
-             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 250 / 360,
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10),
-            itemCount: 4,
-            itemBuilder: (BuildContext context, int index) {
-              return  Shimmer.fromColors(
-              baseColor: Colors.grey.shade400,
-              highlightColor: Colors.grey.shade100,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),),
-                margin: const EdgeInsets.all(8),
-                
-                height: 150,
-              ),
-            );
-            },
-          ),
+    return SlideTransition(
+    
+        position: _slideAnimation,
+        child: GridView.builder(
+           shrinkWrap: true, // ✅ يجعل `GridView` يعمل داخل `SliverToBoxAdapter`
+        physics: NeverScrollableScrollPhysics(), 
+           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 250 / 360,
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10),
+          itemCount: 4,
+          itemBuilder: (BuildContext context, int index) {
+            return  Shimmer.fromColors(
+            baseColor: Colors.grey.shade400,
+            highlightColor: Colors.grey.shade100,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),),
+              margin: const EdgeInsets.all(8),
+              
+              height: 150,
+            ),
+          );
+          },
         ),
-    );
+      );
   }
 }

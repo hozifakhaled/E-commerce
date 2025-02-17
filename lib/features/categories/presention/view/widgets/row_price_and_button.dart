@@ -1,7 +1,7 @@
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:ecommercefirebase/features/categories/domein/entities/product_entitiy.dart';
-import 'package:ecommercefirebase/features/categories/presention/manger/cubit/detaile_cubit.dart';
+import 'package:ecommercefirebase/features/categories/presention/manger/detailes_cubit/detaile_cubit.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/button_add_to_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,6 +36,9 @@ class RowPriceAndButton extends StatelessWidget {
           BlocProvider(
             create: (context) => CartCubit(),
             child: ButtonAddToCart(
+              id: productEntitiy.id,
+              reamaining:productEntitiy.reamaining, 
+                sold: productEntitiy.sold,
                 size: size,
                 image: productEntitiy.image,
                 name: productEntitiy.name,

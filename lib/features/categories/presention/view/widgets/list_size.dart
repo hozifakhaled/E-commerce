@@ -7,10 +7,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ListSize extends StatefulWidget {
   const ListSize({
     super.key,
-    required this.isshoes, required this.onSizeSelected,
+    required this.onSizeSelected, required this.list,
   });
-  final bool isshoes;
-   final Function(String) onSizeSelected;
+  final List<String> list;
+  final Function(String) onSizeSelected;
 
   @override
   State<ListSize> createState() => _ListSizeState();
@@ -18,20 +18,6 @@ class ListSize extends StatefulWidget {
 
 class _ListSizeState extends State<ListSize> {
   int indexSelected = 0;
-  List<String> list = ['S', 'M', 'L', 'XL', 'XXL'];
-  List<String> size = [
-    '36',
-    '37',
-    '38',
-    '39',
-    '40',
-    '41',
-    '42',
-    '43',
-    '44',
-    '45',
-    '46'
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -48,22 +34,21 @@ class _ListSizeState extends State<ListSize> {
           height: 50.h,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: widget.isshoes ? size.length : list.length,
+            itemCount: widget.list.length ,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.only(right: 16.0),
                 child: InkWell(
                   onTap: () {
                     setState(() {
-                   String selectedSize =  list[index];
-                    widget.onSizeSelected(selectedSize);
-                   // print('selected size: $selectedSize');
-                     indexSelected = index;
-
+                      String selectedSize = widget.list[index];
+                      widget.onSizeSelected(selectedSize);
+                      // print('selected size: $selectedSize');
+                      indexSelected = index;
                     });
                   },
                   child: SizeItem(
-                    text: widget.isshoes ? size[index] : list[index],
+                    text: widget.list[index],
                     color: indexSelected == index ? maincolor : Colors.white,
                   ),
                 ),

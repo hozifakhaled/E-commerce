@@ -1,17 +1,17 @@
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/features/categories/domein/entities/product_entitiy.dart';
-import 'package:ecommercefirebase/features/categories/presention/manger/cubit/detaile_cubit.dart';
+import 'package:ecommercefirebase/features/categories/presention/manger/detailes_cubit/detaile_cubit.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/list_size.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/row_name_and_quantity.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/row_price_and_button.dart';
-import 'package:ecommercefirebase/features/categories/presention/view/widgets/row_rating.dart';
+import 'package:ecommercefirebase/features/categories/presention/view/widgets/row_salles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SectionContinerInHome extends StatelessWidget {
-  const SectionContinerInHome({
+class SectionContinerInDetailes extends StatelessWidget {
+  const SectionContinerInDetailes({
     super.key,
     required this.productEntitiy,
   });
@@ -37,12 +37,14 @@ class SectionContinerInHome extends StatelessWidget {
                 spacing: 10.h,
                 children: [
                   RowNameAndQuantity(
+                    remaining: productEntitiy.reamaining,
+                    sold: productEntitiy.sold,
                     name: productEntitiy.name,
                     price: double.parse(productEntitiy.price),
                   ),
-                  RowRating(),
+                  RowSalles(reamaining: productEntitiy.reamaining, sold: productEntitiy.sold,),
                   ListSize(
-                    isshoes: false,
+                    list: productEntitiy.sizes,
                     onSizeSelected: (p0) {
                       context.read<DetaileCubit>().size = p0;
                     },

@@ -47,7 +47,7 @@ class CartCubit extends Cubit<CartState> {
       emit(GetCartLoading());
       final data =
           await GetCart(repositroyGetCart: getIt.get<RepositoryGetCartImpli>())
-              .call(CategoryParams(id: 'cart'), id);
+              .call(CategoryParams(id: 'cart',category: ''), id);
       emit(GetCartSuccess(cart: data));
     } on Exception catch (e) {
       emit(GetCartError(e.toString()));
