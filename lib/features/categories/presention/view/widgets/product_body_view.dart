@@ -3,7 +3,6 @@ import 'package:ecommercefirebase/core/widgets/custom_text_from_filed.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/catgories_list_items.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/product_gridview_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductBodyView extends StatefulWidget {
   const ProductBodyView({super.key});

@@ -2,7 +2,6 @@
 
 import 'package:ecommercefirebase/features/auth/login/presention/view/login_view.dart';
 import 'package:ecommercefirebase/features/auth/sinup/presention/view/sinup_view.dart';
-import 'package:ecommercefirebase/features/categories/domein/entities/product_entitiy.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/product_detales.dart';
 import 'package:ecommercefirebase/features/comments/presentation/pages/add_comment_view.dart';
 import 'package:ecommercefirebase/features/comments/presentation/pages/all_comment_view.dart';

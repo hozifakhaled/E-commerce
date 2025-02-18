@@ -2,10 +2,9 @@ import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/features/categories/domein/entities/product_entitiy.dart';
 import 'package:ecommercefirebase/features/categories/presention/manger/detailes_cubit/detaile_cubit.dart';
-import 'package:ecommercefirebase/features/categories/presention/view/widgets/list_size.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/row_name_and_quantity.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/row_price_and_button.dart';
-import 'package:ecommercefirebase/features/categories/presention/view/widgets/row_salles.dart';
+import 'package:ecommercefirebase/features/categories/presention/view/widgets/section_color_and_size_and_selles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,13 +41,7 @@ class SectionContinerInDetailes extends StatelessWidget {
                     name: productEntitiy.name,
                     price: double.parse(productEntitiy.price),
                   ),
-                  RowSalles(reamaining: productEntitiy.reamaining, sold: productEntitiy.sold,),
-                  ListSize(
-                    list: productEntitiy.sizes,
-                    onSizeSelected: (p0) {
-                      context.read<DetaileCubit>().size = p0;
-                    },
-                  ),
+                  SectionColorsAndSizeAndSalles(productEntitiy: productEntitiy),
                   Text(
                     'Description ',
                     style:
@@ -60,7 +53,7 @@ class SectionContinerInDetailes extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: Textstyles.text12,
                   ),
-               //   Spacer(),
+                  //   Spacer(),
                   RowPriceAndButton(
                       size: context.read<DetaileCubit>().size,
                       productEntitiy: productEntitiy)
@@ -71,3 +64,4 @@ class SectionContinerInDetailes extends StatelessWidget {
     );
   }
 }
+

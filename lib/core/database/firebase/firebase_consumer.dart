@@ -96,4 +96,13 @@ class FirebaseConsumer implements DatabaseConsumer {
         .where(filter, isEqualTo: value)
         .get();
   }
+  
+  @override
+  Future getdatasorted(String idcollection, String filter, int value) {
+       return data
+   .collection(idcollection) // استبدل باسم الكولكشن
+      .orderBy(filter, descending: true) // ترتيب تنازلي
+      .limit(10) // جلب أعلى 10 قيم
+      .get();
+  }
 }
