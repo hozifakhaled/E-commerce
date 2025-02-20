@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
 import 'package:ecommercefirebase/core/error/expentions.dart';
-import 'package:ecommercefirebase/features/categories/data/models/product_model.dart';
+import 'package:ecommercefirebase/features/home/data/models/product_model.dart';
 
 class ProductDataSourseLocal {
   final CacheHelper cache;

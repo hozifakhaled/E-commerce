@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommercefirebase/core/database/firebase/firebase_consumer.dart';
 import 'package:ecommercefirebase/core/parms/parms.dart';
-import 'package:ecommercefirebase/features/categories/data/models/product_model.dart';
+import 'package:ecommercefirebase/features/home/data/models/product_model.dart';
 
 class ProductDataSourceRemote {
   final FirebaseConsumer firebaseConsumer;

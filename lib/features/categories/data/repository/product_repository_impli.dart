@@ -3,8 +3,9 @@ import 'package:ecommercefirebase/core/database/firebase/firebase_consumer.dart'
 import 'package:ecommercefirebase/core/parms/parms.dart';
 import 'package:ecommercefirebase/features/categories/data/datasourse/product_data_source_remote.dart';
 import 'package:ecommercefirebase/features/categories/data/datasourse/product_data_sourse_local.dart';
-import 'package:ecommercefirebase/features/categories/data/models/product_model.dart';
+
 import 'package:ecommercefirebase/features/categories/domein/repository/product_repository.dart';
+import 'package:ecommercefirebase/features/home/data/models/product_model.dart';
 
 class ProductRepositoryImpli implements ProductRepository {
   final FirebaseConsumer firebaseConsumer;

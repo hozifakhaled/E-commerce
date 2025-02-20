@@ -49,6 +49,7 @@ class ButtonAddToCart extends StatelessWidget {
               onPressed: () {
                 if (totalprice > 0) {
                   context.read<CartCubit>().addtocart(
+                    color: context.read<DetaileCubit>().color,
                         name: name,
                         price: totalprice.toStringAsFixed(2),
                         quantity: quantitynumber.toString(),

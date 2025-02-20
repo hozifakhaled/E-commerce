@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
           title: 'ecommerce',
           theme: ThemeData(),
           debugShowCheckedModeBanner: false,
-          routerConfig: AppRouting.router,
+         routerConfig: AppRouter.router,
         ),
       ),
     );

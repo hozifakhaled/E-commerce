@@ -17,7 +17,10 @@ class AddCommentView extends StatelessWidget {
         backgroundColor: maincolor2,
         appBar: AppBar(
           backgroundColor: maincolor2,
-          title: CustomTitleLogo(),
+          title:CustomTitleLogo(
+            textcolor1: Colors.black,
+            textcolor2: maincolor,
+          ),
         ),
         body: BodyAddComment(
           name: data['name'], image: data['image'],

@@ -75,7 +75,10 @@ class _HomeViewState extends State<HomeView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: CustomTitleLogo(),
+          title: CustomTitleLogo(
+            textcolor1: Colors.black,
+            textcolor2: maincolor,
+          ),
           toolbarHeight: 50.h,
           backgroundColor: maincolor2,
           actions: [

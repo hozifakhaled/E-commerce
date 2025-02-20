@@ -12,6 +12,7 @@ class DetaileCubit extends Cubit<DetaileState> {
   int quantity = 0;
   double totalprice = 0;
   String size = '';
+  String color = '';
   void incrementQuantity(double price, int reamaining) {
     if (quantity < reamaining) {
       quantity += 1;

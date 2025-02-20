@@ -10,6 +10,7 @@ class RepositoryCart {
     await databaseConsumer.adddatadoccollection(cart.id,id ,{
       'id': cart.id,
       'name': cart.name,
+      'color': cart.id,
       'price': cart.price,
       'image': cart.image,
       'quantity': cart.quantity,

@@ -3,15 +3,17 @@ import 'package:ecommercefirebase/features/home/presention/view/widgets/category
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:go_router/go_router.dart';
 
 class ListCategoriesItems extends StatelessWidget {
   const ListCategoriesItems({
     super.key,
   });
 
+  
+
   @override
   Widget build(BuildContext context) {
-    
     return SizedBox(
       height: 140.h,
       child: Padding(
@@ -26,9 +28,18 @@ class ListCategoriesItems extends StatelessWidget {
           // mainAxisExtent: 135,
 
           // ),
-          itemCount: data.length,
+          itemCount: data2.length,
           itemBuilder: (BuildContext context, int index) {
-            return ItemCategory(image: data[index].image!, text: data[index].name!,);
+            return InkWell(
+                onTap: () {
+
+                  GoRouter.of(context).push('/category',extra: data2[index]  );
+                },
+                child: ItemCategory(
+                  color: Colors.white,
+                  image: data2[index].image!,
+                  text: data2[index].name!,
+                ));
           },
         ),
       ),

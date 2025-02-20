@@ -22,7 +22,8 @@ class CartCubit extends Cubit<CartState> {
       required String image,
       required String price,
       required String quantity,
-      required String size}) {
+      required String size,
+      required String color}) {
     try {
       AddToCart(
               repositoryCart:
@@ -34,7 +35,7 @@ class CartCubit extends Cubit<CartState> {
                   price: price,
                   quantity: quantity,
                   size: size,
-                  id: 'cart'),
+                  id: 'cart', color: ''),
               id);
       emit(CartSuccess());
     } on Exception catch (e) {
@@ -44,6 +45,7 @@ class CartCubit extends Cubit<CartState> {
 
   getData() async {
     try {
+      
       emit(GetCartLoading());
       final data =
           await GetCart(repositroyGetCart: getIt.get<RepositoryGetCartImpli>())

@@ -12,13 +12,16 @@ class ProductItem extends StatelessWidget {
     super.key,
     required this.price,
     required this.name,
-    required this.image, this.onTap, required this.index,
+    required this.image,
+    this.onTap,
+    required this.index, required this.oldprice,
   });
   final String price;
+  final String oldprice;
   final String name;
   final String image;
   final Function()? onTap;
-  final int index ;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -41,8 +44,7 @@ class ProductItem extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Hero(
-                      
-                      tag: image+index.toString(),
+                      tag: image + index.toString(),
                       child: CachedNetworkImage(
                         height: context.height * 0.18,
                         fit: BoxFit.cover,
@@ -57,21 +59,33 @@ class ProductItem extends StatelessWidget {
                   ),
                   Text(
                     name,
-                    style: Textstyles.textfeatruecategory.copyWith(
-                        color: Colors.black,
-                        fontSize: 14.sp,
-                        overflow: TextOverflow.ellipsis),
+                    style: Textstyles.text14
+                        .copyWith(overflow: TextOverflow.ellipsis),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        // ignore: prefer_interpolation_to_compose_strings
-                        '\$' + price,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.montserrat(
-                            color: Colors.black, fontSize: 15.sp),
+                      Column(
+                        children: [
+                          Text(
+                            // ignore: prefer_interpolation_to_compose_strings
+                            '\$' + price,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.montserrat(
+                                color: Colors.black, fontSize: 15.sp),
+                          ),
+                          Text(
+                            // ignore: prefer_interpolation_to_compose_strings
+                           oldprice.isEmpty ? '' : '\$' + oldprice,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          
+                            style: GoogleFonts.montserrat(
+                              decoration: TextDecoration.lineThrough,
+                                color: Colors.black, fontSize: 15.sp),
+                          ),
+                        ],
                       ),
                       IconButton(
                           onPressed: () {},

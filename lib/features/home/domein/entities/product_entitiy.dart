@@ -2,6 +2,7 @@ class ProductEntitiy {
   final String id;
   final String name;
   final String price;
+  final String oldprice;
   final String image;
   final String description;
   final String category;
@@ -9,7 +10,7 @@ class ProductEntitiy {
   final int sold;
   final List<String> sizes;
   final Map<String, dynamic> color;
-  ProductEntitiy({required this.color, 
+  ProductEntitiy({required this.oldprice, required this.color, 
       required this.sizes,
       required this.id,
       required this.reamaining,

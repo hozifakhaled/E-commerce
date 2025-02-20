@@ -19,7 +19,10 @@ class LoginView extends StatelessWidget {
                   backgroundColor: maincolor2,
 
           toolbarHeight: 40.h,
-          title: CustomTitleLogo(),
+          title: CustomTitleLogo(
+            textcolor1: Colors.black,
+            textcolor2: maincolor,
+          ),
         ),
         body: BodyLoginView(),
       ),

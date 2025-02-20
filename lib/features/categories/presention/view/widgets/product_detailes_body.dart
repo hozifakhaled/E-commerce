@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommercefirebase/core/utlis/extention.dart';
-import 'package:ecommercefirebase/features/categories/domein/entities/product_entitiy.dart';
 import 'package:ecommercefirebase/features/categories/presention/manger/detailes_cubit/detaile_cubit.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/scetion_container_in_detailes.dart';
+import 'package:ecommercefirebase/features/home/domein/entities/product_entitiy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

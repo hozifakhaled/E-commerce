@@ -40,7 +40,7 @@ class ProductGridviewItems extends StatelessWidget {
                   },
                   name: product.name,
                   price: product.price.toString(),
-                  image: product.image, index: index,
+                  image: product.image, index: index, oldprice: product.oldprice,
                 );
               },
               childCount:

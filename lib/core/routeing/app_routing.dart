@@ -1,97 +1,111 @@
 //import 'package:bookly/Features/home/data/models/book_model/book_model.dart';
 
+import 'package:ecommercefirebase/core/routeing/routs.dart';
 import 'package:ecommercefirebase/features/auth/login/presention/view/login_view.dart';
 import 'package:ecommercefirebase/features/auth/sinup/presention/view/sinup_view.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/product_detales.dart';
 import 'package:ecommercefirebase/features/comments/presentation/pages/add_comment_view.dart';
 import 'package:ecommercefirebase/features/comments/presentation/pages/all_comment_view.dart';
+import 'package:ecommercefirebase/features/home/data/models/categeries_model.dart';
+import 'package:ecommercefirebase/features/home/presention/view/arrvail_view.dart';
+import 'package:ecommercefirebase/features/home/presention/view/category_view.dart';
 import 'package:ecommercefirebase/features/home/presention/view/home_view.dart';
 import 'package:ecommercefirebase/features/profile/presentation/pages/profile_view.dart';
 import 'package:ecommercefirebase/features/splash/presention/view/onboarding_view.dart';
 import 'package:ecommercefirebase/features/splash/presention/view/splah_view.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-abstract class AppRouting {
-  static var router = GoRouter(routes: <RouteBase>[
-    GoRoute(
-      path: '/',
-      builder: (
-        context,
-        state,
-      ) {
-        return SplashScreen();
-      },
-    ),
-    GoRoute(
-      path: '/onb',
-      builder: (
-        context,
-        state,
-      ) {
-        return const OnboardingPage();
-      },
-    ),
-    GoRoute(
-      path: '/login',
-      builder: (context, state) {
-        return const LoginView();
-      },
-    ),
-    GoRoute(
-      path: '/sinup',
-      builder: (context, state) {
-        return const SinupView();
-      },
-    ),
-    GoRoute(
-      path: '/home',
-      builder: (
-        context,
-        state,
-      ) {
-        return const HomeView();
-      },
-    ),
-    GoRoute(
-      path: '/details',
-      builder: (
-        context,
-        state,
-      ) {
-        return ProductDetales(
-          data: state.extra as Map<String,dynamic>,
-        );
-      },
-    ),
-    GoRoute(
-      path: '/profile',
-      builder: (
-        context,
-        state,
-      ) {
-        return ProfileView(
+class AppRouter {
+  static final GoRouter router = GoRouter(
+    routes: <RouteBase>[
+      GoRoute(
+        path: AppRoutes.splash,
+        builder: (context, state) => SplashScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.onboarding,
+        builder: (context, state) => const OnboardingPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.login,
+        builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
+        path: AppRoutes.signup,
+        builder: (context, state) => const SinupView(),
+      ),
+      GoRoute(
+        path: AppRoutes.home,
+        builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: AppRoutes.details,
+        builder: (context, state) => ProductDetales(
+          data: state.extra as Map<String, dynamic>,
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.profile,
+        builder: (context, state) => ProfileView(
           id: state.extra as String,
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.addComment,
+        builder: (context, state) => AddCommentView(
+          data: state.extra as Map<String, String>,
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.allComments,
+        pageBuilder: (context, state) {
+          return _customTransitionPage(
+            state,
+            const AllCommentView(),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.category,
+        pageBuilder: (context, state) {
+          return _customTransitionPage(
+            state,
+            CategoryView(category: state.extra as CategeriesModel),
+          );
+        },
+      ),
+       GoRoute(
+        path: AppRoutes.customProduct,
+        pageBuilder: (context, state) {
+          return _customTransitionPage(
+            state,
+            ArrvailView(index:  state.extra as int,),
+          );
+        },
+      ),
+    ],
+  );
+
+  /// **دالة لإنشاء تأثير انتقال مخصص**
+  static CustomTransitionPage _customTransitionPage(
+      GoRouterState state, Widget child) {
+    return CustomTransitionPage(
+      key: state.pageKey,
+      child: child,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(1, 0), // دخول من اليمين
+            end: Offset.zero, // ينتهي في موضعه الطبيعي
+          ).animate(animation),
+          child: FadeTransition(
+            opacity: animation,
+            child: child,
+          ),
+
         );
       },
-    ),
-    GoRoute(
-      path: '/addcomment',
-      builder: (
-        context,
-        state,
-      ) {
-        return  AddCommentView(
-          data: state.extra as Map<String, String>,);
-      },
-    ),
-     GoRoute(
-      path: '/allcomment',
-      builder: (
-        context,
-        state,
-      ) {
-        return const AllCommentView();
-      },
-    ),
-  ]);
+    );
+  }
 }

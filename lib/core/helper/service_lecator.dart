@@ -11,6 +11,9 @@ import 'package:ecommercefirebase/features/categories/data/repository/product_re
 import 'package:ecommercefirebase/features/comments/data/datasources/comment_data_source_remote.dart';
 import 'package:ecommercefirebase/features/comments/data/datasources/comment_data_sourse_local.dart';
 import 'package:ecommercefirebase/features/comments/data/repositories/comment_reopsitory_impli.dart';
+import 'package:ecommercefirebase/features/home/data/datasourse/product_home_data_source_remote.dart';
+import 'package:ecommercefirebase/features/home/data/datasourse/product_home_data_sourse_local.dart';
+import 'package:ecommercefirebase/features/home/data/repository/product_home_repository_impli.dart';
 import 'package:ecommercefirebase/features/profile/data/datasourse/profile_data_source_remote.dart';
 import 'package:ecommercefirebase/features/profile/data/datasourse/profile_data_sourse_local.dart';
 import 'package:ecommercefirebase/features/profile/data/repository/profile_repository_impli.dart';
@@ -21,6 +24,9 @@ void setup() {
   getIt.registerSingleton<NetworkInfoImpl>(NetworkInfoImpl(DataConnectionChecker()));
   getIt.registerSingleton<ProductDataSourseLocal>(ProductDataSourseLocal(cache: CacheHelper()));
   getIt.registerSingleton<ProductDataSourceRemote>(ProductDataSourceRemote(FirebaseConsumer()));
+   getIt.registerSingleton<ProductHomeDataSourseLocal>(ProductHomeDataSourseLocal(cache: CacheHelper()));
+  getIt.registerSingleton<ProductHomeDataSourceRemote>(ProductHomeDataSourceRemote(FirebaseConsumer()));
+  
   getIt.registerSingleton<CartDataSourseLocal>(CartDataSourseLocal(cache: CacheHelper()));
   getIt.registerSingleton<CartDataSourceRemote>(CartDataSourceRemote(FirebaseConsumer()));
   getIt.registerSingleton<ProfileDataSourseLocal>(ProfileDataSourseLocal(cache: CacheHelper()));
@@ -32,6 +38,8 @@ void setup() {
     getIt.registerSingleton<ProfileRepositoryImpli>(ProfileRepositoryImpli(FirebaseConsumer(),remote: getIt.get<ProFileDataSourceRemote>(), local: getIt.get<ProfileDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
  
   getIt.registerSingleton<ProductRepositoryImpli>(ProductRepositoryImpli(FirebaseConsumer(),remote: getIt.get<ProductDataSourceRemote>(), local: getIt.get<ProductDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
+  getIt.registerSingleton<ProductHomeRepositoryImpli>(ProductHomeRepositoryImpli(FirebaseConsumer(),remote: getIt.get<ProductHomeDataSourceRemote>(), local: getIt.get<ProductHomeDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
+ 
  getIt.registerSingleton<RepositoryGetCartImpli>(RepositoryGetCartImpli( remote : getIt.get<CartDataSourceRemote>(), local: getIt.get<CartDataSourseLocal>(), networkInfo: getIt.get<NetworkInfoImpl>(),));
 
 

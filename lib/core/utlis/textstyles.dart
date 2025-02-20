@@ -4,10 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Textstyles {
-  static final textlogo = GoogleFonts.pacifico(
+  static final textlogo = GoogleFonts.reemKufiInk(
       color: Colors.black, fontSize: 32.sp, fontWeight: FontWeight.bold);
        static final text12 = GoogleFonts.poppins(
     fontSize: 12.sp,
+  //  color: textcoloroto2,
+  );
+    static final text14 = GoogleFonts.poppins(
+    fontSize: 14.sp,
   //  color: textcoloroto2,
   );
       static final text16 = GoogleFonts.poppins(

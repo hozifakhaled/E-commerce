@@ -1,10 +1,10 @@
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
-import 'package:ecommercefirebase/features/categories/domein/entities/product_entitiy.dart';
 import 'package:ecommercefirebase/features/categories/presention/manger/detailes_cubit/detaile_cubit.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/row_name_and_quantity.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/row_price_and_button.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/section_color_and_size_and_selles.dart';
+import 'package:ecommercefirebase/features/home/domein/entities/product_entitiy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

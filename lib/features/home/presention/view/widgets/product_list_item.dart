@@ -1,8 +1,12 @@
 import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
+import 'package:ecommercefirebase/features/home/presention/cubit/bestsellingcubit/home_cubit.dart';
+import 'package:ecommercefirebase/features/home/presention/view/widgets/loading_best_selling.dart';
 import 'package:ecommercefirebase/features/home/presention/view/widgets/product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductListItem extends StatelessWidget {
   const ProductListItem({
@@ -23,29 +27,48 @@ class ProductListItem extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-                'Feature Product',
-                style: Textstyles.textfeatruecategory
-                    .copyWith(color: Colors.white,fontWeight: FontWeight.bold),
+                'Best Selling',
+                style: Textstyles.text20
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 10),
-            Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 5, // عدد العناصر
-                itemBuilder: (context, index) {
-                  return  ProductItem(
-                    index: index,
-                    name: 'mmmm',
-                    price: '120', image: 'https://qymunmwtahpiautlqlaw.supabase.co/storage/v1/object/public/mainimage//photo_2025-02-08_09-23-24-removebg-preview.png',
-                  );
-                },
-              ),
-            ),
+            BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
+              if (state is BestSelingSuccess) {
+                return Expanded(
+               
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: state.productModelList.length, // عدد العناصر
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          GoRouter.of(context).push('/details', extra: {
+                            'productEntitiy': state.productModelList[index],
+                            'index': index
+                          });
+                        },
+                        child: ProductItem(
+                          index: index,
+                          name: state.productModelList[index].name,
+                          price: state.productModelList[index].price,
+                          image: state.productModelList[index].image, oldprice:state.productModelList[index].oldprice ,
+                        ),
+                      );
+                    },
+                  ),
+                );
+              } else if (state is BestSelingError) {
+                return SliverToBoxAdapter(
+                  child: Text(state.errorMessage),
+                );
+              } else {
+                return Expanded(child: LoadingBestSelling(),);
+              }
+            }),
           ],
         ),
       ),
     );
   }
 }
-

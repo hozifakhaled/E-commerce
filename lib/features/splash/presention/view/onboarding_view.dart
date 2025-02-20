@@ -16,7 +16,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CustomTitleLogo(),
+        title:CustomTitleLogo(
+            textcolor1: Colors.black,
+            textcolor2: maincolor,
+          ),
         backgroundColor: maincolor2,
       ),
       backgroundColor: maincolor2,
