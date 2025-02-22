@@ -1,4 +1,5 @@
 import 'package:ecommercefirebase/constants/images.dart';
+import 'package:ecommercefirebase/core/routeing/routs.dart';
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/core/widgets/row_login_or_sinup.dart';
@@ -31,7 +32,7 @@ class SectionImageAndTextInLogin extends StatelessWidget {
           ),
           RowSinupOrLogin(
             onTap: () {
-              GoRouter.of(context).push('/sinup');
+              GoRouter.of(context).push(AppRoutes.signup);
             },
             text: 'Don\'t have an account? ',
             button: 'Sign up',

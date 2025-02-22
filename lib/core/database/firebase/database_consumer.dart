@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:ecommercefirebase/features/auth/login/domin/entities/login_entites.dart';
-import 'package:ecommercefirebase/features/auth/sinup/domin/entities/sinup_entites.dart';
 
 abstract class DatabaseConsumer {
   Future<void> createUserWithEmailAndPassword(
-      SinupEntites email, SinupEntites password);
+      String email, String password);
   Future<void> signInWithEmailAndPassword(
-      LoginEntites email, LoginEntites password);
+      String email, String password);
+      Future<void> sendPasswordResetEmail(
+      String email,);
   Future<dynamic> getdata(String idcollection);
   Future<dynamic> getdatafilter(
       String idcollection, String filter, String value);

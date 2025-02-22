@@ -11,11 +11,12 @@ import 'package:google_fonts/google_fonts.dart';
 class RowPriceAndButton extends StatelessWidget {
   const RowPriceAndButton({
     super.key,
-    required this.productEntitiy, required this.size,
+    required this.productEntitiy, required this.size, required this.color,
   });
 
   final ProductEntitiy productEntitiy;
   final String size;
+  final String color;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class RowPriceAndButton extends StatelessWidget {
                 image: productEntitiy.image,
                 name: productEntitiy.name,
                 totalprice: context.read<DetaileCubit>().totalprice,
-                quantitynumber: context.read<DetaileCubit>().quantity),
+                quantitynumber: context.read<DetaileCubit>().quantity, color:color ,),
           )
         ]);
   }

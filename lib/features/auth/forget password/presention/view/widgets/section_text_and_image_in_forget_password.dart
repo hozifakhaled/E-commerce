@@ -4,14 +4,15 @@ import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class sectionTextAndImageInOtp extends StatelessWidget {
-  const sectionTextAndImageInOtp({
+class SectionTextAndImageInForgetPassword extends StatelessWidget {
+  const SectionTextAndImageInForgetPassword({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Align(
           alignment: Alignment.center, // محاذاة الصورة في المنتصف
@@ -22,10 +23,10 @@ class sectionTextAndImageInOtp extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 40), // إضافة مساحة فارغة
-        Text('OTP Verification',
+        Text('Forget Password',
             style: Textstyles.text1otp), // نص التحقق من OTP
         const SizedBox(height: 10), // إضافة مساحة فارغة
-        Text('Enter the OTP sent to your mobile number',
+        Text('Enter the password sent to your Email',
             style: Textstyles.text2otp), // نص تعليمات OTP
         const SizedBox(height: 40),
       ],

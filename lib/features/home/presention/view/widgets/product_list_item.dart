@@ -3,7 +3,7 @@ import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/features/home/presention/cubit/bestsellingcubit/home_cubit.dart';
 import 'package:ecommercefirebase/features/home/presention/view/widgets/loading_best_selling.dart';
-import 'package:ecommercefirebase/features/home/presention/view/widgets/product_item.dart';
+import 'package:ecommercefirebase/core/widgets/custom_product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -50,10 +50,8 @@ class ProductListItem extends StatelessWidget {
                         },
                         child: ProductItem(
                           index: index,
-                          name: state.productModelList[index].name,
-                          price: state.productModelList[index].price,
-                          image: state.productModelList[index].image, oldprice:state.productModelList[index].oldprice ,
-                        ),
+                          productEntitiy: state.productModelList[index],
+                          ),
                       );
                     },
                   ),

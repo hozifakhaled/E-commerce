@@ -48,7 +48,7 @@ login(String email, String password) async {
     try {
       await Login(loginRepository: LoginRepositoryImpl(credential: FirebaseConsumer())).call(
         LoginEntites(email: email, password: password),
-       LoginEntites(email: email, password: password),
+      
       );
       emit(LoginLoaded());
     } catch (error) {

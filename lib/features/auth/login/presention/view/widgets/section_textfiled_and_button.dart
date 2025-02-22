@@ -1,3 +1,4 @@
+import 'package:ecommercefirebase/core/routeing/routs.dart';
 import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
@@ -6,10 +7,13 @@ import 'package:ecommercefirebase/features/auth/login/presention/manger/cubit/lo
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class SectionTextfiledAndButton extends StatefulWidget {
-  const SectionTextfiledAndButton({super.key, });
- 
+  const SectionTextfiledAndButton({
+    super.key,
+  });
+
   @override
   State<SectionTextfiledAndButton> createState() =>
       _SectionTextfiledAndButtonState();
@@ -17,11 +21,9 @@ class SectionTextfiledAndButton extends StatefulWidget {
 
 class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
   String email = '';
-  String password = '';  @override
-
+  String password = '';
+  @override
   Widget build(BuildContext context) {
-    
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -58,10 +60,17 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
         ),
         Align(
           alignment: Alignment.topRight,
-          child: Text(
-            'forget password?',
-            style: Textstyles.text1otp.copyWith(
-                fontSize: 16.sp, color: maincolor, fontWeight: FontWeight.w400),
+          child: InkWell(
+            onTap: () {
+              GoRouter.of(context).push(AppRoutes.forgetpassword);
+            },
+            child: Text(
+              'forget password?',
+              style: Textstyles.text1otp.copyWith(
+                  fontSize: 16.sp,
+                  color: maincolor,
+                  fontWeight: FontWeight.w400),
+            ),
           ),
         ),
         const SizedBox(
@@ -71,10 +80,14 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
           text: 'Login',
           onPressed: () {
             if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-              context.read<LoginCubit>().login(context.read<LoginCubit>().email!, context.read<LoginCubit>().password!);
+              context.read<LoginCubit>().login(
+                  context.read<LoginCubit>().email!,
+                  context.read<LoginCubit>().password!);
               context.read<LoginCubit>().passwordController.clear();
               context.read<LoginCubit>().emailController.clear();
-              context.read<LoginCubit>().cacheid(context.read<LoginCubit>().email! );
+              context
+                  .read<LoginCubit>()
+                  .cacheid(context.read<LoginCubit>().email!);
             }
           },
           colortext: Colors.white,
@@ -82,7 +95,5 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
         ),
       ],
     );
-
-    
   }
 }

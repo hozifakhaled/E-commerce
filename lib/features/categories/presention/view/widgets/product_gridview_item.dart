@@ -1,6 +1,6 @@
 import 'package:ecommercefirebase/features/categories/presention/manger/cubit/product_cubit.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/product_loading.dart';
-import 'package:ecommercefirebase/features/home/presention/view/widgets/product_item.dart';
+import 'package:ecommercefirebase/core/widgets/custom_product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -38,9 +38,8 @@ class ProductGridviewItems extends StatelessWidget {
                       'index':index
                     });
                   },
-                  name: product.name,
-                  price: product.price.toString(),
-                  image: product.image, index: index, oldprice: product.oldprice,
+                  index: index,
+                  productEntitiy: product,
                 );
               },
               childCount:

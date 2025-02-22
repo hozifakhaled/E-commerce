@@ -5,8 +5,8 @@ import 'package:ecommercefirebase/features/home/presention/view/widgets/arrviel_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ArrvailView extends StatelessWidget {
-  const ArrvailView({super.key, required this.index});
+class CustomProductsView extends StatelessWidget {
+  const CustomProductsView({super.key, required this.index});
   final int index;
   @override
   Widget build(BuildContext context) {

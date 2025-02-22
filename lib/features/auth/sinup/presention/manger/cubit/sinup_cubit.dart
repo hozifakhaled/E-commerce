@@ -79,7 +79,7 @@ clear(){nameController.clear();
                   SinupRepositoryImpl(credential: FirebaseConsumer()))
           .call(
         SinupEntites(email: email, password: password),
-        SinupEntites(email: email, password: password),
+        
       );
       emit(SinupLoaded());
     } catch (error) {

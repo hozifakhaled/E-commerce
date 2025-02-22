@@ -2,6 +2,6 @@ import 'package:ecommercefirebase/features/auth/sinup/domin/entities/add_user_en
 import 'package:ecommercefirebase/features/auth/sinup/domin/entities/sinup_entites.dart';
 
 abstract class SinupRepository {
-  Future< void> createUserWithEmailAndPassword(SinupEntites  email, SinupEntites password);
+  Future< void> createUserWithEmailAndPassword(SinupEntites  user);
   Future< void> adduser(AddUserEntitiey user, );
 }

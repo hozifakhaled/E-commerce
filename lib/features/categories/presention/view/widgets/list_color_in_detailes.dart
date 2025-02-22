@@ -18,8 +18,10 @@ class ListColorInDetailes extends StatefulWidget {
 }
 
 class _ListColorInDetailesState extends State<ListColorInDetailes> {
-  @override
+  
   int currentIndex = 0;
+  
+  @override
   Widget build(BuildContext context) {
     return Container(
         height: context.height * .15,

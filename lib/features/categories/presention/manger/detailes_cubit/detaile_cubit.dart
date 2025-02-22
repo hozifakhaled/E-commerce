@@ -1,5 +1,8 @@
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+
+import 'package:ecommercefirebase/core/helper/helpers.dart';
 import 'package:ecommercefirebase/core/helper/service_lecator.dart';
 import 'package:ecommercefirebase/core/parms/parms.dart';
 import 'package:ecommercefirebase/features/categories/data/repository/product_repository_impli.dart';
@@ -13,12 +16,14 @@ class DetaileCubit extends Cubit<DetaileState> {
   double totalprice = 0;
   String size = '';
   String color = '';
-  void incrementQuantity(double price, int reamaining) {
+  void incrementQuantity(double price, int reamaining,context) {
     if (quantity < reamaining) {
       quantity += 1;
       totalprice += price;
 
       emit(DetaileIcrement());
+    } else {
+      Helpers().alertDone(context, "Error", "Product is out of stock", null,  null, DialogType.error).show();
     }
   }
 
@@ -29,6 +34,7 @@ class DetaileCubit extends Cubit<DetaileState> {
 
       emit(Detailederement());
     }
+   
   }
 
   void update(String id, { required int sold,required int reamaining}) {

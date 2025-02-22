@@ -1,5 +1,5 @@
 import 'package:ecommercefirebase/features/home/domein/entities/product_entitiy.dart';
-import 'package:ecommercefirebase/features/home/presention/view/widgets/product_item.dart';
+import 'package:ecommercefirebase/core/widgets/custom_product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,10 +18,8 @@ class CustomGridView extends StatelessWidget {
               GoRouter.of(context).push('/details',
                   extra: {'productEntitiy': product, 'index': index});
             },
-            name: product.name,
-            price: product.price.toString(),
-            image: product.image,
-            index: index, oldprice: product.oldprice,
+           index: index,
+                  productEntitiy: product,
           );
         },
         childCount: data.length,

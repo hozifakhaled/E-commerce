@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommercefirebase/core/database/firebase/database_consumer.dart';
-import 'package:ecommercefirebase/features/auth/login/domin/entities/login_entites.dart';
-import 'package:ecommercefirebase/features/auth/sinup/domin/entities/sinup_entites.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -14,16 +12,20 @@ class FirebaseConsumer implements DatabaseConsumer {
   final data = FirebaseFirestore.instance;
   @override
   Future<void> createUserWithEmailAndPassword(
-      SinupEntites email, SinupEntites password) async {
+      String email, String password) async {
     await credential.createUserWithEmailAndPassword(
-        email: email.email, password: password.password);
+        email: email, password: password);
   }
 
   @override
   Future<void> signInWithEmailAndPassword(
-      LoginEntites email, LoginEntites password) async {
+      String email, String password) async {
     await credential.signInWithEmailAndPassword(
-        email: email.email, password: password.password);
+        email: email, password: password);
+  }
+  @override
+  Future<void> sendPasswordResetEmail(String email) async{
+    await credential.sendPasswordResetEmail(email: email);
   }
 
   @override
@@ -112,4 +114,6 @@ class FirebaseConsumer implements DatabaseConsumer {
       .limit(10) // جلب أعلى 10 قيم
       .get();
   }
+  
+  
 }

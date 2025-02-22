@@ -6,7 +6,7 @@ class Sinup {
 
   Sinup({required this.sinupRepository});
 
-  Future< void> call(SinupEntites  email, SinupEntites password) async {
-    return await sinupRepository.createUserWithEmailAndPassword(email, password);
+  Future< void> call(SinupEntites  user) async {
+    return await sinupRepository.createUserWithEmailAndPassword(user,);
   }
 }

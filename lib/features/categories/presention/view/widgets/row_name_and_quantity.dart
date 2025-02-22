@@ -33,7 +33,7 @@ class RowNameAndQuantity extends StatelessWidget {
               Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             IconButton(
               onPressed: () =>
-                  context.read<DetaileCubit>().decrementQuantity(price),
+                  context.read<DetaileCubit>().decrementQuantity(price,),
               icon: Icon(
                 Icons.remove,
                 color: Colors.black,
@@ -43,7 +43,7 @@ class RowNameAndQuantity extends StatelessWidget {
                 style: Textstyles.text12),
             IconButton(
               onPressed: () =>
-                  context.read<DetaileCubit>().incrementQuantity(price,remaining),
+                  context.read<DetaileCubit>().incrementQuantity(price,remaining,context),
               icon: Icon(
                 Icons.add,
                 color: Colors.black,

@@ -56,7 +56,7 @@ class SectionContinerInDetailes extends StatelessWidget {
                   //   Spacer(),
                   RowPriceAndButton(
                       size: context.read<DetaileCubit>().size,
-                      productEntitiy: productEntitiy)
+                      productEntitiy: productEntitiy, color: context.read<DetaileCubit>().color,)
                 ],
               ),
             ));

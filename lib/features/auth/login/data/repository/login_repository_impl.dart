@@ -10,9 +10,9 @@ class LoginRepositoryImpl implements LoginRepository {
 
   @override
   Future<void> signInWithEmailAndPassword(
-      LoginEntites email, LoginEntites password) async {
+      LoginEntites  user) async {
     try {
-      await credential.signInWithEmailAndPassword(email, password);
+      await credential.signInWithEmailAndPassword(user.email, user.password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         throw Exception('The password provided is too weak.');

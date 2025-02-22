@@ -6,7 +6,7 @@ class Login {
 
   Login({required this.loginRepository});
 
-  Future< void> call(LoginEntites  email, LoginEntites password) async {
-    return await loginRepository.signInWithEmailAndPassword(email, password);
+  Future< void> call(LoginEntites  user,) async {
+    return await loginRepository.signInWithEmailAndPassword(user);
   }
 }

@@ -17,8 +17,10 @@ class ButtonAddToCart extends StatelessWidget {
     required this.name,
     required this.image,
     required this.reamaining,
-    required this.sold, required this.id,
+    required this.sold, required this.id, required this.color,
+
   });
+  final String color;
   final String size;
   final String name;
   final String image;
@@ -32,6 +34,7 @@ class ButtonAddToCart extends StatelessWidget {
     return BlocListener<CartCubit, CartState>(
       listener: (context, state) {
         if (state is CartSuccess) {
+          context.read<CartCubit>().addToCartSound();
           Helpers()
               .alertDone(context, 'Done', 'Added to cart', null, null,
                   DialogType.success)
@@ -49,13 +52,16 @@ class ButtonAddToCart extends StatelessWidget {
               onPressed: () {
                 if (totalprice > 0) {
                   context.read<CartCubit>().addtocart(
-                    color: context.read<DetaileCubit>().color,
+                    color: color,
                         name: name,
                         price: totalprice.toStringAsFixed(2),
                         quantity: quantitynumber.toString(),
                         image: image,
                         size: size,
                       );
+                }else{
+                     Helpers().alertDone(context, "Error", "Enter quantity", null,  null, DialogType.error).show();
+   
                 }
               },
               text: 'Add to cart',

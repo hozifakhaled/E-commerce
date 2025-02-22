@@ -9,7 +9,7 @@ class CustomTextFromFiled extends StatelessWidget {
     this.validator,
     this.suffixIcon,
     this.onChanged,
-    this.obscureText = false, this.maxLines,
+    this.obscureText = false, this.maxLines = 1,
   });
   final TextEditingController? controller;
   final String hinttext;
