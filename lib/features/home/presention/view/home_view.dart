@@ -4,6 +4,7 @@ import 'package:ecommercefirebase/core/widgets/custom_title_logo.dart';
 import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/product_view.dart';
 import 'package:ecommercefirebase/features/cart/presentation/view/cart_view.dart';
+import 'package:ecommercefirebase/features/home/presention/view/widgets/icon_cart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,27 +38,7 @@ class _HomeViewState extends State<HomeView> {
       BottomNavigationBarItem(
         icon: BlocProvider(
           create: (context) => CartCubit()..getData(),
-          child: BlocListener<CartCubit, CartState>(
-            listener: (context, state) {
-              if (state is GetCartSuccess) {
-                count = state.cart.length;
-              }
-            },
-         child:   StreamBuilder<int>(
-           stream: Stream.value(count),
-           builder: (context, snapshot) {
-             return badges.Badge(
-                      badgeContent: Text(
-                        snapshot.data.toString(),
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      child: Icon(CupertinoIcons.shopping_cart),
-                    );
-           }
-         )
-              
-           
-          ),
+          child: IconCart(),
         ),
         label: 'Cart',
       ),

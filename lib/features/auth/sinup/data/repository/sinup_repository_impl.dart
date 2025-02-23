@@ -1,7 +1,7 @@
 import 'package:ecommercefirebase/core/database/firebase/firebase_consumer.dart';
-import 'package:ecommercefirebase/features/auth/sinup/domin/entities/add_user_entitiey.dart';
-import 'package:ecommercefirebase/features/auth/sinup/domin/entities/sinup_entites.dart';
-import 'package:ecommercefirebase/features/auth/sinup/domin/repository/sinup_repository.dart';
+import 'package:ecommercefirebase/features/auth/sinup/domain/entities/add_user_entitiey.dart';
+import 'package:ecommercefirebase/features/auth/sinup/domain/entities/sinup_entites.dart';
+import 'package:ecommercefirebase/features/auth/sinup/domain/repository/sinup_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SinupRepositoryImpl implements SinupRepository {

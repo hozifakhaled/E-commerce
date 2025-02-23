@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
 import 'package:ecommercefirebase/core/database/firebase/firebase_consumer.dart';
 import 'package:ecommercefirebase/features/auth/login/data/repository/login_repository_impl.dart';
-import 'package:ecommercefirebase/features/auth/login/domin/entities/login_entites.dart';
-import 'package:ecommercefirebase/features/auth/login/domin/usecase/login.dart';
+import 'package:ecommercefirebase/features/auth/login/domain/entities/login_entites.dart';
+import 'package:ecommercefirebase/features/auth/login/domain/usecase/login.dart';
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import, 
 import 'package:meta/meta.dart';

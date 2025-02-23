@@ -6,24 +6,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// واجهة تسجيل الدخول
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
+      // إنشاء LoginCubit
       create: (context) =>  LoginCubit(),
       child: Scaffold(
+        // لون خلفية الواجهة
         backgroundColor: maincolor2,
         appBar: AppBar(
-                  backgroundColor: maincolor2,
-
+          // لون خلفية شريط التطبيق
+          backgroundColor: maincolor2,
+          // ارتفاع شريط الأدوات
           toolbarHeight: 40.h,
+          // عنوان مخصص لشعار التطبيق
           title: CustomTitleLogo(
             textcolor1: Colors.black,
             textcolor2: maincolor,
           ),
         ),
+        // جسم واجهة تسجيل الدخول
         body: BodyLoginView(),
       ),
     );

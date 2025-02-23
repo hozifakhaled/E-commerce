@@ -1,5 +1,4 @@
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
-import 'package:ecommercefirebase/features/splash/presention/view/widgets/dots_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecommercefirebase/core/utlis/colors.dart';
@@ -17,42 +16,48 @@ class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late AnimationController _clickController;
   late AnimationController _goController;
-  late AnimationController _rotateController;
+  late AnimationController _pulseController;
 
   late Animation<Offset> _clickAnimation;
   late Animation<Offset> _goAnimation;
+ // late Animation<double> _pulseAnimation;
 
   @override
   void initState() {
     super.initState();
 
-    // حركة "Click" و "Go"
+    // إعداد وحدة التحكم في الرسوم المتحركة للنص "Click"
     _clickController = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,
     );
 
+    // إعداد وحدة التحكم في الرسوم المتحركة للنص "Go"
     _goController = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,
     );
 
-    // دوران علامة "&"
-    _rotateController = AnimationController(
+    // إعداد وحدة التحكم في الرسوم المتحركة لتأثير النبض
+    _pulseController = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,
-    );
+      lowerBound: 0.8,
+      upperBound: 1.2,
+    )..repeat(reverse: true); // تأثير النبض المستمر
 
+    // إعداد الرسوم المتحركة للنص "Click"
     _clickAnimation = Tween<Offset>(
-      begin: const Offset(-1.5, 0), // بداية "Click" خارج الشاشة
+      begin: const Offset(-1.5, 0),
       end: const Offset(0.0, 0),
     ).animate(CurvedAnimation(
       parent: _clickController,
       curve: Curves.easeInOut,
     ));
 
+    // إعداد الرسوم المتحركة للنص "Go"
     _goAnimation = Tween<Offset>(
-      begin: const Offset(1.5, 0), // بداية "Go" خارج الشاشة
+      begin: const Offset(1.5, 0),
       end: const Offset(0.0, 0),
     ).animate(CurvedAnimation(
       parent: _goController,
@@ -62,17 +67,18 @@ class _SplashScreenState extends State<SplashScreen>
     _startAnimations();
   }
 
+  // بدء الرسوم المتحركة
   void _startAnimations() async {
     await _clickController.forward();
     await _goController.forward();
-    await _rotateController.forward(); // دوران مرة واحدة
   }
 
   @override
   void dispose() {
+    // التخلص من وحدات التحكم في الرسوم المتحركة عند التخلص من الشاشة
     _clickController.dispose();
     _goController.dispose();
-    _rotateController.dispose();
+    _pulseController.dispose();
     super.dispose();
   }
 
@@ -83,6 +89,7 @@ class _SplashScreenState extends State<SplashScreen>
       child: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
           if (state is SplashSecuess) {
+            // الانتقال إلى الشاشة الرئيسية عند نجاح الشاشة الترحيبية
             //  GoRouter.of(context).go('/home');
           }
         },
@@ -100,28 +107,14 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
                 const SizedBox(width: 8),
-                // استخدام Stack لدمج علامة "&" مع أنيميشن النقاط
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    RotationTransition(
-                      turns: _rotateController,
-                      child: Text(
-                        '&',
-                        style: TextStyle(fontSize: 32, color: maincolor,fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    // أنيميشن النقاط
-                    AnimatedBuilder(
-                      animation: _rotateController,
-                      builder: (context, child) {
-                        return DotsAnimation(
-                          progress: _rotateController.value,
-                          color: maincolor,
-                        );
-                      },
-                    ),
-                  ],
+                // تأثير النبض حول علامة "&"
+                ScaleTransition(
+                  scale: _pulseController,
+                  child: Text(
+                    '&',
+                    style: Textstyles.textlogo.copyWith(
+                        fontWeight: FontWeight.bold, color: maincolor),
+                  ),
                 ),
                 const SizedBox(width: 8),
                 SlideTransition(
@@ -139,5 +132,3 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 }
-
-// Widget يقوم بعرض النقاط باستخدام CustomPainter

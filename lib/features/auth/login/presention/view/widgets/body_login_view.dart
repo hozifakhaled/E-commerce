@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommercefirebase/core/helper/helpers.dart';
+import 'package:ecommercefirebase/core/routeing/routs.dart';
 import 'package:ecommercefirebase/features/auth/login/presention/manger/cubit/login_cubit.dart';
 import 'package:ecommercefirebase/features/auth/login/presention/view/widgets/section_image_and_text_in_login.dart';
 import 'package:ecommercefirebase/features/auth/login/presention/view/widgets/section_textfiled_and_button.dart';
@@ -18,7 +19,7 @@ class BodyLoginView extends StatelessWidget {
         if (state is LoginLoaded) {
           Helpers()
               .alertDone(context, 'Done', 'Login successfully', null,
-                  () => GoRouter.of(context).go('/home',extra: context.read<LoginCubit>().email), DialogType.success)
+                  () => GoRouter.of(context).go(AppRoutes.home,extra: context.read<LoginCubit>().email), DialogType.success)
               .show();
         }
         if (state is LoginError) {

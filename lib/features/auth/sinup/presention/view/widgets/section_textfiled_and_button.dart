@@ -21,9 +21,11 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // نص لاسم المستخدم
         TextInSinup(
           text: 'Name',
         ),
+        // حقل إدخال لاسم المستخدم
         CustomTextFromFiled(
           hinttext: 'example',
           controller: context.read<SinupCubit>().nameController,
@@ -36,9 +38,11 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
         const SizedBox(
           height: 10,
         ),
+        // نص للبريد الإلكتروني
         TextInSinup(
           text: 'email',
         ),
+        // حقل إدخال للبريد الإلكتروني
         CustomTextFromFiled(
           hinttext: 'example@gmail.com',
           controller: context.read<SinupCubit>().emailController,
@@ -51,9 +55,11 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
         const SizedBox(
           height: 10,
         ),
+        // نص للعمر
         TextInSinup(
           text: 'Age',
         ),
+        // حقل إدخال للعمر
         CustomTextFromFiled(
           hinttext: 'yaers old',
           controller: context.read<SinupCubit>().ageController,
@@ -66,9 +72,11 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
         const SizedBox(
           height: 10,
         ),
+        // نص للهاتف
         TextInSinup(
           text: 'phone',
         ),
+        // حقل إدخال للهاتف
         CustomTextFromFiled(
           hinttext: '+02 01123456789',
           controller: context.read<SinupCubit>().phoneController,
@@ -81,9 +89,11 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
         const SizedBox(
           height: 10,
         ),
+        // نص لكلمة المرور
         TextInSinup(
           text: 'password',
         ),
+        // حقل إدخال لكلمة المرور
         CustomTextFromFiled(
           obscureText: isheddin,
           hinttext: 'Enter your password',
@@ -97,7 +107,7 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
                   }
                 });
               },
-              icon: Icon(Icons.remove_red_eye_outlined)),
+              icon: isheddin? Icon(Icons.visibility_off_outlined): Icon(Icons.remove_red_eye_outlined)),
           controller: context.read<SinupCubit>().passwordController,
           onChanged: (p0) {
             context.read<SinupCubit>().password = p0;
@@ -107,6 +117,7 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
         const SizedBox(
           height: 50,
         ),
+        // زر التسجيل
         ButtonApp(
           text: 'Signup',
           onPressed: () {
@@ -115,7 +126,6 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
                   context.read<SinupCubit>().email!,
                   context.read<SinupCubit>().password!);
               context.read<SinupCubit>().saveData('id', context.read<SinupCubit>().email!,);
-             // context.read<SinupCubit>().saveData('id', context.read<SinupCubit>().!,);
               context.read<SinupCubit>().clear();
             }
           },

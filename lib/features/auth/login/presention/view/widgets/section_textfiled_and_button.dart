@@ -20,18 +20,18 @@ class SectionTextfiledAndButton extends StatefulWidget {
 }
 
 class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
-  String email = '';
-  String password = '';
+  bool isheddin = true;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // نص البريد الإلكتروني
         Text(
           'email',
-          style: Textstyles.text2otp
-              .copyWith(color: Colors.black, fontWeight: FontWeight.w400),
+          style: Textstyles.text16
         ),
+        // حقل إدخال البريد الإلكتروني
         CustomTextFromFiled(
           hinttext: 'example@gmail.com',
           controller: context.read<LoginCubit>().emailController,
@@ -44,20 +44,32 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
         const SizedBox(
           height: 20,
         ),
+        // نص كلمة المرور
         Text(
           'password',
-          style: Textstyles.text2otp
-              .copyWith(color: Colors.black, fontWeight: FontWeight.w400),
+          style: Textstyles.text16
+              
         ),
+        // حقل إدخال كلمة المرور
         CustomTextFromFiled(
+          obscureText: isheddin,
           hinttext: 'Enter your password',
-          suffixIcon: Icon(Icons.remove_red_eye_outlined),
           controller: context.read<LoginCubit>().passwordController,
           onChanged: (p0) {
             context.read<LoginCubit>().password = p0;
           },
           validator: (p0) => context.read<LoginCubit>().validatorpassword(p0),
+          suffixIcon: IconButton(
+              onPressed: () {
+                setState(() {
+                  isheddin = !isheddin;
+                });
+              },
+              icon: isheddin
+                  ? Icon(Icons.visibility_off_outlined)
+                  : Icon(Icons.remove_red_eye_outlined)),
         ),
+        // رابط نسيان كلمة المرور
         Align(
           alignment: Alignment.topRight,
           child: InkWell(
@@ -76,6 +88,7 @@ class _SectionTextfiledAndButtonState extends State<SectionTextfiledAndButton> {
         const SizedBox(
           height: 20,
         ),
+        // زر تسجيل الدخول
         ButtonApp(
           text: 'Login',
           onPressed: () {

@@ -20,25 +20,25 @@ class SectionImageAndTextInLogin extends StatelessWidget {
               alignment: Alignment.center, // محاذاة الصورة في المنتصف
               child: Image.asset(
                 Assets.imagesImageotp,
-                width: context.width * .6,
-                height: context.height * .25,
+                width: context.width * .6, // عرض الصورة كنسبة من عرض الشاشة
+                height: context.height * .25, // ارتفاع الصورة كنسبة من ارتفاع الشاشة
               ),),
                const SizedBox(
-                  height: 20,
+                  height: 20, // مساحة فارغة بين العناصر
                 ),
           Text(
-            'Login',
-            style: Textstyles.text1otp,
+            'Login', // نص تسجيل الدخول
+            style: Textstyles.text1otp, // نمط النص
           ),
           RowSinupOrLogin(
             onTap: () {
-              GoRouter.of(context).push(AppRoutes.signup);
+              GoRouter.of(context).push(AppRoutes.signup); // الانتقال إلى صفحة التسجيل
             },
-            text: 'Don\'t have an account? ',
-            button: 'Sign up',
+            text: 'Don\'t have an account? ', // نص السؤال
+            button: 'Sign up', // نص زر التسجيل
           ),
           const SizedBox(
-            height: 20,
+            height: 20, // مساحة فارغة بين العناصر
           ),
       ],
     );

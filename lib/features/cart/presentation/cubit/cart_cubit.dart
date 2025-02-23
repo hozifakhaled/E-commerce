@@ -15,6 +15,7 @@ part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
+  int count1 = 0;
   String? size;
   int count = 0;
    final AudioPlayer player = AudioPlayer();
@@ -62,13 +63,18 @@ throw Exception(e.toString());
   }
 
   getData() async {
+
+  
+
     try {
       
       emit(GetCartLoading());
-      final data =
+     
           await GetCart(repositroyGetCart: getIt.get<RepositoryGetCartImpli>())
-              .call(CategoryParams(id: 'cart',category: ''), id);
-      emit(GetCartSuccess(cart: data));
+              .call(CategoryParams(id: 'cart',category: ''), id).then((value) {
+         emit(GetCartSuccess(cart: value));
+      });
+     
     } on Exception catch (e) {
       emit(GetCartError(e.toString()));
     }

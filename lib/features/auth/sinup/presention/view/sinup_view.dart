@@ -12,6 +12,7 @@ class SinupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
+      // إنشاء SinupCubit وتوفيره للشجرة
       create: (context) => SinupCubit(),
       child: Scaffold(
         backgroundColor: maincolor2,
@@ -19,11 +20,13 @@ class SinupView extends StatelessWidget {
           automaticallyImplyLeading: false,
           backgroundColor: maincolor2,
           toolbarHeight: 40.h,
+          // إضافة شعار مخصص في شريط التطبيق
           title: CustomTitleLogo(
             textcolor1: Colors.black,
             textcolor2: maincolor,
           ),
         ),
+        // عرض محتوى BodySinupView
         body: BodySinupView(),
       ),
     );

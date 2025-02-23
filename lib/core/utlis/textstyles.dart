@@ -25,7 +25,7 @@ static final text18 = GoogleFonts.poppins(
   static final text20 = GoogleFonts.poppins(
     fontSize: 20.sp,
   );
-static final text28 = TextStyle(
+static final text28 = GoogleFonts.poppins(
     fontSize: 28.sp,
     fontWeight: FontWeight.bold,
   );

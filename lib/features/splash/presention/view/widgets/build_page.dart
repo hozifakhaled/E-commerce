@@ -11,34 +11,35 @@ class BuildPage extends StatelessWidget {
   final String image;
   final String title;
   final String description;
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24.0),
+      padding: const EdgeInsets.all(24.0), // إضافة حواف حول المحتوى
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start, // محاذاة العناصر إلى اليسار
+          mainAxisAlignment: MainAxisAlignment.center, // محاذاة العناصر في الوسط
           children: [
             SizedBox(
-              height: 40.h,
+              height: 40.h, // إضافة مساحة عمودية
             ),
             Align(
-                alignment: Alignment.center,
-                child: Image.asset(image, height: 250)),
-            const SizedBox(height: 32),
+                alignment: Alignment.center, // محاذاة الصورة في الوسط
+                child: Image.asset(image, height: 250)), // عرض الصورة
+            const SizedBox(height: 32), // إضافة مساحة عمودية
             SizedBox(
-              height: 80.h,
+              height: 80.h, // إضافة مساحة عمودية
             ),
             Text(
               title,
-              style: Textstyles.text28,
+              style: Textstyles.text28, // تطبيق نمط النص
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 16), // إضافة مساحة عمودية
             Text(
               description,
               // textAlign: TextAlign.center,
-              style: Textstyles.text20.copyWith(color: const Color.fromARGB(255, 95, 94, 94)),
+              style: Textstyles.text20.copyWith(color: const Color.fromARGB(255, 95, 94, 94)), // تطبيق نمط النص مع تغيير اللون
             ),
             // const SizedBox(height: 80),
           ],
