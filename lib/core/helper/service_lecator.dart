@@ -5,6 +5,7 @@ import 'package:ecommercefirebase/core/database/firebase/firebase_consumer.dart'
 import 'package:ecommercefirebase/features/cart/data/datasourse/cart_data_source_remote.dart';
 import 'package:ecommercefirebase/features/cart/data/datasourse/cart_data_sourse_local.dart';
 import 'package:ecommercefirebase/features/cart/data/repository/repository_get_cart_impli.dart';
+import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:ecommercefirebase/features/categories/data/datasourse/product_data_source_remote.dart';
 import 'package:ecommercefirebase/features/categories/data/datasourse/product_data_sourse_local.dart';
 import 'package:ecommercefirebase/features/categories/data/repository/product_repository_impli.dart';
@@ -21,6 +22,7 @@ import 'package:get_it/get_it.dart';
 
 GetIt getIt = GetIt.instance;
 void setup() {
+  getIt.registerLazySingleton<CartCubit>(() => CartCubit());
   getIt.registerSingleton<NetworkInfoImpl>(NetworkInfoImpl(DataConnectionChecker()));
   getIt.registerSingleton<ProductDataSourseLocal>(ProductDataSourseLocal(cache: CacheHelper()));
   getIt.registerSingleton<ProductDataSourceRemote>(ProductDataSourceRemote(FirebaseConsumer()));

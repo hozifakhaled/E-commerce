@@ -7,7 +7,7 @@ class RepositoryCart {
   RepositoryCart({required this.databaseConsumer});
 
   Future<void> adddata(EntiteyCart cart, String id) async {
-    await databaseConsumer.adddatadoccollection(cart.id,id ,{
+    await databaseConsumer.adddatadoccollection('cart',id ,{
       'id': cart.id,
       'name': cart.name,
       'color': cart.color,
@@ -16,5 +16,9 @@ class RepositoryCart {
       'quantity': cart.quantity,
       'size': cart.size,
     });
+  }
+
+  Future<void> deletedata(String id, String id2) async {
+    await databaseConsumer.deletedocincollection('cart', id,id2);
   }
 }

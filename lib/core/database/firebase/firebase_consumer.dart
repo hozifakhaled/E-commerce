@@ -18,13 +18,13 @@ class FirebaseConsumer implements DatabaseConsumer {
   }
 
   @override
-  Future<void> signInWithEmailAndPassword(
-      String email, String password) async {
+  Future<void> signInWithEmailAndPassword(String email, String password) async {
     await credential.signInWithEmailAndPassword(
         email: email, password: password);
   }
+
   @override
-  Future<void> sendPasswordResetEmail(String email) async{
+  Future<void> sendPasswordResetEmail(String email) async {
     await credential.sendPasswordResetEmail(email: email);
   }
 
@@ -82,38 +82,43 @@ class FirebaseConsumer implements DatabaseConsumer {
   }
 
   @override
-  Future<dynamic> getdatadoccollection(
-      String idcollection, String iddoc) async {
+  Stream<QuerySnapshot> getdatadoccollection(
+      String idCollection, String idDoc) {
     return data
-        .collection(idcollection)
-        .doc(iddoc)
-        .collection(idcollection)
+        .collection(idCollection)
+        .doc(idDoc)
+        .collection(idCollection)
+        .snapshots();
+  }
+
+  @override
+  Future<dynamic> getdatafilter(
+      String idcollection, String filter, String value) async {
+    return data.collection(idcollection).where(filter, isEqualTo: value).get();
+  }
+
+  @override
+  Future<dynamic> getDataFilterNotequal(
+      String idcollection, String filter, String value) async {
+    return data.collection(idcollection).where(filter, isEqualTo: value).get();
+  }
+
+  @override
+  Future getdatasorted(String idcollection, String filter) {
+    return data
+        .collection(idcollection) // استبدل باسم الكولكشن
+        .orderBy(filter, descending: true) // ترتيب تنازلي
+        .limit(10) // جلب أعلى 10 قيم
         .get();
   }
 
   @override
-  Future<dynamic> getdatafilter(String idcollection,String filter , String value) async {
-    return data
-        .collection(idcollection)
-        .where(filter, isEqualTo: value)
-        .get();
+  Future<void> deletedocincollection(String idCollection, String idDoc,String id ) async{
+    await data
+        .collection(idCollection)
+        .doc(idDoc)
+        .collection(idCollection)
+        .doc(id)
+        .delete();
   }
-  @override
-  Future<dynamic> getDataFilterNotequal(String idcollection,String filter , String value) async {
-    return data
-        .collection(idcollection)
-        .where(filter, isEqualTo: value)
-        .get();
-  }
-  
-  @override
-  Future getdatasorted(String idcollection, String filter) {
-       return data
-   .collection(idcollection) // استبدل باسم الكولكشن
-      .orderBy(filter, descending: true) // ترتيب تنازلي
-      .limit(10) // جلب أعلى 10 قيم
-      .get();
-  }
-  
-  
 }

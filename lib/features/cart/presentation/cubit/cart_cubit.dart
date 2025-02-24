@@ -18,26 +18,26 @@ class CartCubit extends Cubit<CartState> {
   int count1 = 0;
   String? size;
   int count = 0;
-   final AudioPlayer player = AudioPlayer();
-   void addToCartSound() async {
+  final AudioPlayer player = AudioPlayer();
+  void addToCartSound() async {
     // تشغيل الصوت
-   
-  try {ByteData data = await rootBundle.load("assets/sounds/cart.mp3");
-    Uint8List bytes = data.buffer.asUint8List();
-    await player.play(BytesSource(bytes));
-   
-  } catch (e) {
-throw Exception(e.toString());  
-}
+
+    try {
+      ByteData data = await rootBundle.load("assets/sounds/cart.mp3");
+      Uint8List bytes = data.buffer.asUint8List();
+      await player.play(BytesSource(bytes));
+    } catch (e) {
+      throw Exception(e.toString());
+    }
 
     // إضافة المنتج إلى السلة
- }
-    // تحديث الواجهة إذا كنت تستخدم Bloc أو Provider
- 
+  }
+  // تحديث الواجهة إذا كنت تستخدم Bloc أو Provider
 
   String id = CacheHelper().getData(key: 'id') ?? '';
   addtocart(
-      {required String name,
+      {required String iddoc,
+      required String name,
       required String image,
       required String price,
       required String quantity,
@@ -54,7 +54,8 @@ throw Exception(e.toString());
                   price: price,
                   quantity: quantity,
                   size: size,
-                  id: 'cart', color:color ),
+                  id: 'cart',
+                  color: color),
               id);
       emit(CartSuccess());
     } on Exception catch (e) {
@@ -63,20 +64,31 @@ throw Exception(e.toString());
   }
 
   getData() async {
-
-  
-
     try {
-      
       emit(GetCartLoading());
-     
-          await GetCart(repositroyGetCart: getIt.get<RepositoryGetCartImpli>())
-              .call(CategoryParams(id: 'cart',category: ''), id).then((value) {
-         emit(GetCartSuccess(cart: value));
+
+      await GetCart(repositroyGetCart: getIt.get<RepositoryGetCartImpli>())
+          .call(CategoryParams(id: 'cart', category: ''), id)
+          .then((value) {
+        value.listen((cartList) {
+          emit(GetCartSuccess(cart: cartList));
+        });
       });
-     
     } on Exception catch (e) {
       emit(GetCartError(e.toString()));
     }
+  }
+
+  deletedata(String id2) async {
+    try {
+      await RepositoryCart(databaseConsumer: FirebaseConsumer())
+          .deletedata(id, id2);
+    } on Exception catch (e) {
+      emit(CartError(e.toString()));
+    }
+  }
+
+  cacheid(String id) {
+    CacheHelper().getDataString(key: 'id');
   }
 }

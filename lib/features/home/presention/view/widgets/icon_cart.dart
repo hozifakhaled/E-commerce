@@ -7,39 +7,24 @@ import 'package:badges/badges.dart' as badges;
 class IconCart extends StatelessWidget {
   const IconCart({super.key});
 
-  
- // عدد المنتجات في السلة
   @override
   Widget build(BuildContext context) {
-   
-    return BlocConsumer<CartCubit, CartState>(
-      listener: (context, state) {
-        
-        if (state is GetCartSuccess) {
-         
-            context.read<CartCubit>().count = state.cart.length; // تحديث العدد تلقائيًا
-       
-        }
-      },
-      builder: (context, state) {
+    return BlocProvider(
+      create: (context) => CartCubit()..getData(), // ✅ بدء المتابعة تلقائيًا
+      child: BlocBuilder<CartCubit, CartState>(
+        builder: (context, state) {
+          int count = 0;
           if (state is GetCartSuccess) {
-  return badges.Badge(
-    showBadge:state.cart.length>0 ? true : false,
-    badgeContent: Text(
-      state.cart.length.toString(),
-      style: const TextStyle(color: Colors.white),
-    ),
-    child: Icon(CupertinoIcons.shopping_cart),
-  );
-}else{return badges.Badge(
-  showBadge: false,
-    badgeContent: Text(
-      0.toString(),
-      style: const TextStyle(color: Colors.white),
-    ),
-    child: Icon(CupertinoIcons.shopping_cart),
-  );}
-        }
-      );
+            count = state.cart.length;
+          }
+          return badges.Badge(
+            badgeContent: Text(count.toString(),
+              style: const TextStyle(color: Colors.white, fontSize: 10),
+            ),
+            child: const Icon(CupertinoIcons.shopping_cart),
+          );
+        },
+      ),
+    );
   }
 }

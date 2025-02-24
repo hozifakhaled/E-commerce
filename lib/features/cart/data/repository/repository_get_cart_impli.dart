@@ -13,12 +13,14 @@ class RepositoryGetCartImpli implements RepositroyGetCart {
   RepositoryGetCartImpli(
       {required this.remote, required this.networkInfo, required this.local});
   @override
-  Future<List<CartModel>> getdata(CategoryParams category, String id) async {
+Future<Stream<List<CartModel>>> getdata(CategoryParams category, String id) async{
     if (await networkInfo.isConnected!) {
       try {
-        final remoteUser = await remote.getdata(category,id  );
+        final remoteUser = remote.getCartStream(category, id);
 
-        local.cacheUser(remoteUser);
+        remoteUser.first.then((remoteUserList) {
+          local.cacheUser(remoteUserList);
+        });
         return remoteUser;
       } on Exception catch (e) {
         throw Exception(e.toString());
@@ -26,7 +28,7 @@ class RepositoryGetCartImpli implements RepositroyGetCart {
     } else {
       try {
         final localUser = await local.getLastproduct();
-        return localUser;
+        return Stream.value(localUser);
       } on Exception catch (e) {
         throw Exception(e.toString());
       }
