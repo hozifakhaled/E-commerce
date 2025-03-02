@@ -6,10 +6,10 @@ import 'package:ecommercefirebase/features/cart/data/models/cart_model.dart';
 
 class CartDataSourseLocal {
   final CacheHelper cache;
-  final String key = "CachedCart";
+  //final String key = "CachedCart";
   CartDataSourseLocal({required this.cache});
 
-  cacheUser(List<CartModel>? userToCache) {
+  cacheUser(List<CartModel>? userToCache, String key) {
     if (userToCache != null) {
       cache.saveData(
         key: key,
@@ -22,7 +22,7 @@ class CartDataSourseLocal {
     }
   }
 
-  Future<List<CartModel>> getLastproduct() {
+  Future<List<CartModel>> getLastproduct( String key) {
     final jsonString = cache.getDataString(key: key);
 
     if (jsonString != null) {

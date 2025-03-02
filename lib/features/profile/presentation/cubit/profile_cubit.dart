@@ -1,4 +1,6 @@
 // ignore: depend_on_referenced_packages
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'dart:io';
 import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
@@ -14,11 +16,13 @@ part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitial());
+  String? imageid;
 
   getProfile(String id) async {
     emit(ProfileLoading());
     try {
-     final data = await GetProfile(profileRepositry: getIt.get<ProfileRepositoryImpli>())
+      final data = await GetProfile(
+              profileRepositry: getIt.get<ProfileRepositoryImpli>())
           .call(ProfileParams(id: id));
       emit(ProfileLoaded(data));
     } catch (error) {
@@ -26,36 +30,28 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  File? imagee;
-
-  addimage(String email, ProfileEntitiey profile) async {
+  File? image;
+  String? imagePath ='';
+  final ImagePicker _picker = ImagePicker();
+  addimage(ImageSource source) async {
     try {
-      emit(ProfileLoading());
-      var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (image != null) {
-        final imageTemp = File(image.path);
-
-        imagee = imageTemp;
-        //emit(Adminpickimage(image: imagee!));
-        var stringimage = await GetProfile(
-                profileRepositry: getIt.get<ProfileRepositoryImpli>())
-            .callimage(imageTemp);
-        GetProfile(profileRepositry: getIt.get<ProfileRepositoryImpli>())
-            .callupdateimage(ProfileEntitiey(
-                email: email,
-                image: stringimage,
-                name: '',
-                phone: '',
-                age: ''));
-        emit(ProfileLoaded(profile));
+      final pickedFile = await _picker.pickImage(source:source);
+      if (pickedFile != null) {
+        image = File(pickedFile.path);
+        CacheHelper().saveData(key: 'image', value: (pickedFile.path));
+       //    emit(ImageLoaded(image!));
       }
-    } on Exception catch (e) {
-      emit(ProfileError(e.toString()));
+    } catch (e) {
+       //  emit(ImageError("حدث خطأ أثناء اختيار الصورة"));
     }
+  
+    imagePath = await CacheHelper().getData(key: 'image');
+    
   }
+  
 
   logout(context) {
     CacheHelper().removeData(key: 'id');
-    GoRouter.of(context).push('/onb');
+    GoRouter.of(context).go('/onb');
   }
 }

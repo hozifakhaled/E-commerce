@@ -1,10 +1,12 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:flutter/material.dart';
 
 class Helpers {
   AwesomeDialog alertDone(BuildContext context,String title,String desc,Function()? btnCancelOnPress,Function()? btnOkOnPress,DialogType dialogType) {
 
     return AwesomeDialog(
+      btnOkColor: maincolor,
       context: context,
       dialogType:
           dialogType, // أنواع مختلفة مثل warning، success، error

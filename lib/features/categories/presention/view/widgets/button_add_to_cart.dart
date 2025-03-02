@@ -1,3 +1,4 @@
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommercefirebase/core/helper/helpers.dart';
 import 'package:ecommercefirebase/core/utlis/colors.dart';
@@ -35,7 +36,7 @@ class ButtonAddToCart extends StatelessWidget {
     return BlocListener<CartCubit, CartState>(
       listener: (context, state) {
         if (state is CartSuccess) {
-          context.read<CartCubit>().addToCartSound();
+         
         //  context.read<CartCubit>().getData();
           Helpers()
               .alertDone(context, 'Done', 'Added to cart', null, null,
@@ -46,6 +47,11 @@ class ButtonAddToCart extends StatelessWidget {
               sold: sold + quantitynumber,
               reamaining: reamaining - quantitynumber);
           //  GoRouter.of(context).pop();
+        }else if(state is CartError){
+          Helpers()
+              .alertDone(context, 'Error', 'you must login', null, null,
+                  DialogType.error)
+              .show();
         }
       },
       child: SizedBox(
@@ -54,7 +60,7 @@ class ButtonAddToCart extends StatelessWidget {
               onPressed: () {
                 if (totalprice > 0) {
                   context.read<CartCubit>().addtocart(
-                        iddoc: '', 
+                   
                         color: color,
                         name: name,
                         price: totalprice.toStringAsFixed(2),

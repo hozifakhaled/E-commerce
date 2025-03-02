@@ -5,6 +5,7 @@ import 'package:ecommercefirebase/features/auth/login/presention/view/widgets/bo
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 // واجهة تسجيل الدخول
 class LoginView extends StatelessWidget {
@@ -15,22 +16,29 @@ class LoginView extends StatelessWidget {
     return BlocProvider(
       // إنشاء LoginCubit
       create: (context) =>  LoginCubit(),
-      child: Scaffold(
-        // لون خلفية الواجهة
-        backgroundColor: maincolor2,
-        appBar: AppBar(
-          // لون خلفية شريط التطبيق
-          backgroundColor: maincolor2,
-          // ارتفاع شريط الأدوات
-          toolbarHeight: 40.h,
-          // عنوان مخصص لشعار التطبيق
-          title: CustomTitleLogo(
-            textcolor1: Colors.black,
-            textcolor2: maincolor,
-          ),
-        ),
-        // جسم واجهة تسجيل الدخول
-        body: BodyLoginView(),
+      child: BlocBuilder<LoginCubit, LoginState>(
+        builder: (context, state) {
+          return ModalProgressHUD(
+              inAsyncCall:state is LoginLoading,
+              child: Scaffold(
+                // لون خلفية الواجهة
+                backgroundColor: maincolor2,
+                appBar: AppBar(
+                  // لون خلفية شريط التطبيق
+                  backgroundColor: maincolor2,
+                  // ارتفاع شريط الأدوات
+                  toolbarHeight: 100.h,
+                  // عنوان مخصص لشعار التطبيق
+                  title: CustomTitleLogo(
+                    textcolor1: Colors.black,
+                    textcolor2: maincolor,
+                  ),
+                ),
+                // جسم واجهة تسجيل الدخول
+                body: BodyLoginView(),
+              ),
+            );
+        },
       ),
     );
   }

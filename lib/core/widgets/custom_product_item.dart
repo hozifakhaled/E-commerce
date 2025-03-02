@@ -3,10 +3,8 @@ import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/core/widgets/custom_row_Price_and_cart.dart';
-import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:ecommercefirebase/features/home/domein/entities/product_entitiy.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductItem extends StatelessWidget {

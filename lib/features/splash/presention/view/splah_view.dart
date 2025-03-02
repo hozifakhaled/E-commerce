@@ -94,7 +94,7 @@ class _SplashScreenState extends State<SplashScreen>
           }
         },
         child: Scaffold(
-          backgroundColor: maincolor2,
+          backgroundColor: maincolor,
           body: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -103,7 +103,7 @@ class _SplashScreenState extends State<SplashScreen>
                   position: _clickAnimation,
                   child: Text(
                     'Click',
-                    style: Textstyles.textlogo,
+                    style: Textstyles.textlogo.copyWith(color: maincolor2),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -113,7 +113,7 @@ class _SplashScreenState extends State<SplashScreen>
                   child: Text(
                     '&',
                     style: Textstyles.textlogo.copyWith(
-                        fontWeight: FontWeight.bold, color: maincolor),
+                        fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -121,7 +121,7 @@ class _SplashScreenState extends State<SplashScreen>
                   position: _goAnimation,
                   child: Text(
                     'Go',
-                    style: Textstyles.textlogo,
+                    style: Textstyles.textlogo.copyWith(color: maincolor2),
                   ),
                 ),
               ],

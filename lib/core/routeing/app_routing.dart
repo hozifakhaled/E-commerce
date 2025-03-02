@@ -1,10 +1,9 @@
-//import 'package:bookly/Features/home/data/models/book_model/book_model.dart';
-
 import 'package:ecommercefirebase/core/routeing/routs.dart';
 import 'package:ecommercefirebase/features/auth/forget%20password/presention/view/forget_password_view.dart';
 import 'package:ecommercefirebase/features/auth/login/presention/view/login_view.dart';
 import 'package:ecommercefirebase/features/auth/sinup/presention/view/sinup_view.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/product_detales.dart';
+import 'package:ecommercefirebase/features/checkout/presentation/pages/checkout_view.dart';
 import 'package:ecommercefirebase/features/comments/presentation/pages/add_comment_view.dart';
 import 'package:ecommercefirebase/features/comments/presentation/pages/all_comment_view.dart';
 import 'package:ecommercefirebase/features/home/data/models/categeries_model.dart';
@@ -77,6 +76,15 @@ class AppRouter {
           return _customTransitionPage(
             state,
             CategoryView(category: state.extra as CategeriesModel),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.checkout,
+        pageBuilder: (context, state) {
+          return _customTransitionPage(
+            state,
+            const CheckoutView(),
           );
         },
       ),

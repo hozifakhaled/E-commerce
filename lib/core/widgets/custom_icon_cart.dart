@@ -1,6 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommercefirebase/core/helper/helpers.dart';
-import 'package:ecommercefirebase/core/helper/service_lecator.dart';
 import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:flutter/cupertino.dart';
@@ -42,7 +41,7 @@ class CustomIconCart extends StatelessWidget {
             return IconButton(
                 onPressed: () {
                   context.read<CartCubit>().addtocart(
-                    iddoc: '',
+                  
                       color: color,
                       name: name,
                       price: price,

@@ -27,7 +27,7 @@ class ProductDataSourseLocal {
 
     if (jsonString != null) {
       final List<dynamic> decodedJson = json.decode(jsonString);
-      final List<ProductModel> productList = decodedJson.map((jsonItem) => ProductModel.fromFirestore(jsonItem)).toList();
+      final List<ProductModel> productList = decodedJson.map((jsonItem) => ProductModel.fromjson(jsonItem)).toList();
       return Future.value(productList);
     } else {
       throw CacheExeption(errorMessage: "No Internet Connection");

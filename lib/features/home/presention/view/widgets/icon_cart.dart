@@ -18,6 +18,7 @@ class IconCart extends StatelessWidget {
             count = state.cart.length;
           }
           return badges.Badge(
+            showBadge: count > 0,
             badgeContent: Text(count.toString(),
               style: const TextStyle(color: Colors.white, fontSize: 10),
             ),

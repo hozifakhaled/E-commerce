@@ -1,11 +1,14 @@
+import 'package:ecommercefirebase/core/routeing/routs.dart';
 import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/utlis/extention.dart';
+import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:ecommercefirebase/features/cart/presentation/view/widgets/list_row_summery_in_cart.dart';
 import 'package:ecommercefirebase/features/cart/presentation/view/widgets/product_item_in_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class BodyCartview extends StatelessWidget {
   const BodyCartview({
@@ -25,9 +28,9 @@ class BodyCartview extends StatelessWidget {
     
             return Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
+             // crossAxisAlignment: CrossAxisAlignment.start,
+              children: [Text('You have ${state.cart.length} items',style: Textstyles.text16,),
+                            SizedBox(
                   height: context.height * .3,
                   child: ListView.builder(
                     itemCount: state.cart.length,
@@ -44,7 +47,10 @@ class BodyCartview extends StatelessWidget {
                 ButtonApp(
                     text: 'Checkout',
                     color: maincolor,
-                    colortext: maincolor2)
+                    colortext: maincolor2,
+                    onPressed: () => GoRouter.of(context).push(AppRoutes.checkout),
+                    ),
+
               ],
             );
           } else if (state is GetCartError) {

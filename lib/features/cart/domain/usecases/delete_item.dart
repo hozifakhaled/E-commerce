@@ -1,7 +1,7 @@
-import 'package:ecommercefirebase/features/cart/domain/repositories/repository_cart.dart';
+import 'package:ecommercefirebase/features/cart/data/repository/repository_get_cart_impli.dart';
 
 class DeleteItem {
-  final RepositoryCart _cartRepository;
+  final RepositoryGetCartImpli _cartRepository;
 
   DeleteItem(this._cartRepository);
 

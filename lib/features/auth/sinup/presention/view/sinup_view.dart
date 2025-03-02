@@ -5,6 +5,7 @@ import 'package:ecommercefirebase/features/auth/sinup/presention/view/widgets/bo
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class SinupView extends StatelessWidget {
   const SinupView({super.key});
@@ -14,20 +15,27 @@ class SinupView extends StatelessWidget {
     return BlocProvider(
       // إنشاء SinupCubit وتوفيره للشجرة
       create: (context) => SinupCubit(),
-      child: Scaffold(
-        backgroundColor: maincolor2,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: maincolor2,
-          toolbarHeight: 40.h,
-          // إضافة شعار مخصص في شريط التطبيق
-          title: CustomTitleLogo(
-            textcolor1: Colors.black,
-            textcolor2: maincolor,
-          ),
-        ),
-        // عرض محتوى BodySinupView
-        body: BodySinupView(),
+      child: BlocBuilder<SinupCubit, SinupState>(
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: state is SinupLoading,
+            child: Scaffold(
+              backgroundColor: maincolor2,
+              appBar: AppBar(
+                automaticallyImplyLeading: false,
+                backgroundColor: maincolor2,
+                toolbarHeight: 40.h,
+                // إضافة شعار مخصص في شريط التطبيق
+                title: CustomTitleLogo(
+                  textcolor1: Colors.black,
+                  textcolor2: maincolor,
+                ),
+              ),
+              // عرض محتوى BodySinupView
+              body: BodySinupView(),
+            ),
+          );
+        },
       ),
     );
   }

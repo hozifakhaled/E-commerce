@@ -27,7 +27,7 @@ final String value;
           child: Text(
             overflow: TextOverflow.clip,
             '   $value',
-            style: Textstyles.text16,
+            style: Textstyles.text14,
           ),
         ),
       ],

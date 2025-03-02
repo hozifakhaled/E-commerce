@@ -3,7 +3,10 @@ part of 'profile_cubit.dart';
 abstract class ProfileState {}
 
 class ProfileInitial extends ProfileState {}
-
+ class ImageLoaded extends ProfileState {
+  final String image;
+  ImageLoaded(this.image);
+}
 class ProfileLoading extends ProfileState {}
 class UploadImage extends ProfileState {
 final ProfileEntitiey profileEntitiey;

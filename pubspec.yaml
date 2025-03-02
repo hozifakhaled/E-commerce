@@ -60,6 +60,9 @@ dependencies:
   badges: ^3.1.2
   equatable: ^2.0.7
   audioplayers: ^6.2.0
+  flutter_stripe: ^11.4.0
+  dio: ^5.8.0+1
+  modal_progress_hud_nsn: ^0.5.1
 
 dev_dependencies:
   flutter_test:

@@ -9,7 +9,9 @@ import 'package:ecommercefirebase/features/cart/data/repository/repository_get_c
 import 'package:ecommercefirebase/features/cart/domain/entities/entitey_cart.dart';
 import 'package:ecommercefirebase/features/cart/domain/repositories/repository_cart.dart';
 import 'package:ecommercefirebase/features/cart/domain/usecases/add_to_cart.dart';
+import 'package:ecommercefirebase/features/cart/domain/usecases/check_item_in_cart.dart';
 import 'package:ecommercefirebase/features/cart/domain/usecases/get_cart.dart';
+import 'package:ecommercefirebase/features/cart/domain/usecases/update_price_quantity.dart';
 import 'package:flutter/services.dart';
 part 'cart_state.dart';
 
@@ -19,6 +21,7 @@ class CartCubit extends Cubit<CartState> {
   String? size;
   int count = 0;
   final AudioPlayer player = AudioPlayer();
+  final List<EntiteyCart> cart = [];
   void addToCartSound() async {
     // تشغيل الصوت
 
@@ -36,18 +39,16 @@ class CartCubit extends Cubit<CartState> {
 
   String id = CacheHelper().getData(key: 'id') ?? '';
   addtocart(
-      {required String iddoc,
-      required String name,
+      {required String name,
       required String image,
       required String price,
       required String quantity,
       required String size,
-      required String color}) {
+      required String color}) async {
     try {
-      AddToCart(
-              repositoryCart:
-                  RepositoryCart(databaseConsumer: FirebaseConsumer()))
-          .call(
+      List<EntiteyCart> check =
+          await CheckItemInCart(getIt.get<RepositoryGetCartImpli>()).call(
+              id,
               EntiteyCart(
                   name: name,
                   image: image,
@@ -55,9 +56,36 @@ class CartCubit extends Cubit<CartState> {
                   quantity: quantity,
                   size: size,
                   id: 'cart',
-                  color: color),
-              id);
-      emit(CartSuccess());
+                  color: color));
+      if (check.isNotEmpty) {
+        UpdatePriceQuantity(
+                RepositoryCart(databaseConsumer: FirebaseConsumer()))
+            .call(
+                EntiteyCart(
+                    color: color,
+                    name: name,
+                    image: image,
+                    price: (double.parse(check[0].price)+double.parse(price)).toString(),
+                    quantity: (double.parse(check[0].quantity)+double.parse(quantity)).toString() + check[0].quantity,
+                    size: size),
+                id,
+                check[0].id!);
+      } else {
+        AddToCart(
+                repositoryCart:
+                    RepositoryCart(databaseConsumer: FirebaseConsumer()))
+            .call(
+                EntiteyCart(
+                    name: name,
+                    image: image,
+                    price: price,
+                    quantity: quantity,
+                    size: size,
+                    id: 'cart',
+                    color: color),
+                id);
+        emit(CartSuccess());
+      }
     } on Exception catch (e) {
       emit(CartError(e.toString()));
     }
@@ -84,7 +112,7 @@ class CartCubit extends Cubit<CartState> {
       await RepositoryCart(databaseConsumer: FirebaseConsumer())
           .deletedata(id, id2);
     } on Exception catch (e) {
-      emit(CartError(e.toString()));
+      emit(GetCartError(e.toString()));
     }
   }
 

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
 import 'package:ecommercefirebase/core/helper/service_lecator.dart';
 import 'package:ecommercefirebase/core/utlis/colors.dart';
@@ -21,6 +23,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  String image = CacheHelper().getData(key: 'image')??'';
   int currentIndex = 0;
   int count = 0;
   @override
@@ -65,13 +68,18 @@ class _HomeViewState extends State<HomeView> {
             backgroundColor: maincolor2,
             actions: [
               Container(
-                color: Colors.blueGrey,
-                child: IconButton(
+              
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              //  color: Colors.blueGrey,
+                child: MaterialButton(
                   onPressed: () {
                     GoRouter.of(context).push('/profile',
                         extra: CacheHelper().getData(key: 'id'));
                   },
-                  icon: const Icon(
+                  child:image != ''? CircleAvatar(backgroundImage:FileImage(File(image)),): const Icon(
                     Icons.person,
                     color: Colors.white,
                   ),
@@ -82,6 +90,7 @@ class _HomeViewState extends State<HomeView> {
           backgroundColor: maincolor2,
           body: screens[currentIndex],
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: maincolor2,
             items: item,
             type: BottomNavigationBarType.fixed,
             currentIndex: currentIndex,

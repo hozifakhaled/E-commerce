@@ -2,16 +2,19 @@ import 'package:device_preview/device_preview.dart';
 import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
 import 'package:ecommercefirebase/core/helper/service_lecator.dart';
 import 'package:ecommercefirebase/core/routeing/app_routing.dart';
+import 'package:ecommercefirebase/core/stripe/payment_key.dart';
 import 'package:ecommercefirebase/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey=PaymentKeys.publisherKey;
     await dotenv.load(fileName: ".env");
  
   CacheHelper().init();

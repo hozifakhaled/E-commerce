@@ -1,6 +1,5 @@
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.dart';
-import 'package:ecommercefirebase/features/cart/presentation/cubit/cubit/cubit/addtocart_cubit.dart';
 import 'package:ecommercefirebase/features/categories/presention/manger/detailes_cubit/detaile_cubit.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/button_add_to_cart.dart';
 import 'package:ecommercefirebase/features/home/domein/entities/product_entitiy.dart';
