@@ -32,13 +32,13 @@ final updateMethod = updatalikedn;
     UpdateLike(repository: getIt.get<CommentReopsitoryImpli>()).call(
         id,
         CommentEntity(
-            like: like, islike: islike, email: '', comment: '', image: ''));
+            like: like, islike: islike, email: '', comment: ''));
   }
 
   updatalikedn(String id, int like, bool islike) {
     UpdateLike(repository: getIt.get<CommentReopsitoryImpli>()).call(
         id,
         CommentEntity(
-            like: like, islike: islike, email: '', comment: '', image: ''));
+            like: like, islike: islike, email: '', comment: '',));
   }
 }

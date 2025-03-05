@@ -24,7 +24,7 @@ class CommentReopsitoryImpli implements CommentRepository {
         'email': commentEntity.email,
         'like': commentEntity.like,
         'comment': commentEntity.comment,
-        'image': commentEntity.image,
+        
         'islike': commentEntity.islike
       });
     } on Exception catch (e) {

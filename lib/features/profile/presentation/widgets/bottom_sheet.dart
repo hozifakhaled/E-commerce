@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 bottmSheet(BuildContext context) {
-  final prfilecubit = context.read<ProfileCubit>();
   showModalBottomSheet(
     context: context,
     backgroundColor: maincolor2,

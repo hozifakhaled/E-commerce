@@ -1,3 +1,4 @@
+import 'package:ecommercefirebase/core/routeing/routs.dart';
 import 'package:ecommercefirebase/features/home/data/models/categeries_model.dart';
 import 'package:ecommercefirebase/features/home/presention/view/widgets/category_item.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class ListCategoriesItems extends StatelessWidget {
             return InkWell(
                 onTap: () {
 
-                  GoRouter.of(context).push('/category',extra: data2[index]  );
+                  GoRouter.of(context).push(AppRoutes.category,extra: data2[index]  );
                 },
                 child: ItemCategory(
                   color: Colors.white,

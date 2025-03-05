@@ -24,7 +24,7 @@ class ProductItemInCart extends StatelessWidget {
       onDismissed: (direction) {
         context
             .read<CartCubit>()
-            .deletedata(cart.id!); // ✅ حذف العنصر عند السحب
+            .deletedata(cart.id); // ✅ حذف العنصر عند السحب
       },
       background: Container(
         alignment: Alignment.centerRight,

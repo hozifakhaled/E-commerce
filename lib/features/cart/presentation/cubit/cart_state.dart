@@ -20,7 +20,8 @@ class Cartincrment extends CartState {}
 class Cartdecrement extends CartState {}
 class GetCartSuccess extends CartState {
   final List<EntiteyCart> cart;
-  GetCartSuccess({ required this.cart});
+   final bool hasMore;
+  GetCartSuccess({ required this.cart,this.hasMore = true});
 }
 
 class GetCartLoading extends CartState {}

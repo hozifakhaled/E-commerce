@@ -11,12 +11,12 @@ class CheckoutRepositryImpli implements CheckoutRepository {
     {
       try {
   await firebaseConsumer.adddatadoccollection('checkout', id, {
-    'name': checkout.name,
+    'state': checkout.state,
     'city': checkout.city,
     'price': checkout.price,
     'postalCode': checkout.postalCode,
     'street': checkout.street,
-    'phone': checkout.phone,
+    'email': checkout.email,
   });
 } on Exception catch (e) {
   throw 'no internet$e';

@@ -11,7 +11,8 @@ final double subtotal;
   @override
   Widget build(BuildContext context) {
     String subtotalString = subtotal.toStringAsFixed(2);
-    String totalString = (subtotal + 17).toStringAsFixed(2);
+    String shoppingString = (subtotal*0.17).toStringAsFixed(2);
+    String totalString = (subtotal + double.parse(shoppingString)).toStringAsFixed(2);
     return Container(
       width: context.width,
       //height: context.height * .2,
@@ -28,7 +29,7 @@ final double subtotal;
             SammaryRowInCart(
                 label: "Subtotal:", value: "\$$subtotalString", bold: true),
             SammaryRowInCart(
-                label: "Shipping:", value: "\$17", bold: true),
+                label: "Shipping:", value: "\$$shoppingString", bold: true),
             const Divider(),
             SammaryRowInCart(
                 label: "Total:", value: "\$$totalString", bold: true),

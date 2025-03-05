@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommercefirebase/core/utlis/textstyles.dart';
 import 'package:ecommercefirebase/features/comments/domain/entities/comment_entity.dart';
 import 'package:ecommercefirebase/features/comments/presentation/widgets/column_username_and_comment_in_comment.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,13 @@ class CommmentInAllComment extends StatelessWidget {
                 width: 50.h,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
-                  child:CachedNetworkImage(imageUrl: commentEntity.image,fit: BoxFit.fill,),
+                  child:Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child:Center(child: Text(commentEntity.email.substring(0,1),style: Textstyles.text28,)),
+                  ),
                 ),
               ),
             ),

@@ -26,7 +26,7 @@ class BodyProfileView extends StatelessWidget {
                     ColumnProfile(profileEntitiey: state.profileEntitiey,),
                     const SizedBox(height: 40),
                     Text(
-                      'Setting',
+                      'Comments & Complaints',
                       style: Textstyles.text18.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
@@ -45,7 +45,7 @@ class BodyProfileView extends StatelessWidget {
         );
       } else {
         return Center(
-          child: CircularProgressIndicator(),
+          child: const CircularProgressIndicator(),
         );
       }},
         ),

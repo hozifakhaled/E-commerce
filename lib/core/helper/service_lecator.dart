@@ -9,20 +9,30 @@ import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.da
 import 'package:ecommercefirebase/features/categories/data/datasourse/product_data_source_remote.dart';
 import 'package:ecommercefirebase/features/categories/data/datasourse/product_data_sourse_local.dart';
 import 'package:ecommercefirebase/features/categories/data/repository/product_repository_impli.dart';
+import 'package:ecommercefirebase/features/categories/presention/manger/cubit/product_cubit.dart';
 import 'package:ecommercefirebase/features/comments/data/datasources/comment_data_source_remote.dart';
 import 'package:ecommercefirebase/features/comments/data/datasources/comment_data_sourse_local.dart';
 import 'package:ecommercefirebase/features/comments/data/repositories/comment_reopsitory_impli.dart';
 import 'package:ecommercefirebase/features/home/data/datasourse/product_home_data_source_remote.dart';
 import 'package:ecommercefirebase/features/home/data/datasourse/product_home_data_sourse_local.dart';
 import 'package:ecommercefirebase/features/home/data/repository/product_home_repository_impli.dart';
+import 'package:ecommercefirebase/features/home/presention/cubit/bestsellingcubit/home_cubit.dart';
+import 'package:ecommercefirebase/features/notifcation/presentiion/cubit/notifications_cubit.dart';
+import 'package:ecommercefirebase/features/notifcation/data/model/notification_model.dart';
 import 'package:ecommercefirebase/features/profile/data/datasourse/profile_data_source_remote.dart';
 import 'package:ecommercefirebase/features/profile/data/datasourse/profile_data_sourse_local.dart';
 import 'package:ecommercefirebase/features/profile/data/repository/profile_repository_impli.dart';
+import 'package:ecommercefirebase/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
 
 GetIt getIt = GetIt.instance;
 void setup() {
-  getIt.registerLazySingleton<CartCubit>(() => CartCubit());
+  getIt.registerLazySingleton<NotificationsCubit>(() => NotificationsCubit(Hive.box<NotificationModel>('box')));
+   getIt.registerLazySingleton<ProductCubit>(() => ProductCubit());
+    getIt.registerLazySingleton<ProfileCubit>(() => ProfileCubit());
+     getIt.registerLazySingleton<CartCubit>(() => CartCubit());
+  getIt.registerLazySingleton<HomeCubit>(() => HomeCubit());
   getIt.registerSingleton<NetworkInfoImpl>(NetworkInfoImpl(DataConnectionChecker()));
   getIt.registerSingleton<ProductDataSourseLocal>(ProductDataSourseLocal(cache: CacheHelper()));
   getIt.registerSingleton<ProductDataSourceRemote>(ProductDataSourceRemote(FirebaseConsumer()));

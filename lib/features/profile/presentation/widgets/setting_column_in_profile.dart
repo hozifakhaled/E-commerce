@@ -1,3 +1,4 @@
+import 'package:ecommercefirebase/core/routeing/routs.dart';
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/features/profile/presentation/widgets/row_icon_and_text_in_setting.dart';
 import 'package:flutter/material.dart';
@@ -24,14 +25,10 @@ class SettingColumnInProfile extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            RowTextAndIconInSetting(
-              icon1: Icon(Icons.light_mode_outlined),
-              text: 'Dark Mode',
-              icon2: Icon(Icons.dark_mode_outlined),
-            ),
+           
             RowTextAndIconInSetting(
               onPressed: () {
-                GoRouter.of(context).push('/addcomment', extra:{'image':image,'name':name});
+                GoRouter.of(context).push(AppRoutes.addComment, extra:{'image':image,'name':name});
               },
               icon1: Icon(Icons.add_comment_outlined),
               text: 'Add Comment',
@@ -39,7 +36,7 @@ class SettingColumnInProfile extends StatelessWidget {
             ),
             RowTextAndIconInSetting(
               onPressed: () {
-                 GoRouter.of(context).push('/allcomment');
+                 GoRouter.of(context).push(AppRoutes.allComments, extra:name);
               },
               icon1: Icon(Icons.comment_outlined),
               text: 'All Comments',

@@ -8,3 +8,9 @@ abstract class CheckoutState extends Equatable {
 }
 
 class CheckoutInitial extends CheckoutState {}
+class CheckoutLoading extends CheckoutState {}
+class CheckoutError extends CheckoutState {
+  final String message;
+  const CheckoutError(this.message);
+}
+class CheckoutLoaded extends CheckoutState {}

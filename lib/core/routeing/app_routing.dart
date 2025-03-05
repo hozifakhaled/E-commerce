@@ -1,3 +1,4 @@
+import 'package:ecommercefirebase/core/helper/service_lecator.dart';
 import 'package:ecommercefirebase/core/routeing/routs.dart';
 import 'package:ecommercefirebase/features/auth/forget%20password/presention/view/forget_password_view.dart';
 import 'package:ecommercefirebase/features/auth/login/presention/view/login_view.dart';
@@ -10,10 +11,12 @@ import 'package:ecommercefirebase/features/home/data/models/categeries_model.dar
 import 'package:ecommercefirebase/features/home/presention/view/custom_products_view.dart';
 import 'package:ecommercefirebase/features/home/presention/view/category_view.dart';
 import 'package:ecommercefirebase/features/home/presention/view/home_view.dart';
+import 'package:ecommercefirebase/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:ecommercefirebase/features/profile/presentation/pages/profile_view.dart';
 import 'package:ecommercefirebase/features/splash/presention/view/onboarding_view.dart';
 import 'package:ecommercefirebase/features/splash/presention/view/splah_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -51,9 +54,11 @@ class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.profile,
-        builder: (context, state) => ProfileView(
+        builder: (context, state) => BlocProvider.value(
+      value: getIt<ProfileCubit>()..getProfile(state.extra as String),
+      child: ProfileView(
           id: state.extra as String,
-        ),
+        )),
       ),
       GoRoute(
         path: AppRoutes.addComment,
@@ -66,7 +71,7 @@ class AppRouter {
         pageBuilder: (context, state) {
           return _customTransitionPage(
             state,
-            const AllCommentView(),
+             AllCommentView(name: state.extra as String,),
           );
         },
       ),
@@ -84,7 +89,7 @@ class AppRouter {
         pageBuilder: (context, state) {
           return _customTransitionPage(
             state,
-            const CheckoutView(),
+             CheckoutView(price:state.extra as String,),
           );
         },
       ),

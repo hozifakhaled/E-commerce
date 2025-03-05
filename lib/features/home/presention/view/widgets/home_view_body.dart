@@ -1,4 +1,3 @@
-import 'package:ecommercefirebase/features/home/presention/cubit/bestsellingcubit/home_cubit.dart';
 import 'package:ecommercefirebase/features/home/presention/cubit/cubit/arrvail_cubit.dart';
 import 'package:ecommercefirebase/features/home/presention/view/widgets/frist_section_in_home.dart';
 import 'package:ecommercefirebase/features/home/presention/view/widgets/product_list_item.dart';
@@ -22,10 +21,8 @@ class HomeViewBody extends StatelessWidget {
         height: 20.h,
       )),
       SliverToBoxAdapter(
-        child: BlocProvider(
-          create: (context) => HomeCubit()..getBestSelling(),
-          child: ProductListItem(),
-        ),
+        child:  ProductListItem(),
+      
       ),
     ]);
   }

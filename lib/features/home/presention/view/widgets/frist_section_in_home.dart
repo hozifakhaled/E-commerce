@@ -40,7 +40,7 @@ class FristSectionInHome extends StatelessWidget {
                     }
                   },
                   child: ItemInHome(
-                    text: index == 0 ? 'New Arrivals' : 'Discunted products ',
+                    text: index == 0 ? 'New Arrivals' : 'Discunted \n products ',
                     icon: index == 0
                         ? Icon(
                             Icons.share_arrival_time,

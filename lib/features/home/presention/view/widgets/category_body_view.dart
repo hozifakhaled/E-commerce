@@ -10,30 +10,40 @@ class CategoryBodyView extends StatelessWidget {
   final String name;
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-            child: Text(
-         name,
-          style: Textstyles.text18.copyWith(fontWeight: FontWeight.bold),
-        )),
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: 30,
-          ),
-        ),
-        BlocBuilder<ProductCubit, ProductState>(
-          builder: (context, state) {
-            if (state is ProductLoaded) {
-              return CustomGridView(data: state.data);
-            } else if (state is ProductFailure) {
-              return Text(state.errorMessage.toString());
-            } else {
-              return const SliverToBoxAdapter(child: ProductLoadingShimmer());
-            }
-          },
-        )
-      ],
+    return BlocBuilder<ProductCubit, ProductState>(
+      builder: (context, state) {
+        if (state is ProductLoaded) {
+          return CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                  child: Row(
+                children: [
+                  Text(
+                    name,
+                    style:
+                        Textstyles.text18.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    " (${state.data.length.toString()})",
+                    style:
+                        Textstyles.text18.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              )),
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 30,
+                ),
+              ),
+              CustomGridView(data: state.data)
+            ],
+          );
+        } else if (state is ProductFailure) {
+          return Text(state.errorMessage.toString());
+        } else {
+          return const  ProductLoadingShimmer();
+        }
+      },
     );
   }
 }

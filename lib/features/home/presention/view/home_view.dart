@@ -5,8 +5,10 @@ import 'package:ecommercefirebase/core/helper/service_lecator.dart';
 import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/widgets/custom_title_logo.dart';
 import 'package:ecommercefirebase/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:ecommercefirebase/features/categories/presention/manger/cubit/product_cubit.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/product_view.dart';
 import 'package:ecommercefirebase/features/cart/presentation/view/cart_view.dart';
+import 'package:ecommercefirebase/features/home/presention/cubit/bestsellingcubit/home_cubit.dart';
 import 'package:ecommercefirebase/features/home/presention/view/widgets/icon_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +25,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  String image = CacheHelper().getData(key: 'image')??'';
+  String image = CacheHelper().getData(key: 'image') ?? '';
   int currentIndex = 0;
   int count = 0;
   @override
@@ -47,10 +49,16 @@ class _HomeViewState extends State<HomeView> {
       ),
     ];
     var screens = [
-      const HomeViewBody(),
-      const ProductView(),
-      BlocProvider(
-        create: (context) => CartCubit()..getData(),
+      BlocProvider.value(
+        value: getIt<HomeCubit>()..getBestSelling(),
+        child: const HomeViewBody(),
+      ),
+      BlocProvider.value(
+        value:  getIt<ProductCubit>()..getdata('product'),
+        child: ProductView(),
+      ),
+      BlocProvider.value(
+        value: getIt<CartCubit>()..getData(),
         child: const CartView(),
       ),
       const CartView(),
@@ -68,21 +76,24 @@ class _HomeViewState extends State<HomeView> {
             backgroundColor: maincolor2,
             actions: [
               Container(
-              
                 decoration: BoxDecoration(
                   color: Colors.transparent,
                   borderRadius: BorderRadius.circular(10),
                 ),
-              //  color: Colors.blueGrey,
+                //  color: Colors.blueGrey,
                 child: MaterialButton(
                   onPressed: () {
                     GoRouter.of(context).push('/profile',
                         extra: CacheHelper().getData(key: 'id'));
                   },
-                  child:image != ''? CircleAvatar(backgroundImage:FileImage(File(image)),): const Icon(
-                    Icons.person,
-                    color: Colors.white,
-                  ),
+                  child: image != ''
+                      ? CircleAvatar(
+                          backgroundImage: FileImage(File(image)),
+                        )
+                      : const Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        ),
                 ),
               )
             ],

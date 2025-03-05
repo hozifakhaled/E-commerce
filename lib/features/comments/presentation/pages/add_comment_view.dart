@@ -23,7 +23,7 @@ class AddCommentView extends StatelessWidget {
           ),
         ),
         body: BodyAddComment(
-          name: data['name'], image: data['image'],
+          name: data['name'],
         ),
       ),
     );

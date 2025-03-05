@@ -24,7 +24,7 @@ class ItemInHome extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             icon,
-            Text(text,style: Textstyles.text16),
+            Text(text,style: Textstyles.text16,maxLines: 2,),
           ],
         ),
       ),

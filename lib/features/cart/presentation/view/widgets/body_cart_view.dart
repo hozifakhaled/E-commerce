@@ -48,7 +48,7 @@ class BodyCartview extends StatelessWidget {
                     text: 'Checkout',
                     color: maincolor,
                     colortext: maincolor2,
-                    onPressed: () => GoRouter.of(context).push(AppRoutes.checkout),
+                    onPressed: () => GoRouter.of(context).push(AppRoutes.checkout, extra:totalPrice.toString() ),
                     ),
 
               ],

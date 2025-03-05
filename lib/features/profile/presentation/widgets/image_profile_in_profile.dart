@@ -4,12 +4,9 @@ import 'package:ecommercefirebase/constants/images.dart';
 import 'package:ecommercefirebase/core/database/cache/cache_helper.dart';
 import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/features/profile/domain/entities/profile_entitiey.dart';
-import 'package:ecommercefirebase/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:ecommercefirebase/features/profile/presentation/widgets/bottom_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ImageProfileInProfile extends StatelessWidget {
   const ImageProfileInProfile({

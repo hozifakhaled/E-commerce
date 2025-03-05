@@ -5,14 +5,14 @@ class CommentsModel extends CommentEntity {
       required super.like,
       required super.email,
       required super.comment,
-      required super.image});
+     });
   factory CommentsModel.fromJson(Map<String, dynamic> json) => CommentsModel(
     islike: json['islike'],
       like: json['like'],
       email: json['email'],
       comment: json['comment'],
-      image: json['image']);
+  );
 
   Map<String, dynamic> toJson() =>
-      {'likes': like, 'email': email, 'comment': comment, 'image': image};
+      {'likes': like, 'email': email, 'comment': comment};
 }

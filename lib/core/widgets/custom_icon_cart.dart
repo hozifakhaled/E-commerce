@@ -40,7 +40,7 @@ class CustomIconCart extends StatelessWidget {
           builder: (context) {
             return IconButton(
                 onPressed: () {
-                  context.read<CartCubit>().addtocart(
+                  context.read<CartCubit>().addToCart(
                   
                       color: color,
                       name: name,

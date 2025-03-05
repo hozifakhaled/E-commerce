@@ -11,9 +11,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BodyAddComment extends StatelessWidget {
-  const BodyAddComment({super.key, required this.name, required this.image});
+  const BodyAddComment({super.key, required this.name});
   final String name;
-  final String image;
+ 
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -57,7 +57,7 @@ class BodyAddComment extends StatelessWidget {
                 colortext: maincolor2,
                 onPressed: () {
                   context.read<CommentsCubit>().addcomment(
-                      name, context.read<CommentsCubit>().comment!, image);
+                      name, context.read<CommentsCubit>().comment!,);
                   context.read<CommentsCubit>().textEditingController.clear();
                 }),
           ),

@@ -13,13 +13,13 @@ class CommentsCubit extends Cubit<CommentsState> {
   CommentsCubit() : super(CommentsInitial());
   String? comment;
   TextEditingController textEditingController = TextEditingController();
-  addcomment(String email, String comment, String image) {
+  addcomment(String email, String comment) {
     try {
       AddComment(getIt.get<CommentReopsitoryImpli>()).call(CommentEntity(
           like: 0,
           email: email,
           comment: comment,
-          image: image,
+         
           islike: false));
       emit(CommentsLoaded());
     } on Exception catch (e) {

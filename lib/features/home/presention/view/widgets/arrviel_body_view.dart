@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ArrvielBodyView extends StatelessWidget {
-  const ArrvielBodyView({super.key});
-
+  const ArrvielBodyView({super.key, required this.text});
+final String text ;
   @override
   Widget build(BuildContext context) {
      return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
             child: Text(
-        'Arrvial',
+        text,
           style: Textstyles.text18.copyWith(fontWeight: FontWeight.bold),
         )),
         SliverToBoxAdapter(

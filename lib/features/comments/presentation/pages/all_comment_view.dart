@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AllCommentView extends StatelessWidget {
-  const AllCommentView({super.key});
-
+  const AllCommentView({super.key, required this.name});
+final String name;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -21,7 +21,7 @@ class AllCommentView extends StatelessWidget {
             textcolor2: maincolor,
           ),
           ),
-          body: const BodyAllComment()),
+          body:  BodyAllComment(name: name,)),
     );
   }
 }

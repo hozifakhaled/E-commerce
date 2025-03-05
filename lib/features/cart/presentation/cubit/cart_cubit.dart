@@ -38,58 +38,62 @@ class CartCubit extends Cubit<CartState> {
   // تحديث الواجهة إذا كنت تستخدم Bloc أو Provider
 
   String id = CacheHelper().getData(key: 'id') ?? '';
-  addtocart(
-      {required String name,
-      required String image,
-      required String price,
-      required String quantity,
-      required String size,
-      required String color}) async {
-    try {
-      List<EntiteyCart> check =
-          await CheckItemInCart(getIt.get<RepositoryGetCartImpli>()).call(
-              id,
-              EntiteyCart(
-                  name: name,
-                  image: image,
-                  price: price,
-                  quantity: quantity,
-                  size: size,
-                  id: 'cart',
-                  color: color));
-      if (check.isNotEmpty) {
-        UpdatePriceQuantity(
-                RepositoryCart(databaseConsumer: FirebaseConsumer()))
-            .call(
-                EntiteyCart(
-                    color: color,
-                    name: name,
-                    image: image,
-                    price: (double.parse(check[0].price)+double.parse(price)).toString(),
-                    quantity: (double.parse(check[0].quantity)+double.parse(quantity)).toString() + check[0].quantity,
-                    size: size),
-                id,
-                check[0].id!);
-      } else {
-        AddToCart(
-                repositoryCart:
-                    RepositoryCart(databaseConsumer: FirebaseConsumer()))
-            .call(
-                EntiteyCart(
-                    name: name,
-                    image: image,
-                    price: price,
-                    quantity: quantity,
-                    size: size,
-                    id: 'cart',
-                    color: color),
-                id);
-        emit(CartSuccess());
-      }
-    } on Exception catch (e) {
-      emit(CartError(e.toString()));
+Future<void> addToCart({
+  required String name,
+  required String image,
+  required String price,
+  required String quantity,
+  required String size,
+  required String color,
+}) async {
+  try {
+    final repository = getIt.get<RepositoryGetCartImpli>();
+
+    // ✅ تحقق مما إذا كان المنتج موجودًا بالفعل في السلة
+    List<EntiteyCart> existingItems =
+        await CheckItemInCart(repository).call(id, EntiteyCart(
+      name: name,
+      image: image,
+      price: price,
+      quantity: quantity,
+      size: size,
+      id: 'cart',
+      color: color,
+    ));
+
+    if (existingItems.isNotEmpty) {
+      // ✅ المنتج موجود، قم بتحديث السعر والكمية
+      final existingItem = existingItems.first;
+      final updatedPrice = (double.parse(existingItem.price) + double.parse(price)).toString();
+      final updatedQuantity = (int.parse(existingItem.quantity) + int.parse(quantity)).toString();
+
+      await UpdatePriceQuantity(RepositoryCart(databaseConsumer: FirebaseConsumer())).call(
+        existingItem.copyWith(price: updatedPrice, quantity: updatedQuantity),
+        id,
+        existingItem.id,
+      );
+    } else {
+      // ✅ المنتج غير موجود، أضفه إلى السلة
+      await AddToCart(repositoryCart: RepositoryCart(databaseConsumer: FirebaseConsumer())).call(
+        EntiteyCart(
+          name: name,
+          image: image,
+          price: price,
+          quantity: quantity,
+          size: size,
+          id: 'cart',
+          color: color,
+        ),
+        id,
+      );
     }
+
+    // ✅ إرسال الحالة الناجحة بعد الإضافة أو التحديث
+    emit(CartSuccess());
+  } catch (e) {
+    emit(CartError("Failed to add item to cart: ${e.toString()}"));
   }
+}
 
   getData() async {
     try {

@@ -30,7 +30,7 @@ class CustomProductsView extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: ArrvielBodyView(),
+          child: ArrvielBodyView(text: index == 0 ? 'New Arrvail' : ' Discount Product',),
         ),
       ),
     );

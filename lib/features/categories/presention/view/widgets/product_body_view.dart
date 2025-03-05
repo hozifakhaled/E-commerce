@@ -3,6 +3,7 @@ import 'package:ecommercefirebase/core/widgets/custom_text_from_filed.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/catgories_list_items.dart';
 import 'package:ecommercefirebase/features/categories/presention/view/widgets/product_gridview_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductBodyView extends StatefulWidget {
   const ProductBodyView({super.key});
@@ -36,17 +37,16 @@ class _ProductBodyViewState extends State<ProductBodyView> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: CustomScrollView(
-        
-        slivers:
-        [
+        slivers: [
+         // SliverToBoxAdapter(child: SizedBox(height: 20.h,)),
           SliverToBoxAdapter(
-
             child: CustomTextFromFiled(
               hinttext: 'Search',
               suffixIcon: Icon(Icons.search),
               controller: _searchController,
             ),
           ),
+          SliverToBoxAdapter(child: SizedBox(height: 10.h,)),
           SliverToBoxAdapter(
             child: Align(
               alignment: Alignment.topLeft,
@@ -57,7 +57,10 @@ class _ProductBodyViewState extends State<ProductBodyView> {
               ),
             ),
           ),
-          SliverToBoxAdapter(child: CatgoriesListItems(controller: _searchController)),
+          SliverToBoxAdapter(child: SizedBox(height: 10.h,)),
+          SliverToBoxAdapter(
+              child: CatgoriesListItems(controller: _searchController)),
+            //  SliverToBoxAdapter(child: SizedBox(height: 10.h,)),
           SliverToBoxAdapter(
             child: Align(
               alignment: Alignment.topLeft,
@@ -68,7 +71,8 @@ class _ProductBodyViewState extends State<ProductBodyView> {
               ),
             ),
           ),
-           ProductGridviewItems(searchText: searchText)
+        //  SliverToBoxAdapter(child: SizedBox(height: 20.h,)),
+          ProductGridviewItems(searchText: searchText)
         ],
       ),
     );
