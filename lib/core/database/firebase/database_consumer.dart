@@ -35,7 +35,15 @@ abstract class DatabaseConsumer {
       String category, String id, Map<String, dynamic> json);
   Future<void> adddatadoccollection(
       String category, String id, Map<String, dynamic> json);
+
+  Future<void> adddatadoccollection2(
+      String category, String id, Map<String, dynamic> json);
+  Future<void> adddatadoccollectionnamdoc(
+      String category, String id, String id2, Map<String, dynamic> json);
   Future<void> deletedocincollection(
       String idCollection, String idDoc, String id);
+  Future<dynamic> getdatacollectionincollection(
+      String idcollection, String iddoc);
+  Future<void> delete(String idDoc);
   Future<String> adddimage(File file);
 }

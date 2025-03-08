@@ -32,6 +32,9 @@ class SectionColorsAndSizeAndSalles extends StatelessWidget {
                 reamaining: productEntitiy.reamaining,
                 sold: productEntitiy.sold,
               ),
+                SizedBox(
+                    height: context.height * 0.002,
+                  ),
               ListSize(
                 list: productEntitiy.sizes,
                 onSizeSelected: (p0) {

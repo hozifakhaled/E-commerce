@@ -7,20 +7,33 @@ class CheckoutRepositryImpli implements CheckoutRepository {
 
   CheckoutRepositryImpli({required this.firebaseConsumer});
   @override
-  Future<void> addFormCheckout(CheckoutEntitiey checkout, String id) async {
+  Future<void> addFormCheckout(CheckoutEntitiey checkout, String id, String id2) async {
     {
       try {
-  await firebaseConsumer.adddatadoccollection('checkout', id, {
+  await firebaseConsumer.adddatadoccollectionnamdoc('checkout', id, id2,{
     'state': checkout.state,
     'city': checkout.city,
     'price': checkout.price,
     'postalCode': checkout.postalCode,
     'street': checkout.street,
     'email': checkout.email,
+    'iscash':checkout.iscash
   });
 } on Exception catch (e) {
   throw 'no internet$e';
 }
     }
+  }
+  
+  @override
+  Future<void> updatecash(bool iscash, String id, String id2) async{
+      try {
+  await firebaseConsumer.updatedatadoccollection('checkout', id, id2,{
+   
+    'iscash':iscash
+  });
+} on Exception catch (e) {
+  throw 'no internet$e';
+}
   }
 }

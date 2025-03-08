@@ -10,10 +10,15 @@ import 'package:ecommercefirebase/features/categories/presention/view/product_vi
 import 'package:ecommercefirebase/features/cart/presentation/view/cart_view.dart';
 import 'package:ecommercefirebase/features/home/presention/cubit/bestsellingcubit/home_cubit.dart';
 import 'package:ecommercefirebase/features/home/presention/view/widgets/icon_cart.dart';
+import 'package:ecommercefirebase/features/notifcation/data/model/notification_model.dart';
+import 'package:ecommercefirebase/features/notifcation/presentiion/cubit/notifications_cubit.dart';
+import 'package:ecommercefirebase/features/notifcation/presentiion/view/notification_view.dart';
+import 'package:ecommercefirebase/features/notifcation/presentiion/view/widgets/notification_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 
 import 'widgets/home_view_body.dart';
 
@@ -44,8 +49,8 @@ class _HomeViewState extends State<HomeView> {
         label: 'Cart',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.person),
-        label: 'Profile',
+        icon: Icon(Icons.notifications),
+        label: 'Notification',
       ),
     ];
     var screens = [
@@ -54,14 +59,17 @@ class _HomeViewState extends State<HomeView> {
         child: const HomeViewBody(),
       ),
       BlocProvider.value(
-        value:  getIt<ProductCubit>()..getdata('product'),
+        value: getIt<ProductCubit>()..getdata('product'),
         child: ProductView(),
       ),
       BlocProvider.value(
         value: getIt<CartCubit>()..getData(),
         child: const CartView(),
       ),
-      const CartView(),
+      BlocProvider(
+        create: (context) => NotificationsCubit(Hive.box<NotificationModel>('box'))..loadNotifications(),
+        child: const NotificationViewBody(),
+      ),
     ];
     return SafeArea(
       child: BlocProvider<CartCubit>(

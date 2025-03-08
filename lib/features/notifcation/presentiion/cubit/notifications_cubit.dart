@@ -11,7 +11,7 @@ class NotificationsCubit extends Cubit<NotificationsState> {
   final Box<NotificationModel> notificationsBox;
 
   NotificationsCubit(this.notificationsBox) : super(NotificationsInitial()) {
-    loadNotifications();
+  //  loadNotifications();
   }
 
   Future<void> loadNotifications() async {
@@ -26,10 +26,10 @@ class NotificationsCubit extends Cubit<NotificationsState> {
   }
   Future<void> addNotificationToList(NotificationModel notification) async {
   try {
-    await notificationsBox.put(notification, notification);
-    final updatedNotifications = notificationsBox.values.toList()
-      ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
-    emit(NotificationsLoaded(updatedNotifications));
+    await notificationsBox.add(notification);
+  //  final updatedNotifications = notificationsBox.values.toList()
+     // ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
+    //emit(NotificationsLoaded(updatedNotifications));
   } catch (e, stackTrace) {
     print('Error adding notification: $e\n$stackTrace');
     emit(NotificationsError('فشل في إضافة الإشعار'));

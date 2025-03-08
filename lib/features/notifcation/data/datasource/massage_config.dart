@@ -9,8 +9,9 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 class NotificationService {
   static final FlutterLocalNotificationsPlugin _localNotifications =
       FlutterLocalNotificationsPlugin();
-  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
-  
+  static final FirebaseMessaging _firebaseMessaging =
+      FirebaseMessaging.instance;
+
   static AndroidNotificationChannel channel = const AndroidNotificationChannel(
     'high_importance_channel',
     'High Importance Notifications',
@@ -42,10 +43,12 @@ class NotificationService {
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       print('✅ تم منح إذن الإشعارات من Firebase');
-    } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+    } else if (settings.authorizationStatus ==
+        AuthorizationStatus.provisional) {
       print('⚠️ تم منح إذن مؤقت للإشعارات');
     } else {
-      print('❌ تم رفض إذن الإشعارات من Firebase: ${settings.authorizationStatus}');
+      print(
+          '❌ تم رفض إذن الإشعارات من Firebase: ${settings.authorizationStatus}');
     }
 
     // طلب أذونات الإشعارات المحلية على Android
@@ -56,7 +59,8 @@ class NotificationService {
                 AndroidFlutterLocalNotificationsPlugin>();
 
         if (androidImplementation != null) {
-          final bool? granted = await androidImplementation.requestNotificationsPermission();
+          final bool? granted =
+              await androidImplementation.requestNotificationsPermission();
           print('✅ إذن الإشعارات المحلية: $granted');
         }
       } catch (e) {
@@ -86,7 +90,7 @@ class NotificationService {
           .resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
           ?.createNotificationChannel(channel);
-      
+
       print('✅ تم تهيئة الإشعارات المحلية بنجاح');
     } catch (e) {
       print('❌ خطأ في تهيئة الإشعارات المحلية: $e');
@@ -102,17 +106,17 @@ class NotificationService {
         print('عنوان: ${message.notification?.title}');
         print('محتوى: ${message.notification?.body}');
         print('بيانات: ${message.data}');
-        
+
         _showLocalNotification(message);
-        
-        final notification = NotificationModel(
+
+        final notification =  NotificationModel(
           title: message.notification?.title ?? 'بدون عنوان',
           body: message.notification?.body ?? 'بدون محتوى',
           timestamp: DateTime.now(),
         );
-        
+       // print(notification.title);
         getIt<NotificationsCubit>().addNotificationToList(notification);
-        
+
       });
 
       // الاستماع للنقر على الإشعار عندما يكون التطبيق في الخلفية
@@ -125,7 +129,8 @@ class NotificationService {
       });
 
       // التعامل مع الإشعارات التي تفتح التطبيق من حالة الإغلاق
-      RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
+      RemoteMessage? initialMessage =
+          await FirebaseMessaging.instance.getInitialMessage();
       if (initialMessage != null) {
         print('🔄 تم فتح التطبيق من إشعار عندما كان مغلقًا:');
         print('عنوان: ${initialMessage.notification?.title}');
@@ -134,11 +139,11 @@ class NotificationService {
       // الاشتراك في موضوع للإشعارات الجماعية
       await _firebaseMessaging.subscribeToTopic('all_users');
       print('✅ تم الاشتراك في موضوع all_users');
-      
+
       // الحصول على رمز الجهاز
       final token = await _firebaseMessaging.getToken();
       print('📌 FCM Token: $token');
-      
+
       print('✅ تم إعداد Firebase Messaging بنجاح');
     } catch (e) {
       print('❌ خطأ في إعداد Firebase Messaging: $e');
@@ -175,7 +180,7 @@ class NotificationService {
       print('❌ خطأ في عرض الإشعار المحلي: $e');
     }
   }
-  
+
   static Future<void> testLocalNotification() async {
     print('🔄 اختبار إرسال إشعار محلي...');
     try {
@@ -199,7 +204,7 @@ class NotificationService {
       print('❌ فشل في إرسال إشعار الاختبار: $e');
     }
   }
-  
+
   static Future<void> checkTopicSubscription() async {
     try {
       print('🔄 التحقق من الاشتراك في الموضوع...');

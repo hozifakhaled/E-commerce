@@ -6,7 +6,7 @@ class AddFormCheckout {
 
   AddFormCheckout(this.repository);
 
-  Future<void> call(CheckoutEntitiey checkout,String id) async {
-    return await repository.addFormCheckout(checkout, id);
+  Future<void> call(CheckoutEntitiey checkout,String id,String id2) async {
+    return await repository.addFormCheckout(checkout, id,id2);
   }
 }

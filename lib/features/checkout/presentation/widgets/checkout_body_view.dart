@@ -1,4 +1,6 @@
-import 'package:ecommercefirebase/core/stripe/payment_function.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:ecommercefirebase/core/helper/helpers.dart';
+import 'package:ecommercefirebase/core/routeing/routs.dart';
 import 'package:ecommercefirebase/core/utlis/colors.dart';
 import 'package:ecommercefirebase/core/utlis/extention.dart';
 import 'package:ecommercefirebase/core/utlis/textstyles.dart';
@@ -6,8 +8,10 @@ import 'package:ecommercefirebase/core/widgets/button_app.dart';
 import 'package:ecommercefirebase/core/widgets/custom_text_from_filed.dart';
 import 'package:ecommercefirebase/features/cart/presentation/view/widgets/list_row_summery_in_cart.dart';
 import 'package:ecommercefirebase/features/checkout/presentation/cubit/checkout_cubit.dart';
+import 'package:ecommercefirebase/features/checkout/presentation/widgets/show_payment_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CheckoutBodyView extends StatelessWidget {
   const CheckoutBodyView({super.key, required this.price});
@@ -17,8 +21,22 @@ class CheckoutBodyView extends StatelessWidget {
     double totalPrice = double.parse(price);
     return BlocListener<CheckoutCubit, CheckoutState>(
       listener: (context, state) {
+        if (state is UpdateLoaded) {
+          Helpers().alertDone(context, 'Done', 'Purchase successful! Your order will arrive within 3 days.', () {
+            GoRouter.of(context).go(AppRoutes.home);
+          }, null, DialogType.success);
+        }
         if (state is CheckoutLoaded) {
-          PaymentFunction.managepayment(totalPrice.toInt(), 'USD');
+          showPaymentSheet(context, totalPrice, () {
+            context.read<CheckoutCubit>().updateIncash(
+                postalCode: context.read<CheckoutCubit>().postalCode!,
+                iscach: true);
+               Helpers().alertDone(context, 'Done', 'Purchase successful! Your order will arrive within 3 days.', null,() {
+            GoRouter.of(context).go(AppRoutes.home);
+          }, DialogType.success).show();
+        });
+         
+          // PaymentFunction.managepayment(totalPrice.toInt(), 'USD');
         } else if (state is CheckoutError) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(state.message),
@@ -138,6 +156,7 @@ class CheckoutBodyView extends StatelessWidget {
                         .currentState!
                         .validate()) {
                       context.read<CheckoutCubit>().addFormCheckout(
+                          iscach: false,
                           state: context.read<CheckoutCubit>().statee!,
                           city: context.read<CheckoutCubit>().city!,
                           price: price,
@@ -151,7 +170,6 @@ class CheckoutBodyView extends StatelessWidget {
                           .read<CheckoutCubit>()
                           .postalCodeController
                           .clear();
-                     
                     }
                   },
                 ),

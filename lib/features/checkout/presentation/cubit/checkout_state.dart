@@ -14,3 +14,4 @@ class CheckoutError extends CheckoutState {
   const CheckoutError(this.message);
 }
 class CheckoutLoaded extends CheckoutState {}
+class UpdateLoaded extends CheckoutState {}

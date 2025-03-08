@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommercefirebase/core/connection/network_info.dart';
 import 'package:ecommercefirebase/core/database/firebase/database_consumer.dart';
 import 'package:ecommercefirebase/core/database/firebase/firebase_consumer.dart';
@@ -64,6 +65,20 @@ class RepositoryGetCartImpli implements RepositroyGetCart {
       } on Exception catch (e) {
         throw Exception(e.toString());
       }
+    }
+  }
+
+  @override
+  Future<void> clearCart(String id) async {
+    try {
+      CollectionReference  subCollectionRef = await databaseConsumer.getdatacollectionincollection('cart', id);
+      QuerySnapshot querySnapshot = await subCollectionRef.get();
+      for (var doc in querySnapshot.docs) {
+    await subCollectionRef.doc(doc.id).delete();
+  }
+
+    } on Exception catch (e) {
+      throw Exception(e);
     }
   }
 }

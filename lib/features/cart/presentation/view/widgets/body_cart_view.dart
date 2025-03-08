@@ -25,12 +25,16 @@ class BodyCartview extends StatelessWidget {
             //print(state.cart[0].id);
             double totalPrice = state.cart
                 .fold(0, (sum, item) => sum + (double.parse(item.price)));
-    
+
             return Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-             // crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text('You have ${state.cart.length} items',style: Textstyles.text16,),
-                            SizedBox(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'You have ${state.cart.length} items',
+                  style: Textstyles.text16,
+                ),
+                SizedBox(
                   height: context.height * .3,
                   child: ListView.builder(
                     itemCount: state.cart.length,
@@ -48,9 +52,10 @@ class BodyCartview extends StatelessWidget {
                     text: 'Checkout',
                     color: maincolor,
                     colortext: maincolor2,
-                    onPressed: () => GoRouter.of(context).push(AppRoutes.checkout, extra:totalPrice.toString() ),
-                    ),
-
+                    onPressed: () async{
+                      await context.read<CartCubit>().cleardata();
+                      GoRouter.of(context).push(AppRoutes.checkout,extra: totalPrice.toString());
+                    }),
               ],
             );
           } else if (state is GetCartError) {
@@ -65,3 +70,12 @@ class BodyCartview extends StatelessWidget {
     );
   }
 }
+
+
+List<int> colors = [
+    0xFFFF0000, // 🔴 الأحمر
+    0xFF00FF00, // 🟢 الأخضر
+    0xFF0000FF, // 🔵 الأزرق
+    0xFF800080, // 🟣 البنفسجي
+    0xFFFFA500  // 🟠 البرتقالي
+  ];

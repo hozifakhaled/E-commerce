@@ -16,29 +16,27 @@ class ProductDetailesBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: SizedBox(
-            // width: double.infinity,
-            child: Hero(
-              tag: productEntitiy.image + index.toString(),
-              child: CachedNetworkImage(
-                width: context.width * .5,
-                height: context.height * 0.4,
-                fit: BoxFit.cover,
-                imageUrl: productEntitiy.image,
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
+    return Column(children: [
+      Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: SizedBox(
+          // width: double.infinity,
+          child: Hero(
+            tag: productEntitiy.image + index.toString(),
+            child: CachedNetworkImage(
+              //width: context.width * .5,
+              height: context.height * 0.4,
+              fit: BoxFit.cover,
+              imageUrl: productEntitiy.image,
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
         ),
-        BlocProvider(
-          create: (context) => DetaileCubit(),
-          child: SectionContinerInDetailes(productEntitiy: productEntitiy),
-        )
-      ]),
-    );
+      ),
+      BlocProvider(
+        create: (context) => DetaileCubit(),
+        child: SectionContinerInDetailes(productEntitiy: productEntitiy),
+      )
+    ]);
   }
 }

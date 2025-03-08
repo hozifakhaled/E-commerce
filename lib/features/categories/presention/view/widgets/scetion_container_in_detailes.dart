@@ -23,7 +23,7 @@ class SectionContinerInDetailes extends StatelessWidget {
       builder: (context, state) {
         return Container(
             width: double.infinity,
-            height: context.height * 0.53,
+            height: context.height * 0.52,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -31,21 +31,29 @@ class SectionContinerInDetailes extends StatelessWidget {
                     topRight: Radius.circular(30.r))),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 10.h,
+              child: ListView(
+              
                 children: [
+                  SizedBox(
+                    height: context.height * 0.01,
+                  ),
                   RowNameAndQuantity(
                     remaining: productEntitiy.reamaining,
                     sold: productEntitiy.sold,
                     name: productEntitiy.name,
                     price: double.parse(productEntitiy.price),
                   ),
+                    SizedBox(
+                    height: context.height * 0.005,
+                  ),
                   SectionColorsAndSizeAndSalles(productEntitiy: productEntitiy),
+                    SizedBox(
+                    height: context.height * 0.01,
+                  ),
                   Text(
                     'Description ',
                     style:
-                        Textstyles.text18.copyWith(fontWeight: FontWeight.bold),
+                        Textstyles.text18.copyWith(),maxLines: 2,overflow: TextOverflow.visible,
                   ),
                   Text(
                     productEntitiy.description,
@@ -53,10 +61,16 @@ class SectionContinerInDetailes extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: Textstyles.text12,
                   ),
+                    SizedBox(
+                    height: context.height * 0.01,
+                  ),
                   //   Spacer(),
                   RowPriceAndButton(
                       size: context.read<DetaileCubit>().size,
                       productEntitiy: productEntitiy, color: context.read<DetaileCubit>().color,)
+               , SizedBox(
+                    height: context.height * 0.01,
+                  ),
                 ],
               ),
             ));

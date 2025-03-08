@@ -8,6 +8,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class FirebaseConsumer implements DatabaseConsumer {
   final credential = FirebaseAuth.instance;
   final storage = Supabase.instance.client.storage.from('mainimage');
+   //WriteBatch batch = credentia;
 
   final data = FirebaseFirestore.instance;
   @override
@@ -37,6 +38,10 @@ class FirebaseConsumer implements DatabaseConsumer {
   Future<dynamic> getdatadoc(String idcollection, String iddoc) async {
     return data.collection(idcollection).doc(iddoc).get();
   }
+   @override
+  Future<dynamic> getdatacollectionincollection(String idcollection, String iddoc) async {
+    return data.collection(idcollection).doc(iddoc).collection(idcollection);
+  }
 
   @override
   Future<void> adddata(String category, Map<String, dynamic> json) async {
@@ -52,9 +57,10 @@ class FirebaseConsumer implements DatabaseConsumer {
   @override
   Future<String> adddimage(File file) async {
     try {
-     final timestamp = DateTime.now().millisecondsSinceEpoch; // الوقت الحالي بوحدة الميللي ثانية
-final fileExtension = file.path.split('.').last; // استخراج الامتداد
-final fileName = "$timestamp.$fileExtension";
+      final timestamp = DateTime.now()
+          .millisecondsSinceEpoch; // الوقت الحالي بوحدة الميللي ثانية
+      final fileExtension = file.path.split('.').last; // استخراج الامتداد
+      final fileName = "$timestamp.$fileExtension";
       await storage.upload(fileName, file,
           fileOptions: FileOptions(
             cacheControl: '3600',
@@ -76,16 +82,44 @@ final fileName = "$timestamp.$fileExtension";
       String category, String id, Map<String, dynamic> json) async {
     await data.collection(category).doc(id).update(json);
   }
-   @override
-     Future<void> updatedatadoccollection(
-      String category, String id,String id2, Map<String, dynamic> json) async {
-    await data.collection(category).doc(id).collection(category).doc(id2).update(json);
+
+  @override
+  Future<void> updatedatadoccollection(
+      String category, String id, String id2, Map<String, dynamic> json) async {
+    await data
+        .collection(category)
+        .doc(id)
+        .collection(category)
+        .doc(id2)
+        .update(json);
   }
 
   @override
   Future<void> adddatadoccollection(
       String category, String id, Map<String, dynamic> json) async {
+    await data
+        .collection(category)
+        .doc(id)
+        .collection(category)
+        .doc(id)
+        .set(json);
+  }
+
+  @override
+  Future<void> adddatadoccollection2(
+      String category, String id, Map<String, dynamic> json) async {
     await data.collection(category).doc(id).collection(category).add(json);
+  }
+
+  @override
+  Future<void> adddatadoccollectionnamdoc(
+      String category, String id, String id2, Map<String, dynamic> json) async {
+    await data
+        .collection(category)
+        .doc(id)
+        .collection(category)
+        .doc(id2)
+        .set(json);
   }
 
   @override
@@ -109,10 +143,25 @@ final fileName = "$timestamp.$fileExtension";
       String idcollection, String filter, String value) async {
     return data.collection(idcollection).where(filter, isEqualTo: value).get();
   }
+
   @override
   Future<dynamic> getDataInCollectionFilterNotequal(
-      String idcollection, String filter, String value,String filter2, String value2,String filter3, String value3,String docid) async {
-    return data.collection(idcollection).doc(docid).collection(idcollection).where(filter, isEqualTo: value).where(filter2, isEqualTo: value2).where(filter3, isEqualTo: value3).get();
+      String idcollection,
+      String filter,
+      String value,
+      String filter2,
+      String value2,
+      String filter3,
+      String value3,
+      String docid) async {
+    return data
+        .collection(idcollection)
+        .doc(docid)
+        .collection(idcollection)
+        .where(filter, isEqualTo: value)
+        .where(filter2, isEqualTo: value2)
+        .where(filter3, isEqualTo: value3)
+        .get();
   }
 
   @override
@@ -125,12 +174,18 @@ final fileName = "$timestamp.$fileExtension";
   }
 
   @override
-  Future<void> deletedocincollection(String idCollection, String idDoc,String id ) async{
+  Future<void> deletedocincollection(
+      String idCollection, String idDoc, String id) async {
     await data
         .collection(idCollection)
         .doc(idDoc)
         .collection(idCollection)
         .doc(id)
         .delete();
+  }
+
+  @override
+  Future<void> delete( String idDoc) async {
+    await data.collection('cart').doc('hdhyfhkhaldhswkhh@gmail.com').delete();
   }
 }
