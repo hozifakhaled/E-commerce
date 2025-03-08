@@ -24,7 +24,7 @@ class SectionColorsAndSizeAndSalles extends StatelessWidget {
       children: [
         SizedBox(
           width: context.width * .8,
-          height: context.height * .18,
+          height: context.height * .20,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

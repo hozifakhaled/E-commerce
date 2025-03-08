@@ -9,7 +9,9 @@ class RowNameAndQuantity extends StatelessWidget {
   const RowNameAndQuantity({
     super.key,
     required this.name,
-    required this.price, required this.remaining, required this.sold,
+    required this.price,
+    required this.remaining,
+    required this.sold,
   });
   final String name;
   final double price;
@@ -18,9 +20,12 @@ class RowNameAndQuantity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   List <String> words = name.split(' ');
+   String name2 = words.length >= 2 ? '${words[0]} ${words[1]}' : name; // إرجاع أول كلمتين أو النص بالكامل إذا كان أقل من كلمتين
+
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Text(
-        name,
+        name2,
         style: Textstyles.text18.copyWith(fontWeight: FontWeight.bold),
       ),
       Container(
@@ -32,8 +37,9 @@ class RowNameAndQuantity extends StatelessWidget {
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             IconButton(
-              onPressed: () =>
-                  context.read<DetaileCubit>().decrementQuantity(price,),
+              onPressed: () => context.read<DetaileCubit>().decrementQuantity(
+                    price,
+                  ),
               icon: Icon(
                 Icons.remove,
                 color: Colors.black,
@@ -42,8 +48,9 @@ class RowNameAndQuantity extends StatelessWidget {
             Text(context.read<DetaileCubit>().quantity.toString(),
                 style: Textstyles.text12),
             IconButton(
-              onPressed: () =>
-                  context.read<DetaileCubit>().incrementQuantity(price,remaining,context),
+              onPressed: () => context
+                  .read<DetaileCubit>()
+                  .incrementQuantity(price, remaining, context),
               icon: Icon(
                 Icons.add,
                 color: Colors.black,

@@ -34,9 +34,7 @@ class SectionContinerInDetailes extends StatelessWidget {
               child: ListView(
               
                 children: [
-                  SizedBox(
-                    height: context.height * 0.01,
-                  ),
+                 ---------------------------------------------
                   RowNameAndQuantity(
                     remaining: productEntitiy.reamaining,
                     sold: productEntitiy.sold,

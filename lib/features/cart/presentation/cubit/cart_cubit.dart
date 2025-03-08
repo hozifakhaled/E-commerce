@@ -49,8 +49,9 @@ class CartCubit extends Cubit<CartState> {
     required String size,
     required String color,
   }) async {
+    emit(GetCartLoading());
     try {
-     // emit(GetCartLoading());
+      
       final repository = getIt.get<RepositoryGetCartImpli>();
 
       // ✅ تحقق مما إذا كان المنتج موجودًا بالفعل في السلة

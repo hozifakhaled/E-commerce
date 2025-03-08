@@ -27,6 +27,7 @@ class RowPriceAndCart extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               // ignore: prefer_interpolation_to_compose_strings
@@ -38,7 +39,7 @@ class RowPriceAndCart extends StatelessWidget {
             ),
             Text(
               // ignore: prefer_interpolation_to_compose_strings
-              oldprice.isEmpty ? '' : '\$' + oldprice,
+              oldprice.isEmpty || oldprice == ' ' ? '' : '\$' + oldprice,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
     

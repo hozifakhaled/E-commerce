@@ -17,6 +17,7 @@ class ImageProfileInProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? image = CacheHelper().getData(key: 'image');
     return Align(
       alignment: Alignment.center,
       child: Stack(
@@ -34,12 +35,18 @@ class ImageProfileInProfile extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                 ),
-                child: CacheHelper().getData(key: 'image') == ''
+                child: image == null
                     ? Image.asset(
                         Assets.imagesTrangs,
                         fit: BoxFit.contain,
                       )
-                    : Image.file(File(CacheHelper().getData(key: 'image')))),
+                    : image == ''
+                        ? Image.asset(
+                            Assets.imagesTrangs,
+                            fit: BoxFit.contain,
+                          )
+                        : Image.file(
+                            File(CacheHelper().getData(key: 'image')))),
           ),
           // أيقونة القلم في الزاوية اليمنى السفلية
           Positioned(

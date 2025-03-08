@@ -50,6 +50,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   logout(context) {
     CacheHelper().removeData(key: 'id');
+    CacheHelper().removeData(key: 'image');
     GoRouter.of(context).go('/onb');
   }
 }

@@ -100,7 +100,7 @@ class _HomeViewState extends State<HomeView> {
                         )
                       : const Icon(
                           Icons.person,
-                          color: Colors.white,
+                          color: maincolor,
                         ),
                 ),
               )
