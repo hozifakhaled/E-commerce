@@ -49,7 +49,8 @@ class ProductItem extends StatelessWidget {
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(20.r),
                                     topRight: Radius.circular(20.r)),
-                                color: maincolor2),
+                             //   color: maincolor2
+                             ),
                             child: CachedNetworkImage(
                               height: context.height * 0.18,
                               fit: BoxFit.contain,
